@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/bg</color>
+    <color name="colorPrimaryDark">@color/bg</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="text_color_99">#999999</color>
+    <color name="text_color_3232">#323232</color>
+    <color name="text_color_66">#666666</color>
+    <color name="text_color_gray_a9">#a9a9a9</color>
+    <color name="bg">#188eee</color>
+    <color name="divide_line">#e7e7e7</color>
+
+</resources>

@@ -1,0 +1,23 @@
+<resources>
+    <!--&lt;!&ndash; Default screen margins, per the Android Design guidelines. &ndash;&gt;-->
+    <!--<dimen name="activity_horizontal_margin">16dp</dimen>-->
+    <!--<dimen name="activity_vertical_margin">16dp</dimen>-->
+    <!--<item type="dimen" name="dialog_min_width_major">10%</item>-->
+    <!--<item type="dimen" name="dialog_min_width_minor">80%</item>-->
+    <!--<item type="dimen" name="agreement_dialog_min_width_minor">100%</item>-->
+    <!--<item type="dimen" name="divide_dialog_min_width_minor">90%</item>-->
+    <!--<item type="dimen" name="myproduct_dialog_min_width_minor">60%</item>-->
+
+    <!--<item type="dimen" name="simple_dialog_min_width_major">100%</item>-->
+    <!--<item type="dimen" name="simple_dialog_min_width_minor">100%</item>-->
+    <dimen  name="text_18_sp">20sp</dimen>
+    <dimen  name="text_16_sp">19sp</dimen>
+    <dimen  name="text_15_sp">18sp</dimen>
+    <dimen  name="text_14_sp">17sp</dimen>
+    <dimen  name="text_13_sp">16sp</dimen>
+    <dimen  name="text_12_sp">15sp</dimen>
+    <dimen  name="text_11_sp">14sp</dimen>
+    <dimen  name="text_10_sp">13sp</dimen>
+    <dimen  name="text_9_sp">12sp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+</resources>

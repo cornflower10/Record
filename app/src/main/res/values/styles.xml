@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="custom_dialog" parent="@style/Theme.AppCompat.Dialog">
+        <item name="android:windowMinWidthMajor">70%</item>
+        <item name="android:windowMinWidthMinor">70%</item>
+        <item name="android:windowFrame">@android:color/transparent</item><!--边框 -->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item><!--半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:backgroundDimEnabled">true</item><!--模糊 -->
+    </style>
+
+    <style name="introduce_custom_dialog" parent="custom_dialog">
+        <item name="android:windowMinWidthMajor">60%</item>
+        <item name="android:windowMinWidthMinor">60%</item>
+
+    </style>
+</resources>
