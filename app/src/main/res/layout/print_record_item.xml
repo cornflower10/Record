@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,7 +7,7 @@
    >
     <TextView
         android:textColor="@color/text_color_3232"
-        android:textSize="@dimen/sp_14"
+        android:textSize="@dimen/text_14_sp"
         android:layout_marginLeft="@dimen/margin_16"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
@@ -16,13 +16,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
+
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/tv_name"
         android:textColor="@color/text_color_gray_a9"
         android:textSize="@dimen/text_12_sp"
+        android:gravity="right"
         android:layout_marginRight="@dimen/margin_16"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
+        android:layout_alignParentRight="true"
         android:id="@+id/tv_date"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-</LinearLayout>
+</RelativeLayout>

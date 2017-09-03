@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+   >
+    <TextView
+        android:text="删除"
+        android:textColor="@color/bg"
+        android:textSize="@dimen/text_15_sp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:gravity="center"
+        android:id="@+id/tv_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+   <View
+      style="@style/divider_line_march"/>
+    <TextView
+        android:text="导出"
+        android:textColor="@color/bg"
+        android:textSize="@dimen/text_15_sp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:gravity="center"
+        android:id="@+id/tv_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_height="4dp"
+        style="@style/divider_line_march"/>
+    <TextView
+        android:text="取消"
+        android:textColor="@color/bg"
+        android:textSize="@dimen/text_15_sp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:gravity="center"
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        style="@style/divider_line_march"/>
+
+
+</LinearLayout>

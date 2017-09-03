@@ -22,7 +22,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.WordHtmlActivity" />
-        <activity android:name=".activity.ErrorActivity"></activity>
+        <activity android:name=".activity.ErrorActivity" />
+        <activity android:name=".activity.DocTypeActivity" />
+        <activity android:name=".activity.RecordDocInfoActivity" />
+        <activity android:name=".activity.DocListActivity"></activity>
     </application>
 
 </manifest>

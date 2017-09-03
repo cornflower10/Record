@@ -8,4 +8,5 @@
     <string name="index">首页</string>
     <string name="printRecord">打印记录</string>
     <string name="account">我的账户</string>
+    <string name="extrernal_storage">存储信息权限</string>
 </resources>

@@ -12,4 +12,6 @@
     <color name="bg">#188eee</color>
     <color name="divide_line">#e7e7e7</color>
 
+    <color name="layout_color">#f5f5f5</color>
+
 </resources>
