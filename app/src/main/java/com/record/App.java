@@ -2,7 +2,11 @@ package com.record;
 
 import android.app.Application;
 
+import com.record.dao.DaoMaster;
+import com.record.dao.DaoSession;
 import com.record.utils.ForegroundCallbacks;
+
+import org.greenrobot.greendao.database.Database;
 
 /**
  * Created by xiejingbao on 2017/8/30.
@@ -12,7 +16,7 @@ public class App extends Application {
     private static App INSTANCE;
     private boolean isLogin;
     private String sessionKey;
-    // Returns the application instance
+    private static DaoSession daoSession;
     public static App getInstance() {
         return INSTANCE;
     }
@@ -27,6 +31,7 @@ public class App extends Application {
         INSTANCE = this;
         super.onCreate();
         foregroundCallbacks = ForegroundCallbacks.init(this);
+        initDataBase();
 //        CrashHandler.getInstance().init(this);
     }
 
@@ -39,4 +44,14 @@ public class App extends Application {
     }
 
 
+    private void initDataBase() {
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(this, "record.db");
+        Database db = openHelper.getWritableDb();
+
+        DaoMaster daoMaster  = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
+    }
+    public static DaoSession getDaoSession() {
+        return daoSession;
+    }
 }

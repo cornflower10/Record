@@ -1,11 +1,14 @@
 package com.record.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.record.R;
+import com.record.activity.DocTypeActivity;
 import com.record.activity.ErrorActivity;
 import com.record.activity.MainActivity;
 import com.yyydjk.library.BannerLayout;
@@ -25,6 +28,10 @@ public class MainFragment extends BaseFragment {
     @BindView(R.id.banner_view)
     BannerLayout bannerView;
     Unbinder unbinder;
+    @BindView(R.id.title_name)
+    TextView titleName;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     private String mParam1;
     private String mParam2;
@@ -73,6 +80,11 @@ public class MainFragment extends BaseFragment {
         bannerView.setViewRes(list);
         bannerView.stopAutoPlay();
 
+        if (null != toolbar) {
+            ((MainActivity)mContext).setSupportActionBar(toolbar);
+            ((MainActivity)mContext).getSupportActionBar().setTitle("");
+            titleName.setText("公安笔录");
+        }
         return view;
     }
 
@@ -87,16 +99,17 @@ public class MainFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_make_doc:
+                ((MainActivity) mContext).mStartActivity(DocTypeActivity.class);
                 break;
             case R.id.ll_always_doc_setting:
                 break;
             case R.id.ll_null_doc:
                 break;
             case R.id.ll_cacul:
-                ((MainActivity)mContext).mStartActivity(ErrorActivity.class);
+                ((MainActivity) mContext).mStartActivity(ErrorActivity.class);
                 break;
             case R.id.ll_alarm:
-                ((MainActivity)mContext).mStartActivity(ErrorActivity.class);
+                ((MainActivity) mContext).mStartActivity(ErrorActivity.class);
                 break;
             case R.id.ll_ptoto:
                 break;

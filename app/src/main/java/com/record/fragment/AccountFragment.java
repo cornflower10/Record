@@ -1,16 +1,31 @@
 package com.record.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.record.App;
 import com.record.R;
+import com.record.activity.MainActivity;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 
 public class AccountFragment extends BaseFragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    Unbinder unbinder;
+    @BindView(R.id.title_name)
+    TextView titleName;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     private String mParam1;
     private String mParam2;
@@ -49,8 +64,45 @@ public class AccountFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
+        unbinder = ButterKnife.bind(this, view);
+        if (null != toolbar) {
+            ((MainActivity) mContext).setSupportActionBar(toolbar);
+            ((MainActivity) mContext).getSupportActionBar().setTitle("");
+            titleName.setText(getString(R.string.account));
+        }
+        return view;
     }
 
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @OnClick({R.id.rl_info, R.id.rl_company_info, R.id.rl_traffic_accident_photo, R.id.rl_traffic_accident_law, R.id.rl_talk, R.id.rl_update, R.id.rl_clear_cache, R.id.rl_about, R.id.tv_exit})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rl_info:
+                break;
+            case R.id.rl_company_info:
+                break;
+            case R.id.rl_traffic_accident_photo:
+                break;
+            case R.id.rl_traffic_accident_law:
+                break;
+            case R.id.rl_talk:
+                break;
+            case R.id.rl_update:
+                break;
+            case R.id.rl_clear_cache:
+                break;
+            case R.id.rl_about:
+                break;
+            case R.id.tv_exit:
+                App.getInstance().getForegroundCallbacks().AppExit();
+                break;
+        }
+    }
 }
