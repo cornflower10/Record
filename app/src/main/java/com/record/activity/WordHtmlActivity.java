@@ -1,13 +1,13 @@
 package com.record.activity;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.record.R;
+import com.record.utils.Constants;
 import com.record.utils.WordUtil;
 
 import java.text.DecimalFormat;
@@ -18,12 +18,22 @@ import java.text.DecimalFormat;
 public class WordHtmlActivity extends BaseActivity {
     //html文件存储位置
     private String savePath = null;
+
+    @Override
+    public int setContentView() {
+        return R.layout.html;
+    }
+
+    @Override
+    public String setTitleName() {
+        return "预览";
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.html);
        String path = getIntent().getStringExtra("path");
-        savePath = Environment.getExternalStorageDirectory().getPath();
+        savePath = Constants.htmlPath;
         String name_all = path.substring(path.lastIndexOf("/")+1, path.length());
         String name = name_all.substring(0, name_all.indexOf("."));
         try {
