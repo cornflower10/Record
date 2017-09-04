@@ -129,53 +129,37 @@ public class WordUtil {
      * word文档转成html格式
      * */
     public static void convert2Html(String inputFilePath, String outPutFile) throws Exception {
-        HWPFDocument wordDocument = null;
+        initWordToHtmlConverter(new HWPFDocument(new FileInputStream(inputFilePath)),outPutFile);
+    }
 
-            wordDocument = new HWPFDocument(new FileInputStream(inputFilePath));
-            WordToHtmlConverter wordToHtmlConverter = new WordToHtmlConverter(
-                    DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument());
-            //设置图片路径
-//            wordToHtmlConverter.setPicturesManager(new PicturesManager() {
-//                public String savePicture(byte[] content,
-//                                          PictureType pictureType, String suggestedName,
-//                                          float widthInches, float heightInches) {
-//                    String name = docName.substring(0, docName.indexOf("."));
-//                    return name + "/" + suggestedName;
-//                }
-//            });
-            //保存图片
-//            List<Picture> pics=wordDocument.getPicturesTable().getAllPictures();
-//            if(pics!=null){
-//                for(int i=0;i<pics.size();i++){
-//                    Picture pic = (Picture)pics.get(i);
-//                    System.out.println( pic.suggestFullFileName());
-//                    try {
-//                        String name = docName.substring(0,docName.indexOf("."));
-//                        String file = outHtmlPath+ name + "/"
-//                                + pic.suggestFullFileName();
-//                        FileUtils.makeDirs(file);
-//                        pic.writeImageContent(new FileOutputStream(file));
-//                    } catch (FileNotFoundException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-            wordToHtmlConverter.processDocument(wordDocument);
-            Document htmlDocument = wordToHtmlConverter.getDocument();
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            DOMSource domSource = new DOMSource(htmlDocument);
-            StreamResult streamResult = new StreamResult(out);
 
-            TransformerFactory tf = TransformerFactory.newInstance();
-            Transformer serializer = tf.newTransformer();
-            serializer.setOutputProperty(OutputKeys.ENCODING, "utf-8");
-            serializer.setOutputProperty(OutputKeys.INDENT, "yes");
-            serializer.setOutputProperty(OutputKeys.METHOD, "html");
-            serializer.transform(domSource, streamResult);
-            out.close();
-            //保存html文件
-            writeFile(new String(out.toByteArray()), outPutFile);
+    /**
+     * word文档转成html格式
+     * */
+    public static void convert2HtmlWithStream(InputStream inputStream, String outPutFile) throws Exception {
+        initWordToHtmlConverter(new HWPFDocument(inputStream),outPutFile);
 
+    }
+    private static void initWordToHtmlConverter(HWPFDocument wordDocument,String outPutFile)throws Exception {
+
+        WordToHtmlConverter wordToHtmlConverter = new WordToHtmlConverter(
+                DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument());
+
+        wordToHtmlConverter.processDocument(wordDocument);
+        Document htmlDocument = wordToHtmlConverter.getDocument();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        DOMSource domSource = new DOMSource(htmlDocument);
+        StreamResult streamResult = new StreamResult(out);
+
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer serializer = tf.newTransformer();
+        serializer.setOutputProperty(OutputKeys.ENCODING, "utf-8");
+        serializer.setOutputProperty(OutputKeys.INDENT, "yes");
+        serializer.setOutputProperty(OutputKeys.METHOD, "html");
+        serializer.transform(domSource, streamResult);
+        out.close();
+        //保存html文件
+        writeFile(new String(out.toByteArray()), outPutFile);
     }
 
     /**

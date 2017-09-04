@@ -24,9 +24,10 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
+import static android.R.attr.path;
+
 public class MainActivity extends BaseActivity implements EasyPermissions.PermissionCallbacks {
     private static final int EXTERNAL_STORAGE = 001;
-    private String path;
     private long exitTime = 0;
     private FragmentTabHost mTabHost = null;
 
@@ -44,27 +45,8 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
     protected void onCreate(Bundle savedInstanceState) {
         setShowBack(false);
         super.onCreate(savedInstanceState);
-        path = Environment.getExternalStorageDirectory() + "/Test.doc";
         initView();
         methodRequiresTwoPermission();
-    }
-
-    @OnClick({R.id.bt_word, R.id.bt_print, R.id.bt_make_word})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.bt_word:
-                Intent intent = new Intent(this, WordHtmlActivity.class);
-                intent.putExtra("path", path);
-                startActivity(intent);
-                break;
-            case R.id.bt_print:
-                PrintChooseDialog.Builder builder = new PrintChooseDialog.Builder(this).setCancelable(true).setPath(path);
-                builder.show();
-                break;
-            case R.id.bt_make_word:
-//                makeWrod();
-                break;
-        }
     }
 
 
@@ -81,6 +63,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
 
         View myAccountView = getLayoutInflater().inflate(R.layout.account_indicator, null);
         mTabHost.addTab(mTabHost.newTabSpec("myAccount").setIndicator(myAccountView), AccountFragment.class, null);
+        mTabHost.setCurrentTab(1);
     }
 
     @Override

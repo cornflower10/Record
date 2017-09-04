@@ -6,31 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
    >
-    <!--<include layout="@layout/toolbar"/>-->
-    <Button
-        android:visibility="gone"
-        android:id="@+id/bt_word"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="浏览文档"
-        />
-
-    <Button
-        android:visibility="gone"
-        android:id="@+id/bt_print"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="打印"
-        />
-
-    <Button
-        android:visibility="gone"
-        android:id="@+id/bt_make_word"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="生成word"
-        />
-
     <!-- 这个布局决定了标签在上面还是在下面显示 -->
     <FrameLayout
         android:id="@+id/realtabcontent"

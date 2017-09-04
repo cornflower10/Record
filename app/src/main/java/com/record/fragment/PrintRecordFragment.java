@@ -130,6 +130,7 @@ public class PrintRecordFragment extends BaseFragment implements LawCaseView {
                 return false;
             }
         });
+
         rv.setAdapter(lawCaseAdapter);
         rv.setLayoutManager(new LinearLayoutManager(mContext));
 

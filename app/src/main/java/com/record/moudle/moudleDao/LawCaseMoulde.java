@@ -12,6 +12,7 @@ public interface LawCaseMoulde {
     boolean addLawCase(LawCase lawCase);
     boolean upDateLawCase(LawCase lawCase);
     boolean deleteById (Long id) ;
+    void deleteAll () ;
     LawCase seletcById (Long id);
     List<LawCase> seletcAll();
     List<LawCase> seletcPrinted();

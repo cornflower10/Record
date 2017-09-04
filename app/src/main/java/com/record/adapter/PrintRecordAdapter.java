@@ -7,6 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.record.R;
 import com.record.moudle.entity.PrintRecord;
+import com.record.utils.TimeUtils;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class PrintRecordAdapter extends BaseQuickAdapter<PrintRecord,BaseViewHol
     protected void convert(BaseViewHolder helper, final PrintRecord item) {
 
         helper.setText(R.id.tv_name,item.getTitle());
-        helper.setText(R.id.tv_date,item.getDate());
+        helper.setText(R.id.tv_date, TimeUtils.transferLongToDate(Long.parseLong(item.getDate())));
 
 
     }

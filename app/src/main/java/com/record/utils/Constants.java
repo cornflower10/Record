@@ -14,8 +14,8 @@ public class Constants {
     public static final String docPath =pathDir+dir+doc;
     public static final String htmlPath =pathDir+dir+html;
 
-
-
+    public static final String TYPE = "type";
+    public static final String DOC_SETTING = "always_doc_setting";
 
 
 }

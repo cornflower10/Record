@@ -1,6 +1,8 @@
 package com.record.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,11 @@ import android.widget.TextView;
 import com.record.App;
 import com.record.R;
 import com.record.activity.MainActivity;
+import com.record.moudle.moudleDao.LawCaseMoudleImpl;
+import com.record.moudle.moudleDao.LawCaseMoulde;
+import com.record.moudle.moudleDao.LawCaseView;
+import com.record.utils.Constants;
+import com.record.utils.FileUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,7 +24,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
-public class AccountFragment extends BaseFragment {
+public class AccountFragment extends BaseFragment implements LawCaseView{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -29,6 +36,8 @@ public class AccountFragment extends BaseFragment {
 
     private String mParam1;
     private String mParam2;
+    private  AlertDialog.Builder builder;
+    private LawCaseMoulde lawCase;
 
     public AccountFragment() {
     }
@@ -71,7 +80,24 @@ public class AccountFragment extends BaseFragment {
             ((MainActivity) mContext).getSupportActionBar().setTitle("");
             titleName.setText(getString(R.string.account));
         }
+        lawCase  = new LawCaseMoudleImpl(this);
+        initDialog();
         return view;
+    }
+
+    private void initDialog() {
+         builder = new AlertDialog.Builder(mContext);
+        builder.setTitle("提示");
+        builder.setMessage("将清除本地所有数据，是否继续？");
+        builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                FileUtils.deleteFile(Constants.pathDir+Constants.dir);
+                lawCase.deleteAll();
+            }
+        });
+        builder.setNegativeButton("否", null);
+
     }
 
 
@@ -97,6 +123,9 @@ public class AccountFragment extends BaseFragment {
             case R.id.rl_update:
                 break;
             case R.id.rl_clear_cache:
+             if(null!= builder ){
+                 builder.show();
+             }
                 break;
             case R.id.rl_about:
                 break;
@@ -104,5 +133,10 @@ public class AccountFragment extends BaseFragment {
                 App.getInstance().getForegroundCallbacks().AppExit();
                 break;
         }
+    }
+
+    @Override
+    public void onError(String msg) {
+        ((MainActivity)mContext).showToast(msg);
     }
 }

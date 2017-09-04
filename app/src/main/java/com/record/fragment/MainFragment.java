@@ -1,5 +1,6 @@
 package com.record.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import com.record.R;
 import com.record.activity.DocTypeActivity;
 import com.record.activity.ErrorActivity;
 import com.record.activity.MainActivity;
+import com.record.utils.Constants;
 import com.yyydjk.library.BannerLayout;
 
 import java.util.ArrayList;
@@ -102,8 +104,12 @@ public class MainFragment extends BaseFragment {
                 ((MainActivity) mContext).mStartActivity(DocTypeActivity.class);
                 break;
             case R.id.ll_always_doc_setting:
+                Intent intent = new Intent(mContext,DocTypeActivity.class);
+                intent.putExtra(Constants.TYPE,Constants.DOC_SETTING);
+                startActivity(intent);
                 break;
             case R.id.ll_null_doc:
+                ((MainActivity) mContext).mStartActivity(DocTypeActivity.class);
                 break;
             case R.id.ll_cacul:
                 ((MainActivity) mContext).mStartActivity(ErrorActivity.class);

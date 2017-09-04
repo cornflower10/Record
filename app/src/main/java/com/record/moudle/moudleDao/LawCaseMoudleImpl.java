@@ -53,6 +53,11 @@ public class LawCaseMoudleImpl implements LawCaseMoulde{
     }
 
     @Override
+    public void deleteAll() {
+        App.getDaoSession().getLawCaseDao().deleteAll();
+    }
+
+    @Override
     public LawCase seletcById(Long id) {
 
            return  App.getDaoSession().getLawCaseDao().load(id);
