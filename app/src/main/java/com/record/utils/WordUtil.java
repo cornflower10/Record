@@ -173,7 +173,7 @@ public class WordUtil {
             if(!file.exists()){
                 FileUtils.makeDirs(Constants.htmlPath);
                 FileUtils.makeDirs(path);
-                file.createNewFile();
+                file = new File(path);
             }
             fos = new FileOutputStream(file);
             bw = new BufferedWriter(new OutputStreamWriter(fos,"utf-8"));

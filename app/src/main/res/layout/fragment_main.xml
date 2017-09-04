@@ -73,17 +73,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="30dp"
                 android:paddingTop="30dp">
 
                 <ImageView
+                    android:layout_marginLeft="@dimen/margin_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/home_document_make" />
 
                 <TextView
+                    android:layout_marginRight="@dimen/margin_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="文书制作"
@@ -101,17 +103,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="30dp"
                 android:paddingTop="30dp">
 
                 <ImageView
+                    android:layout_marginLeft="@dimen/margin_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/home_ocument_template" />
 
                 <TextView
+                    android:layout_marginRight="@dimen/margin_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="常用文书模板设置"
@@ -134,12 +138,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="30dp"
                 android:paddingTop="30dp">
 
                 <ImageView
+                    android:layout_marginLeft="@dimen/margin_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/home_blank_document" />
@@ -147,7 +152,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_marginRight="@dimen/margin_20"
                     android:text="空白文书"
                     android:textColor="@color/text_color_66"
                     android:textSize="@dimen/text_15_sp"  />
@@ -162,17 +167,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="30dp"
                 android:paddingTop="30dp">
 
                 <ImageView
+                    android:layout_marginLeft="@dimen/margin_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/home_alculator" />
 
                 <TextView
+                    android:layout_marginRight="@dimen/margin_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="事故调解计算器"
@@ -196,17 +203,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="30dp"
                 android:paddingTop="30dp">
 
                 <ImageView
+                    android:layout_marginLeft="@dimen/margin_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/home_alarm" />
 
                 <TextView
+                    android:layout_marginRight="@dimen/margin_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -224,17 +233,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="30dp"
                 android:paddingTop="30dp">
 
                 <ImageView
+                    android:layout_marginLeft="@dimen/margin_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/home_photo_setting" />
 
                 <TextView
+                    android:layout_marginRight="@dimen/margin_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="事故照片排版"

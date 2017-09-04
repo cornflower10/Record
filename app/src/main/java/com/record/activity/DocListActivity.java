@@ -14,7 +14,6 @@ import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
 import com.record.moudle.moudleDao.LawCaseView;
 import com.record.utils.Constants;
-import com.record.utils.TimeUtils;
 import com.record.utils.WordUtil;
 
 import java.util.ArrayList;
@@ -51,8 +50,8 @@ public class DocListActivity extends BaseActivity implements LawCaseView{
             LawCase lawCase = lawCaseMoulde.seletcById(list.get(position).getId());
                 try {
                     WordUtil.convert2Html(lawCase.getDocPath(),
-                            Constants.html+"/"+
-                                    lawCase.getLawCaseTitle()+ TimeUtils.currentTimeMillis()+".html");
+                            Constants.htmlPath+"/"+
+                                    lawCase.getLawCaseTitle()+".html");
 
                     Intent intent = new Intent(mContext,WordHtmlActivity.class);
                     intent.putExtra("path",lawCase.getDocPath());
