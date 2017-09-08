@@ -1,8 +1,8 @@
 package com.record.moudle.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by xiejingbao on 2017/9/3.
@@ -11,112 +11,104 @@ import org.greenrobot.greendao.annotation.Id;
 public class LawCase {
     @Id(autoincrement = true)
     private Long id;
-    /**
-     * 人员信息
-     */
-    private String name;
-    private String birthDay;
-    private String address;
-    /**
-     * 案发时间
-     */
-    private String date;
-    private String carNo;
-    private boolean isPrint;
 
-    private String money;
+    private boolean isPrint;
 
     private String lawCaseTitle;
 
     private String docPath;
     private String doc2Htmlpath;
+    private String date;
 
-    @Generated(hash = 2078451482)
-    public LawCase(Long id, String name, String birthDay, String address,
-            String date, String carNo, boolean isPrint, String money,
-            String lawCaseTitle, String docPath, String doc2Htmlpath) {
+    /**
+     * 事故詳情 json字符串
+     */
+    private String lawCaseInfo;
+
+    private int type ;
+
+    @Generated(hash = 1677463010)
+    public LawCase(Long id, boolean isPrint, String lawCaseTitle, String docPath,
+            String doc2Htmlpath, String date, String lawCaseInfo, int type) {
         this.id = id;
-        this.name = name;
-        this.birthDay = birthDay;
-        this.address = address;
-        this.date = date;
-        this.carNo = carNo;
         this.isPrint = isPrint;
-        this.money = money;
         this.lawCaseTitle = lawCaseTitle;
         this.docPath = docPath;
         this.doc2Htmlpath = doc2Htmlpath;
+        this.date = date;
+        this.lawCaseInfo = lawCaseInfo;
+        this.type = type;
     }
+
     @Generated(hash = 1106844273)
     public LawCase() {
     }
-    public String getName() {
-        return this.name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getBirthDay() {
-        return this.birthDay;
-    }
-    public void setBirthDay(String birthDay) {
-        this.birthDay = birthDay;
-    }
-    public String getAddress() {
-        return this.address;
-    }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public String getDate() {
-        return this.date;
-    }
-    public void setDate(String date) {
-        this.date = date;
-    }
-    public String getCarNo() {
-        return this.carNo;
-    }
-    public void setCarNo(String carNo) {
-        this.carNo = carNo;
-    }
-    public boolean getIsPrint() {
-        return this.isPrint;
-    }
-    public void setIsPrint(boolean isPrint) {
-        this.isPrint = isPrint;
-    }
-    public String getMoney() {
-        return this.money;
-    }
-    public void setMoney(String money) {
-        this.money = money;
-    }
-    public String getLawCaseTitle() {
-        return this.lawCaseTitle;
-    }
-    public void setLawCaseTitle(String lawCaseTitle) {
-        this.lawCaseTitle = lawCaseTitle;
-    }
+
     public Long getId() {
         return this.id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
+    public boolean getIsPrint() {
+        return this.isPrint;
+    }
+
+    public void setIsPrint(boolean isPrint) {
+        this.isPrint = isPrint;
+    }
+
+    public String getLawCaseTitle() {
+        return this.lawCaseTitle;
+    }
+
+    public void setLawCaseTitle(String lawCaseTitle) {
+        this.lawCaseTitle = lawCaseTitle;
+    }
+
     public String getDocPath() {
         return this.docPath;
     }
+
     public void setDocPath(String docPath) {
         this.docPath = docPath;
     }
+
     public String getDoc2Htmlpath() {
         return this.doc2Htmlpath;
     }
+
     public void setDoc2Htmlpath(String doc2Htmlpath) {
         this.doc2Htmlpath = doc2Htmlpath;
     }
 
+    public String getDate() {
+        return this.date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getLawCaseInfo() {
+        return this.lawCaseInfo;
+    }
+
+    public void setLawCaseInfo(String lawCaseInfo) {
+        this.lawCaseInfo = lawCaseInfo;
+    }
+
+    public int getType() {
+        return this.type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+   
 
 
 }

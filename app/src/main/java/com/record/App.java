@@ -2,6 +2,7 @@ package com.record;
 
 import android.app.Application;
 
+import com.facebook.stetho.Stetho;
 import com.record.dao.DaoMaster;
 import com.record.dao.DaoSession;
 import com.record.utils.ForegroundCallbacks;
@@ -32,6 +33,9 @@ public class App extends Application {
         super.onCreate();
         foregroundCallbacks = ForegroundCallbacks.init(this);
         initDataBase();
+        if(BuildConfig.debug){
+            Stetho.initializeWithDefaults(this);
+        }
 //        CrashHandler.getInstance().init(this);
     }
 

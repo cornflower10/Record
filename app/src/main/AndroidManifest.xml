@@ -14,18 +14,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WordHtmlActivity" />
-        <activity android:name=".activity.ErrorActivity" />
-        <activity android:name=".activity.DocTypeActivity" />
-        <activity android:name=".activity.RecordDocInfoActivity" />
-        <activity android:name=".activity.DocListActivity"></activity>
+        <activity
+            android:name=".activity.WordHtmlActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ErrorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DocTypeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RecordDocInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DocListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.DocListTypeActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.QueryDocListActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

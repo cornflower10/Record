@@ -41,11 +41,11 @@
         android:layout_marginRight="32dp"
         android:layout_gravity="right"
         android:visibility="gone"/>
-    <TextView
-        android:id="@+id/title_rightTv"
+    <ImageView
+        android:id="@+id/title_rightIv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="32dp"
+        android:layout_marginRight="@dimen/margin_16"
         android:layout_gravity="right"
         android:visibility="gone"/>
 </android.support.v7.widget.Toolbar>

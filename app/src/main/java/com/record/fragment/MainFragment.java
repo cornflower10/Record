@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.record.R;
-import com.record.activity.DocTypeActivity;
+import com.record.activity.DocListTypeActivity;
 import com.record.activity.ErrorActivity;
 import com.record.activity.MainActivity;
 import com.record.utils.Constants;
@@ -101,15 +101,15 @@ public class MainFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_make_doc:
-                ((MainActivity) mContext).mStartActivity(DocTypeActivity.class);
+                ((MainActivity) mContext).mStartActivity(DocListTypeActivity.class);
                 break;
             case R.id.ll_always_doc_setting:
-                Intent intent = new Intent(mContext,DocTypeActivity.class);
+                Intent intent = new Intent(mContext,DocListTypeActivity.class);
                 intent.putExtra(Constants.TYPE,Constants.DOC_SETTING);
                 startActivity(intent);
                 break;
             case R.id.ll_null_doc:
-                ((MainActivity) mContext).mStartActivity(DocTypeActivity.class);
+                ((MainActivity) mContext).mStartActivity(DocListTypeActivity.class);
                 break;
             case R.id.ll_cacul:
                 ((MainActivity) mContext).mStartActivity(ErrorActivity.class);

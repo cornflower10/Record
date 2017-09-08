@@ -12,7 +12,6 @@ import com.record.R;
 import com.record.adapter.DocTypeAdapter;
 import com.record.moudle.entity.DocType;
 import com.record.utils.Constants;
-import com.record.utils.WordUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,17 +19,18 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class DocTypeActivity extends BaseActivity {
+
+public class DocListTypeActivity extends BaseActivity {
+
     @BindView(R.id.rv)
     RecyclerView rv;
-    private String[] strings = null;
+    private String strings[] = null;
     private List<DocType> docTypeList = new ArrayList<>();
     private String type;
-    private DocType docType;
 
     @Override
     public int setContentView() {
-        return R.layout.activity_doc_type;
+        return R.layout.activity_doc_list_type;
     }
 
     @Override
@@ -45,28 +45,27 @@ public class DocTypeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         if(null!= getIntent()){
             type = getIntent().getStringExtra(Constants.TYPE);
-            docType = getIntent().getParcelableExtra("doc");
         }
         super.onCreate(savedInstanceState);
-        initData();
 
+        initData();
     }
 
+
     private void initData() {
-        if(null == docType)
-            return;
         try {
-            strings = getAssets().list("doc/"+docType.getType());
+            strings = getAssets().list("doc");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         for (int i = 0; i < strings.length; i++) {
-            DocType doc = new DocType();
-            String name = strings[i];
-            doc.setType(docType.getType());
-            doc.setTitle(name.substring(0, name.indexOf(".")));
-            docTypeList.add(doc);
+            DocType docType = new DocType();
+            String name = Constants.SPARSEARRAY_NAME.get(Integer.parseInt(strings[i]));
+            docType.setType(Integer.parseInt(strings[i]));
+//            docType.setPath(path+name);
+            docType.setTitle(name);
+            docTypeList.add(docType);
         }
 
         DocTypeAdapter docTypeAdapter = new DocTypeAdapter(R.layout.doc_type_item,docTypeList);
@@ -75,30 +74,16 @@ public class DocTypeActivity extends BaseActivity {
         docTypeAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                if(!TextUtils.isEmpty(type)&&type.equals(Constants.DOC_SETTING)){
-                    String path = Constants.htmlPath+"/"+docTypeList.get(position).getTitle()+".html";
-                    try {
-                        WordUtil.convert2HtmlWithStream(
-                                getAssets().open("doc/"+docType.getType()+"/"+docTypeList.get(position).getTitle()+".doc"),
-                               path );
-                        Intent in = new Intent(mContext,WordHtmlActivity.class);
-                        in.putExtra("path",path);
-                        startActivity(in);
-                    } catch (Exception e) {
-                        showToast("查看模板失败"+e.getMessage());
-                        e.printStackTrace();
-                    }
-                }else {
-                    Intent in = new Intent(mContext,RecordDocInfoActivity.class);
-                    in.putExtra("doc",docTypeList.get(position));
-                    startActivity(in);
-                }
 
+                Intent in = new Intent(mContext,DocTypeActivity.class);
+                if(!TextUtils.isEmpty(type)&&type.equals(Constants.DOC_SETTING)){
+                    in.putExtra(Constants.TYPE,type);
+                }
+                    in.putExtra("doc",docTypeList.get(position));
+                startActivity(in);
 
             }
         });
 
     }
-
-
 }

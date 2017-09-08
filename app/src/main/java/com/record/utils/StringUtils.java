@@ -1,7 +1,15 @@
 package com.record.utils;
 
+import android.text.TextUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -278,5 +286,64 @@ public class StringUtils {
 			}
 		}
 		return new String(source);
+	}
+
+	/**
+	 *
+	 * @param object
+	 * @return
+	 * @throws JSONException
+	 */
+	public static  Map<String, String> JsonToMap(String object) throws JSONException {
+		Map<String, String> data = new HashMap<String, String>();
+		// 将json字符串转换成jsonObject
+		JSONObject jsonObject = new JSONObject(object);
+		Iterator ite = jsonObject.keys();
+		// 遍历jsonObject数据,添加到Map对象
+		while (ite.hasNext()) {
+			String key = ite.next().toString();
+			String value = jsonObject.get(key).toString();
+			data.put(key, value);
+		}
+		// 或者直接将 jsonObject赋值给Map
+		// data = jsonObject;
+		return data;
+	}
+
+
+	/**把数据源HashMap转换成json
+	 * @param map
+	 */
+	public static String hashMapToJson(Map map) {
+		String string = "{";
+		for (Iterator it = map.entrySet().iterator(); it.hasNext();) {
+			Map.Entry e = (Map.Entry) it.next();
+			string += "'" + e.getKey() + "':";
+			string += "'" + e.getValue() + "',";
+		}
+		string = string.substring(0, string.lastIndexOf(","));
+		string += "}";
+		return string;
+	}
+
+
+	/**把数据源HashMap转换成json
+	 * @param
+	 */
+	public static  String string2JsonRemove$(String s) {
+		if(TextUtils.isEmpty(s))
+			return "";
+		StringBuffer sb = new StringBuffer();
+		for (int i=0; i<s.length(); i++) {
+			char c = s.charAt(i);
+			switch (c){
+				case '$':
+					sb.deleteCharAt(i);
+					break;
+				default:
+					sb.append(c);
+			}
+		}
+		return sb.toString();
 	}
 }
