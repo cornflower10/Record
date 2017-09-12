@@ -18,7 +18,6 @@ import com.record.moudle.moudleDao.LawCaseView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 
@@ -28,7 +27,6 @@ public class QueryDocListActivity extends BaseActivity implements LawCaseView{
     private List<LawCase> list = new ArrayList<>();
     private LawCaseAdapter lawCaseAdapter;
     private LawCaseMoulde lawCaseMoulde;
-    private  Map<String,String> map = null;
 
     @Override
     public int setContentView() {

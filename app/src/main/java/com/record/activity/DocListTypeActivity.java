@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.record.R;
-import com.record.adapter.DocTypeAdapter;
+import com.record.adapter.DocTypeGroupAdapter;
 import com.record.moudle.entity.DocType;
 import com.record.utils.Constants;
 
@@ -68,7 +68,7 @@ public class DocListTypeActivity extends BaseActivity {
             docTypeList.add(docType);
         }
 
-        DocTypeAdapter docTypeAdapter = new DocTypeAdapter(R.layout.doc_type_item,docTypeList);
+        DocTypeGroupAdapter docTypeAdapter = new DocTypeGroupAdapter(R.layout.doc_type_item,docTypeList);
         rv.setAdapter(docTypeAdapter);
         rv.setLayoutManager(new LinearLayoutManager(mContext));
         docTypeAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
