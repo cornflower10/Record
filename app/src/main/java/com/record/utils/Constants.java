@@ -25,10 +25,10 @@ public class Constants {
 
     public static final SparseArray<String> SPARSEARRAY_NAME = new SparseArray<>();
     static {
-        SPARSEARRAY_NAME.append(1,"交通事故");
-        SPARSEARRAY_NAME.append(2,"刑事案件");
-        SPARSEARRAY_NAME.append(3,"行政案件");
-        SPARSEARRAY_NAME.append(4,"行政公文");
+        SPARSEARRAY_NAME.append(TYPE_ACCI,"交通事故");
+        SPARSEARRAY_NAME.append(TYPE_CRIMINAL,"刑事案件");
+        SPARSEARRAY_NAME.append(TYPE_ADMINISTRATIVE_CASE,"行政案件");
+        SPARSEARRAY_NAME.append(TYPE_ADMINISTRATIVE_DOC,"行政公文");
 
 
     }
