@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.record.App;
 import com.record.R;
@@ -37,8 +37,8 @@ public class RecordDocInfoActivity extends BaseActivity implements LawCaseView {
     AppCompatEditText edMoney;
     @BindView(R.id.ed_card_number)
     AppCompatEditText edCardNumber;
-    @BindView(R.id.title_rightIv)
-    ImageView titleRightIv;
+    @BindView(R.id.tv_right)
+    TextView tv_right;
 
     private DocType docType;
     private static final String outPath = Constants.docPath;
@@ -61,8 +61,9 @@ public class RecordDocInfoActivity extends BaseActivity implements LawCaseView {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        titleRightIv.setVisibility(View.VISIBLE);
-        titleRightIv.setImageResource(R.drawable.search);
+        tv_right.setVisibility(View.VISIBLE);
+        tv_right.setText("导入模板");
+//        titleRightIv.setImageResource(R.drawable.search);
         if (null != getIntent()) {
             docType = getIntent().getParcelableExtra("doc");
 //            Log.i("RecordDocInfoActivity", docType.getPath());
@@ -122,10 +123,10 @@ public class RecordDocInfoActivity extends BaseActivity implements LawCaseView {
         showToast(msg);
     }
 
-    @OnClick({R.id.title_rightIv, R.id.bt})
+    @OnClick({R.id.tv_right, R.id.bt})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.title_rightIv:
+            case R.id.tv_right:
                 Intent intent =new Intent(mContext,QueryDocListActivity.class);
                 startActivityForResult(intent,RES);
                 break;

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+   >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:layout_marginLeft="@dimen/margin_16"
+            android:id="@+id/acb"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    <TextView
+        android:layout_toRightOf="@+id/acb"
+        android:textColor="@color/text_color_3232"
+        android:textSize="@dimen/text_14_sp"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:gravity="center"
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/tv_name"
+        android:textColor="@color/text_color_gray_a9"
+        android:textSize="@dimen/text_12_sp"
+        android:gravity="right"
+        android:layout_marginRight="@dimen/margin_16"
+        android:layout_alignParentRight="true"
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </RelativeLayout>
+<View style="@style/divider_line_margin_left" />
+</LinearLayout>

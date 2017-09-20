@@ -35,7 +35,7 @@ public class QueryDocListActivity extends BaseActivity implements LawCaseView{
 
     @Override
     public String setTitleName() {
-        return "列表";
+        return "模板列表";
     }
 
     @Override

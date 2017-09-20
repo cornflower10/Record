@@ -113,6 +113,7 @@ public class PrintRecordFragment extends BaseFragment implements LawCaseView {
 
                     Intent intent = new Intent(mContext, WordHtmlActivity.class);
                     intent.putExtra("path", lawCase.getDocPath());
+                    intent.putExtra("printRecordFragment", true);
                     startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -32,7 +32,22 @@ public class Constants {
 
 
     }
-    public static final String NAME = "$NAME$";
 
+    //录入人员，车辆，案情，执法
+    public static final int AUTHOR = 1;
+    public static final int CAR = 2;
+    public static final int LAWCASE = 3;
+    public static final int ENFORCE_LAW = 4;
+
+
+    public static final SparseArray<String> TEMP_TYPE = new SparseArray<>();
+    static {
+        TEMP_TYPE.append(AUTHOR,"录入人员");
+        TEMP_TYPE.append(CAR,"车辆");
+        TEMP_TYPE.append(LAWCASE,"案情");
+        TEMP_TYPE.append(ENFORCE_LAW,"执法");
+
+
+    }
 
 }
