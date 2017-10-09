@@ -13,6 +13,7 @@ import com.record.activity.DocListTypeActivity;
 import com.record.activity.ErrorActivity;
 import com.record.activity.MainActivity;
 import com.record.utils.Constants;
+import com.record.utils.LogManager;
 import com.yyydjk.library.BannerLayout;
 
 import java.util.ArrayList;
@@ -94,6 +95,7 @@ public class MainFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        LogManager.d("destory");
         unbinder.unbind();
     }
 

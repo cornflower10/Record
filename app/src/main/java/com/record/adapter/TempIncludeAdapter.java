@@ -62,17 +62,6 @@ public class TempIncludeAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
                 });
                 break;
             case CHILD:
-//               RecyclerView rv = helper.getView(R.id.rv);
-//                    TempIncludeItemAdapter tempIncludeItemAdapter =
-//                            new TempIncludeItemAdapter(R.layout.temp_item_child,((TempInclude)item).getList());
-//                    rv.setLayoutManager(layoutManager);
-//                    rv.setAdapter(tempIncludeItemAdapter);
-//                tempIncludeItemAdapter.setOnItemClickListener(new OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-//
-//                    }
-//                });
                final TempInclude tempInclude = (TempInclude)item;
                 helper.setText(R.id.tv_name,tempInclude.getLawCase().getLawCaseTitle());
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +81,7 @@ public class TempIncludeAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
                     }
                 });
                 helper.setChecked(R.id.acb,tempInclude.isCheck());
+
                 break;
         }
     }
