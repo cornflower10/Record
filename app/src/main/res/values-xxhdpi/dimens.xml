@@ -10,7 +10,7 @@
 
     <!--<item type="dimen" name="simple_dialog_min_width_major">100%</item>-->
     <!--<item type="dimen" name="simple_dialog_min_width_minor">100%</item>-->
-    <dimen  name="text_18_sp">18sp</dimen>
+    <dimen  name="text_18_sp">19sp</dimen>
     <dimen  name="text_16_sp">18sp</dimen>
     <dimen  name="text_15_sp">17sp</dimen>
     <dimen  name="text_14_sp">16sp</dimen>

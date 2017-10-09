@@ -82,10 +82,10 @@ public class RecordDocInfoActivity extends BaseActivity implements LawCaseView {
         }
         BigDecimal numberOfMoney = new BigDecimal(money);
         Map<String, String> map = new HashMap<String, String>();
-        map.put("$name$", name);
+        map.put("$involved_name$", name);
         map.put("$moneyUp$", Number2CN.number2CNMontrayUnit(numberOfMoney));
         map.put("$money$", M + money);
-        map.put("$carNo$", cardNo);
+        map.put("$car_no$", cardNo);
 
         try {
             String outPathName = outPath + "/" + docType.getTitle() + TimeUtils.currentTimeMillis() + ".doc";
