@@ -98,7 +98,52 @@ public class DocTypeActivity extends BaseActivity {
                     }else if(title.equals("传唤证")){
                         intent.setClass(mContext,NoTempActivity.class);
 
-                    }else if(title.equals("道路交通事故处理调查报告书")){
+                    }else if(title.equals("公安行政处罚告知笔录")){
+                        intent.setClass(mContext,NoTempActivity.class);
+                    }
+                    else if(title.equals("受案回执")){
+                        intent.setClass(mContext,NoTempActivity.class);
+                    }
+                    else if(title.equals("呼气酒精含量测试笔录")){
+                        intent.setClass(mContext,NoTempActivity.class);
+                    }
+                    else if(title.equals("委托书")){
+                        intent.setClass(mContext,NoTempActivity.class);
+                    }
+                    else if(title.equals("当事人血样（尿样）提取登记表")){
+                        intent.setClass(mContext,NoTempActivity.class);
+                    }
+                    else if(title.equals("扣（留）押物品发还凭证")){
+                        intent.setClass(mContext,NoTempActivity.class);
+                    }
+                    else if(title.equals("报告书")){
+                        intent.setClass(mContext,NoTempActivity.class);
+                    }
+                    else if(title.equals("案件审核登记表")){
+                        intent.setClass(mContext,NoTempActivity.class);
+                    }
+                    else if(title.equals("道路交通事故伤者医疗规定告知书")){
+                        intent.setClass(mContext,NoTempActivity.class);
+                    }
+                    else if(title.equals("道路交通事故处理调查报告书")){
+                        intent.setClass(mContext,JiaoTongDiaoChaBaoGaoActivity.class);
+                    }
+                    else if(title.equals("道路交通事故当事人陈述材料")){
+                        intent.setClass(mContext,JiaoTongDiaoChaBaoGaoActivity.class);
+                    }
+                    else if(title.equals("道路交通事故抢救费支付（垫付）通知书")){
+                        intent.setClass(mContext,JiaoTongDiaoChaBaoGaoActivity.class);
+                    }
+                    else if(title.equals("道路交通事故损害赔偿调解书")){
+                        intent.setClass(mContext,JiaoTongDiaoChaBaoGaoActivity.class);
+                    }
+                    else if(title.equals("道路交通事故认定书 (2)")){
+                        intent.setClass(mContext,JiaoTongDiaoChaBaoGaoActivity.class);
+                    }
+                    else if(title.equals("道路交通事故认定书")){
+                        intent.setClass(mContext,JiaoTongDiaoChaBaoGaoActivity.class);
+                    }
+                    else if(title.equals("道路交通事故证明")){
                         intent.setClass(mContext,JiaoTongDiaoChaBaoGaoActivity.class);
                     }
                     else {
