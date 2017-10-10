@@ -89,9 +89,23 @@ public class DocTypeActivity extends BaseActivity {
                         e.printStackTrace();
                     }
                 }else {
-                    Intent in = new Intent(mContext,RecordDocInfoActivity.class);
-                    in.putExtra("doc",docTypeList.get(position));
-                    startActivity(in);
+                   String title = docTypeList.get(position).getTitle();
+                    Intent intent = new Intent();
+
+                    if(title.equals("收条")){
+                        intent.setClass(mContext,RecordDocInfoActivity.class);
+
+                    }else if(title.equals("传唤证")){
+                        intent.setClass(mContext,NoTempActivity.class);
+
+                    }else if(title.equals("道路交通事故处理调查报告书")){
+                        intent.setClass(mContext,JiaoTongDiaoChaBaoGaoActivity.class);
+                    }
+                    else {
+                        intent.setClass(mContext,ErrorActivity.class);
+                    }
+                    intent.putExtra("doc",docTypeList.get(position));
+                    startActivity(intent);
                 }
 
 

@@ -12,7 +12,7 @@ import com.record.adapter.LawCaseAdapter;
 import com.record.moudle.entity.LawCase;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
-import com.record.moudle.moudleDao.LawCaseView;
+import com.record.moudle.moudleDao.ErrorView;
 import com.record.utils.Constants;
 import com.record.utils.WordUtil;
 
@@ -21,7 +21,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class DocListActivity extends BaseActivity implements LawCaseView{
+public class DocListActivity extends BaseActivity implements ErrorView {
     @BindView(R.id.rv)
     RecyclerView rv;
     private List<LawCase> list = new ArrayList<>();

@@ -50,4 +50,8 @@ public class Constants {
 
     }
 
+    public static final String INVOLVED_ ="involved_";
+    public static final String THING_ ="thing_";
+    public static final String CAR_ ="car_";
+
 }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    >
+    <include layout="@layout/toolbar"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_margin="@dimen/margin_16"
+                android:id="@+id/ed_thing_"
+                android:hint="交通事故时间"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_margin="@dimen/margin_16"
+                android:id="@+id/ed_thing_11"
+                android:hint="交通事故地点"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_margin="@dimen/margin_16"
+                android:id="@+id/ed_34R34R"
+                android:hint="天气"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_margin="@dimen/margin_16"
+                android:id="@+id/ed_thing_personnel_involved_basic"
+                android:hint="当事人基本情况"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_margin="@dimen/margin_16"
+                android:id="@+id/ed_thing_car_basic"
+                android:hint="车辆基本情况"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_margin="@dimen/margin_16"
+                android:id="@+id/ed_thing_road_condition"
+                android:hint="道路和交通环境"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_margin="@dimen/margin_16"
+                android:id="@+id/ed_thing_info"
+                android:hint="道路交通事故发生经过"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_margin="@dimen/margin_16"
+                android:id="@+id/ed_thing_prof"
+                android:hint="道路交通事故的证据"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_margin="@dimen/margin_16"
+                android:id="@+id/ed_thing_analysis"
+                android:hint="事故形成原因的分析"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_margin="@dimen/margin_16"
+                android:id="@+id/ed_thing_law"
+                android:hint="适用的法律、法规"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_margin="@dimen/margin_16"
+                android:id="@+id/ed_thing_confirmation"
+                android:hint="责任划分意见"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:textSize="@dimen/text_16_sp"
+                android:textColor="@android:color/white"
+                android:background="@color/colorAccent"
+                android:layout_marginRight="@dimen/margin_16"
+                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:id="@+id/bt"
+                android:text="确 定"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

@@ -8,9 +8,11 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.identityscope.IdentityScopeType;
 import org.greenrobot.greendao.internal.DaoConfig;
 
+import com.record.moudle.entity.InvolvedPerson;
 import com.record.moudle.entity.LawCase;
 import com.record.moudle.entity.User;
 
+import com.record.dao.InvolvedPersonDao;
 import com.record.dao.LawCaseDao;
 import com.record.dao.UserDao;
 
@@ -23,9 +25,11 @@ import com.record.dao.UserDao;
  */
 public class DaoSession extends AbstractDaoSession {
 
+    private final DaoConfig involvedPersonDaoConfig;
     private final DaoConfig lawCaseDaoConfig;
     private final DaoConfig userDaoConfig;
 
+    private final InvolvedPersonDao involvedPersonDao;
     private final LawCaseDao lawCaseDao;
     private final UserDao userDao;
 
@@ -33,22 +37,32 @@ public class DaoSession extends AbstractDaoSession {
             daoConfigMap) {
         super(db);
 
+        involvedPersonDaoConfig = daoConfigMap.get(InvolvedPersonDao.class).clone();
+        involvedPersonDaoConfig.initIdentityScope(type);
+
         lawCaseDaoConfig = daoConfigMap.get(LawCaseDao.class).clone();
         lawCaseDaoConfig.initIdentityScope(type);
 
         userDaoConfig = daoConfigMap.get(UserDao.class).clone();
         userDaoConfig.initIdentityScope(type);
 
+        involvedPersonDao = new InvolvedPersonDao(involvedPersonDaoConfig, this);
         lawCaseDao = new LawCaseDao(lawCaseDaoConfig, this);
         userDao = new UserDao(userDaoConfig, this);
 
+        registerDao(InvolvedPerson.class, involvedPersonDao);
         registerDao(LawCase.class, lawCaseDao);
         registerDao(User.class, userDao);
     }
     
     public void clear() {
+        involvedPersonDaoConfig.clearIdentityScope();
         lawCaseDaoConfig.clearIdentityScope();
         userDaoConfig.clearIdentityScope();
+    }
+
+    public InvolvedPersonDao getInvolvedPersonDao() {
+        return involvedPersonDao;
     }
 
     public LawCaseDao getLawCaseDao() {

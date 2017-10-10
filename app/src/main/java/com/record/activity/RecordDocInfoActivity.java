@@ -10,14 +10,15 @@ import android.widget.TextView;
 import com.record.App;
 import com.record.R;
 import com.record.moudle.entity.DocType;
+import com.record.moudle.entity.InvolvedPerson;
 import com.record.moudle.entity.LawCase;
-import com.record.moudle.entity.Receipt;
+import com.record.moudle.moudleDao.ErrorView;
+import com.record.moudle.moudleDao.InvolvedPersonMoulde;
+import com.record.moudle.moudleDao.InvolvedPersonMouldeImpl;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
-import com.record.moudle.moudleDao.LawCaseView;
 import com.record.utils.Constants;
 import com.record.utils.Number2CN;
-import com.record.utils.StringUtils;
 import com.record.utils.TimeUtils;
 import com.record.utils.WordUtil;
 
@@ -29,7 +30,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RecordDocInfoActivity extends BaseActivity implements LawCaseView {
+public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
 
     @BindView(R.id.ed_name)
     AppCompatEditText edName;
@@ -47,6 +48,12 @@ public class RecordDocInfoActivity extends BaseActivity implements LawCaseView {
     private LawCaseMoulde lawCaseMoulde;
     private static final int RES = 110;
     private static final String  M = "¥:";
+
+
+    private InvolvedPersonMoulde involvedPersonMoulde;
+
+    private InvolvedPerson involvedPerson;
+
     @Override
     public int setContentView() {
         return R.layout.activity_record_doc_info;
@@ -69,6 +76,8 @@ public class RecordDocInfoActivity extends BaseActivity implements LawCaseView {
 //            Log.i("RecordDocInfoActivity", docType.getPath());
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
+        involvedPersonMoulde  = new InvolvedPersonMouldeImpl(this);
+
     }
 
     //    @OnClick(R.id.bt)
@@ -93,7 +102,7 @@ public class RecordDocInfoActivity extends BaseActivity implements LawCaseView {
 
             LawCase lawCase = new LawCase();
             lawCase.setType(docType.getType());
-            lawCase.setLawCaseInfo(StringUtils.hashMapToJson(map));
+//            lawCase.setLawCaseInfo(StringUtils.hashMapToJson(map));
             lawCase.setLawCaseTitle(docType.getTitle());
 //            lawCase.setName(name);
 //            lawCase.setMoney(money);
@@ -101,6 +110,30 @@ public class RecordDocInfoActivity extends BaseActivity implements LawCaseView {
             lawCase.setIsPrint(false);
             lawCase.setDate(TimeUtils.currentTimeMillis());
             lawCase.setDocPath(outPathName);
+
+            if(!TextUtils.isEmpty(name)){
+                InvolvedPerson involvedP = new InvolvedPerson();
+                involvedP.setType(Constants.AUTHOR);
+                if(TextUtils.isEmpty(involvedPerson.getInvolved_name())){
+                    involvedP.setInvolved_name(name);
+                    involvedP.setDate(System.currentTimeMillis());
+                    involvedPersonMoulde.addInvolved(involvedP);
+                }
+
+            }
+
+            if(!TextUtils.isEmpty(cardNo)){
+                InvolvedPerson involvedCar = new InvolvedPerson();
+                involvedCar.setType(Constants.CAR);
+                if(TextUtils.isEmpty(involvedPerson.getCar_no())){
+                    involvedCar.setCar_no(cardNo);
+                    involvedCar.setDate(System.currentTimeMillis());
+                    involvedPersonMoulde.addInvolved(involvedCar);
+                }
+
+            }
+
+
             if (lawCaseMoulde.addLawCase(lawCase)) {
                 Intent in = new Intent(mContext, DocListActivity.class);
                 startActivity(in);
@@ -141,11 +174,17 @@ public class RecordDocInfoActivity extends BaseActivity implements LawCaseView {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode ==RES){
             if(resultCode == RESULT_OK){
-                Receipt receipt = data.getParcelableExtra("Receipt");
-                if(null!=receipt){
-                    edName.setText(receipt.getName());
-                    edCardNumber.setText(receipt.getCarNo());
-                    edMoney.setText(receipt.getMoney().replace(M,""));
+                 involvedPerson = data.getParcelableExtra("Receipt");
+                if(null!=involvedPerson){
+                    if(!TextUtils.isEmpty(involvedPerson.getInvolved_name())){
+                        edName.setText(involvedPerson.getInvolved_name());
+                    }
+
+                    if(!TextUtils.isEmpty(involvedPerson.getCar_no())){
+                        edCardNumber.setText(involvedPerson.getCar_no());
+                    }
+
+
                 }
             }
 

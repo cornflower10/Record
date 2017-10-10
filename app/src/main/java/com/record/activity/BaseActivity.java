@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -90,5 +91,9 @@ public abstract class  BaseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    public String edit2String(EditText editText){
+        return editText.getText().toString().trim();
+    }
 
 }

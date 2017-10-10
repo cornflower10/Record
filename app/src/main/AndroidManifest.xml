@@ -38,12 +38,16 @@
         <activity
             android:name=".activity.DocListActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.DocListTypeActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".activity.QueryDocListActivity"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity
+            android:name=".activity.DocListTypeActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.QueryDocListActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.NoTempActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.JiaoTongDiaoChaBaoGaoActivity"></activity>
     </application>
 
 </manifest>

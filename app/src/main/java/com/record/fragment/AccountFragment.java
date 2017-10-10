@@ -14,7 +14,7 @@ import com.record.R;
 import com.record.activity.MainActivity;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
-import com.record.moudle.moudleDao.LawCaseView;
+import com.record.moudle.moudleDao.ErrorView;
 import com.record.utils.Constants;
 import com.record.utils.FileUtils;
 
@@ -24,7 +24,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
-public class AccountFragment extends BaseFragment implements LawCaseView{
+public class AccountFragment extends BaseFragment implements ErrorView {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 

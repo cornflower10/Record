@@ -21,7 +21,7 @@ import com.record.customview.CustomBottomSheet;
 import com.record.moudle.entity.LawCase;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
-import com.record.moudle.moudleDao.LawCaseView;
+import com.record.moudle.moudleDao.ErrorView;
 import com.record.utils.TimeUtils;
 import com.record.utils.WordUtil;
 
@@ -32,7 +32,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class PrintRecordFragment extends BaseFragment implements LawCaseView {
+public class PrintRecordFragment extends BaseFragment implements ErrorView {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     @BindView(R.id.rv)

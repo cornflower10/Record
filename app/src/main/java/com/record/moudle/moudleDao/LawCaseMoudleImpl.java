@@ -11,8 +11,8 @@ import java.util.List;
  */
 
 public class LawCaseMoudleImpl implements LawCaseMoulde{
-    private LawCaseView lawCaseView;
-    public LawCaseMoudleImpl (LawCaseView lawCaseView){
+    private ErrorView lawCaseView;
+    public LawCaseMoudleImpl (ErrorView lawCaseView){
         this.lawCaseView = lawCaseView;
     }
 
