@@ -18,37 +18,46 @@ import com.record.moudle.moudleDao.InvolvedPersonMouldeImpl;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
 import com.record.utils.Constants;
-import com.record.utils.Number2CN;
 import com.record.utils.TimeUtils;
 import com.record.utils.WordUtil;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
+public class WuPinFaHuanZhengActivity extends BaseActivity implements ErrorView {
 
-    @BindView(R.id.ed_name)
-    AppCompatEditText edName;
-    @BindView(R.id.ed_money)
-    AppCompatEditText edMoney;
-    @BindView(R.id.ed_card_number)
-    AppCompatEditText edCardNumber;
+
     @BindView(R.id.tv_right)
     TextView tv_right;
+    @BindView(R.id.ed_institution_name)
+    AppCompatEditText edInstitutionName;
+    @BindView(R.id.ed_name)
+    AppCompatEditText edName;
+    @BindView(R.id.ed_6YH6YH)
+    AppCompatEditText ed6YH6YH;
+    @BindView(R.id.ed_car_no)
+    AppCompatEditText edCarNo;
+    @BindView(R.id.ed_19D19D)
+    AppCompatEditText ed19D19D;
+    @BindView(R.id.ed_73W73W)
+    AppCompatEditText ed73W73W;
+    @BindView(R.id.ed_05K05K)
+    AppCompatEditText ed05K05K;
 
     private DocType docType;
     private static final String outPath = Constants.docPath;
-    private String name;
-    private String money, cardNo;
-    private LawCaseMoulde lawCaseMoulde;
-    private static final int RES = 110;
-    private static final String  M = "¥:";
+    private String _institution_name, _name, _6YH6YH,
+            _car_no,
+            _19D19D, _73W73W,
+            _05K05K;
 
+    private LawCaseMoulde lawCaseMoulde;
+
+    private static final int RES = 110;
 
     private InvolvedPersonMoulde involvedPersonMoulde;
 
@@ -56,7 +65,7 @@ public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
 
     @Override
     public int setContentView() {
-        return R.layout.activity_record_doc_info;
+        return R.layout.activity_wupinfahuan;
     }
 
     @Override
@@ -76,25 +85,51 @@ public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
 //            Log.i("RecordDocInfoActivity", docType.getPath());
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
-        involvedPersonMoulde  = new InvolvedPersonMouldeImpl(this);
+        involvedPersonMoulde = new InvolvedPersonMouldeImpl(this);
 
     }
 
-    //    @OnClick(R.id.bt)
+    /**
+     * 执法单位信息  $institution_name$
+     * 物品所有人  $name$
+     * 扣留物品种类  $6YH6YH$
+     * 号牌       $car_no$
+     * 扣留原因    $19D19D$
+     * 扣留日期 $73W73W$
+     * 发还日期  $05K05K$
+     */
     public void onViewClicked() {
-        name = edName.getText().toString().trim();
-        money = edMoney.getText().toString().trim();
-        cardNo = edCardNumber.getText().toString().trim();
-        if (TextUtils.isEmpty(name) && TextUtils.isEmpty(money) && TextUtils.isEmpty(cardNo)) {
-            showToast("请输入相关信息");
+        _institution_name = edit2String(edInstitutionName);
+        _name = edit2String(edName);
+        _6YH6YH = edit2String(ed6YH6YH);
+
+        _car_no = edit2String(edCarNo);
+        _19D19D = edit2String(ed19D19D);
+        _73W73W = edit2String(ed73W73W);
+
+        _05K05K = edit2String(ed05K05K);
+
+        if (TextUtils.isEmpty(_name)
+                && TextUtils.isEmpty(_institution_name)
+                && TextUtils.isEmpty(_name)
+                && TextUtils.isEmpty(_6YH6YH)
+                && TextUtils.isEmpty(_car_no)
+                && TextUtils.isEmpty(_19D19D)
+                && TextUtils.isEmpty(_73W73W)
+                && TextUtils.isEmpty(_05K05K)
+                ) {
+            showToast("请输入相关内容！");
             return;
         }
-        BigDecimal numberOfMoney = new BigDecimal(money);
+
         Map<String, String> map = new HashMap<String, String>();
-        map.put("$involved_name$", name);
-        map.put("$moneyUp$", Number2CN.number2CNMontrayUnit(numberOfMoney));
-        map.put("$money$", M + money);
-        map.put("$car_no$", cardNo);
+        map.put("$institution_name$", _institution_name);
+        map.put("$name$", _name);
+        map.put("$6YH6YH$", _6YH6YH);
+        map.put("$car_no$", _car_no);
+        map.put("$19D19D$", _19D19D);
+        map.put("$73W73W$", _73W73W);
+        map.put("$05K05K$", _05K05K);
 
         try {
             String outPathName = outPath + "/" + docType.getTitle() + TimeUtils.currentTimeMillis() + ".doc";
@@ -102,35 +137,27 @@ public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
 
             LawCase lawCase = new LawCase();
             lawCase.setType(docType.getType());
-//            lawCase.setLawCaseInfo(StringUtils.hashMapToJson(map));
             lawCase.setLawCaseTitle(docType.getTitle());
-//            lawCase.setName(name);
-//            lawCase.setMoney(money);
-//            lawCase.setCarNo(cardNo);
             lawCase.setIsPrint(false);
             lawCase.setDate(TimeUtils.currentTimeMillis());
             lawCase.setDocPath(outPathName);
 
-            if(!TextUtils.isEmpty(name)){
-                InvolvedPerson involvedP = new InvolvedPerson();
-                involvedP.setType(Constants.AUTHOR);
-                if(TextUtils.isEmpty(involvedPerson.getInvolved_name())){
-                    involvedP.setInvolved_name(name);
-                    involvedP.setDate(System.currentTimeMillis());
-                    involvedPersonMoulde.addInvolved(involvedP);
+            if (null != involvedPerson) {
+                involvedPerson.setType(Constants.CAR);
+                if (TextUtils.isEmpty(involvedPerson.getCar_no())) {
+                    involvedPerson.setCar_no(_car_no);
                 }
 
-            }
-
-            if(!TextUtils.isEmpty(cardNo)){
-                InvolvedPerson involvedCar = new InvolvedPerson();
-                involvedCar.setType(Constants.CAR);
-                if(TextUtils.isEmpty(involvedPerson.getCar_no())){
-                    involvedCar.setCar_no(cardNo);
-                    involvedCar.setDate(System.currentTimeMillis());
-                    involvedPersonMoulde.addInvolved(involvedCar);
+                involvedPerson.setDate(System.currentTimeMillis());
+                involvedPersonMoulde.upDateInvolved(involvedPerson);
+            } else {
+                involvedPerson = new InvolvedPerson();
+                involvedPerson.setType(Constants.CAR);
+                if (TextUtils.isEmpty(involvedPerson.getCar_no())) {
+                    involvedPerson.setCar_no(_car_no);
                 }
-
+                involvedPerson.setDate(System.currentTimeMillis());
+                involvedPersonMoulde.addInvolved(involvedPerson);
             }
 
 
@@ -160,8 +187,8 @@ public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_right:
-                Intent intent =new Intent(mContext,QueryDocListActivity.class);
-                startActivityForResult(intent,RES);
+                Intent intent = new Intent(mContext, QueryDocListActivity.class);
+                startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
                 onViewClicked();
@@ -172,19 +199,11 @@ public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode ==RES){
-            if(resultCode == RESULT_OK){
-                 involvedPerson = data.getParcelableExtra("Receipt");
-                if(null!=involvedPerson){
-                    if(!TextUtils.isEmpty(involvedPerson.getInvolved_name())){
-                        edName.setText(involvedPerson.getInvolved_name());
-                    }
-
-                    if(!TextUtils.isEmpty(involvedPerson.getCar_no())){
-                        edCardNumber.setText(involvedPerson.getCar_no());
-                    }
-
-
+        if (requestCode == RES) {
+            if (resultCode == RESULT_OK) {
+                involvedPerson = data.getParcelableExtra("Receipt");
+                if (null != involvedPerson) {
+                    edCarNo.setText(involvedPerson.getCar_no());
                 }
             }
 
@@ -192,8 +211,4 @@ public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
         }
     }
 
-
-    //    @OnClick(R.id.title_rightIv)
-//    public void onViewClicked() {
-//    }
 }

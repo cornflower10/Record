@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.record.activity.RecordDocInfoActivity">
+    <include layout="@layout/toolbar"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.v7.widget.AppCompatEditText
+        style="@style/editText"
+        android:id="@+id/ed_name"
+        android:hint="姓名"
+       />
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_involved_sex"
+        android:hint="性别"
+        style="@style/editText"/>
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_involved_nationality"
+        android:hint="民族"
+        style="@style/editText"/>
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_involved_birth_date"
+        android:hint="出生日期"
+        style="@style/editText" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_involved_idcard"
+        android:hint="身份证号码"
+        style="@style/editText" />
+
+    <android.support.v7.widget.AppCompatEditText
+       
+        android:id="@+id/ed_involved_native_place"
+        android:hint="籍贯"
+        style="@style/editText" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_involved_degree"
+            android:hint="文化程度"
+            style="@style/editText"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_A"
+            android:hint="驾驶证准驾车型"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_car_no"
+            android:hint="车辆号牌"
+            style="@style/editText" />
+
+
+        <android.support.v7.widget.AppCompatEditText
+
+            android:id="@+id/ed_B"
+            android:hint="驾驶证号"
+            style="@style/editText" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_C"
+            android:hint="保险凭证号"
+            style="@style/editText"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_D"
+            android:hint="户籍所在地（国籍、护照号）"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_E"
+            android:hint="单位及联系方式"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_F"
+            android:hint="交通事故陈述"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_G"
+            android:hint="当事人（签名捺指印）"
+            style="@style/editText" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:textSize="@dimen/text_16_sp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorAccent"
+       android:layout_margin="@dimen/margin_16"
+        android:id="@+id/bt"
+        android:text="确 定"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

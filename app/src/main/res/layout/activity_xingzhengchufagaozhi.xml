@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.record.activity.RecordDocInfoActivity">
+    <include layout="@layout/toolbar"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.v7.widget.AppCompatEditText
+        style="@style/editText"
+        android:id="@+id/ed_789789"
+        android:hint="被告知人"
+       />
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_987987"
+        android:hint="被告知单位名称"
+        style="@style/editText"/>
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_456456"
+        android:hint="法定告知单位"
+        style="@style/editText"/>
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_654654"
+        android:hint="告知人"
+        style="@style/editText" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_321321"
+        android:hint="代表人"
+        style="@style/editText" />
+
+    <android.support.v7.widget.AppCompatEditText
+       
+        android:id="@+id/ed_753753"
+        android:hint="案件事实"
+        style="@style/editText" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_123QWE"
+            android:hint="依据条款"
+            style="@style/editText"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_357357"
+            android:hint="拟作出处罚"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_159159"
+            android:hint="听证单位"
+            style="@style/editText" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:textSize="@dimen/text_16_sp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorAccent"
+       android:layout_margin="@dimen/margin_16"
+        android:id="@+id/bt"
+        android:text="确 定"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

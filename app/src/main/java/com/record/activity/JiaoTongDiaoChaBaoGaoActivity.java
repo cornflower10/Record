@@ -114,20 +114,6 @@ public class JiaoTongDiaoChaBaoGaoActivity extends BaseActivity implements Error
 
         thingConfirmation = edit2String(edThingConfirmation);
 
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("$thing_$", thing);
-        map.put("$thing_11$", thing11);
-        map.put("$34R34R$", _34R34R);
-        map.put("$thing_personnel_involved_basic$", thingPersonnelInvolvedBasic);
-        map.put("$thing_car_basic$", thingCarBasic);
-        map.put("$thing_road_condition$", thingRoadCondition);
-        map.put("$thing_info$", thingInfo);
-        map.put("$thing_prof$", thingProf);
-        map.put("$thing_analysis$", thingAnalysis);
-
-        map.put("$thing_law$", thingLaw);
-        map.put("$thing_confirmation$", thingConfirmation);
-
         if(TextUtils.isEmpty(thing)
                 &&TextUtils.isEmpty(thing11)
                 &&TextUtils.isEmpty(_34R34R)
@@ -143,6 +129,22 @@ public class JiaoTongDiaoChaBaoGaoActivity extends BaseActivity implements Error
             showToast("请输入相关内容！");
             return;
         }
+
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("$thing_$", thing);
+        map.put("$thing_11$", thing11);
+        map.put("$34R34R$", _34R34R);
+        map.put("$thing_personnel_involved_basic$", thingPersonnelInvolvedBasic);
+        map.put("$thing_car_basic$", thingCarBasic);
+        map.put("$thing_road_condition$", thingRoadCondition);
+        map.put("$thing_info$", thingInfo);
+        map.put("$thing_prof$", thingProf);
+        map.put("$thing_analysis$", thingAnalysis);
+
+        map.put("$thing_law$", thingLaw);
+        map.put("$thing_confirmation$", thingConfirmation);
+
         try {
             String outPathName = outPath + "/" + docType.getTitle() + TimeUtils.currentTimeMillis() + ".doc";
             WordUtil.doScan(getAssets().open("doc/" + docType.getType() + "/" + docType.getTitle() + ".doc"), outPathName, map);
@@ -273,17 +275,38 @@ public class JiaoTongDiaoChaBaoGaoActivity extends BaseActivity implements Error
             if (resultCode == RESULT_OK) {
                 involvedPerson = data.getParcelableExtra("Receipt");
                 if (null != involvedPerson) {
-                    edThing.setText(involvedPerson.getThing_());
-                    edThing11.setText(involvedPerson.getThing_11());
-                    edThingPersonnelInvolvedBasic.setText(involvedPerson.getThing_personnel_involved_basic());
-                    edThingCarBasic.setText(involvedPerson.getThing_car_basic());
-                    edThingRoadCondition.setText(involvedPerson.getThing_road_condition());
-                    edThingInfo.setText(involvedPerson.getThing_info());
-                    edThingProf.setText(involvedPerson.getThing_prof());
-                    edThingAnalysis.setText(involvedPerson.getThing_analysis());
-                    edThingLaw.setText(involvedPerson.getThing_law());
-                    edThingConfirmation.setText(involvedPerson.getThing_confirmation());
+                    if(TextUtils.isEmpty(involvedPerson.getThing_())){
+                        edThing.setText(involvedPerson.getThing_());
+                    }
 
+                    if(TextUtils.isEmpty(involvedPerson.getThing_11())){
+                        edThing11.setText(involvedPerson.getThing_11());
+                    }
+                    if(TextUtils.isEmpty(involvedPerson.getThing_personnel_involved_basic())){
+                        edThingPersonnelInvolvedBasic.setText(involvedPerson.getThing_personnel_involved_basic());
+                    }
+                    if(TextUtils.isEmpty(involvedPerson.getThing_car_basic())){
+                        edThingCarBasic.setText(involvedPerson.getThing_car_basic());
+                    }
+                    if(TextUtils.isEmpty(involvedPerson.getThing_road_condition())){
+                        edThingRoadCondition.setText(involvedPerson.getThing_road_condition());
+                    }
+                    if(TextUtils.isEmpty(involvedPerson.getThing_info())){
+                        edThingInfo.setText(involvedPerson.getThing_info());
+                    }
+                    if(TextUtils.isEmpty(involvedPerson.getThing_prof())){
+                        edThingProf.setText(involvedPerson.getThing_prof());
+                    }
+                    if(TextUtils.isEmpty(involvedPerson.getThing_analysis())){
+                        edThingAnalysis.setText(involvedPerson.getThing_analysis());
+                    }
+
+                    if(TextUtils.isEmpty(involvedPerson.getThing_law())){
+                        edThingLaw.setText(involvedPerson.getThing_law());
+                    }
+                    if(TextUtils.isEmpty(involvedPerson.getThing_confirmation())){
+                        edThingConfirmation.setText(involvedPerson.getThing_confirmation());
+                    }
 
                 }
             }

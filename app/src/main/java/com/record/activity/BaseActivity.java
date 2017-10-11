@@ -11,7 +11,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.record.App;
 import com.record.R;
+import com.record.moudle.entity.DocType;
+import com.record.moudle.entity.LawCase;
+import com.record.moudle.moudleDao.LawCaseMoulde;
+import com.record.utils.Constants;
+import com.record.utils.TimeUtils;
+import com.record.utils.WordUtil;
+
+import java.io.IOException;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 
@@ -35,7 +45,7 @@ public abstract class  BaseActivity extends AppCompatActivity {
         this.showBack = showBack;
     }
 
-
+    private static final String outPath = Constants.docPath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +104,37 @@ public abstract class  BaseActivity extends AppCompatActivity {
 
     public String edit2String(EditText editText){
         return editText.getText().toString().trim();
+    }
+
+
+
+    public void exportWordAndSave(DocType docType,
+                                  Map map, LawCaseMoulde lawCaseMoulde){
+        String outPathName = outPath + "/" + docType.getTitle() + TimeUtils.currentTimeMillis() + ".doc";
+        try {
+            WordUtil.doScan(getAssets().open("doc/" + docType.getType() + "/" + docType.getTitle() + ".doc"),
+                    outPathName, map);
+
+            LawCase lawCase = new LawCase();
+            lawCase.setType(docType.getType());
+            lawCase.setLawCaseTitle(docType.getTitle());
+            lawCase.setIsPrint(false);
+            lawCase.setDate(TimeUtils.currentTimeMillis());
+            lawCase.setDocPath(outPathName);
+            if (lawCaseMoulde.addLawCase(lawCase)) {
+                Intent in = new Intent(mContext, DocListActivity.class);
+                startActivity(in);
+                showToast("生成成功");
+                App.getInstance().getForegroundCallbacks()
+                        .finishActivity(DocTypeActivity.class);
+                App.getInstance().getForegroundCallbacks()
+                        .finishActivity(DocListTypeActivity.class);
+                finish();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            showToast("生成失败" + e.getMessage());
+        }
     }
 
 }

@@ -47,7 +47,25 @@
         <activity
             android:name=".activity.NoTempActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".activity.JiaoTongDiaoChaBaoGaoActivity"></activity>
+        <activity android:name=".activity.JiaoTongDiaoChaBaoGaoActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".activity.XingZhengChuFaBiLuActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".activity.JiuJingBiLuActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".activity.XueYeNiaoJianActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+
+        <activity android:name=".activity.AnJianShenHeDengJiActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".activity.JiaoTongDangShiRenActivity"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 
 </manifest>

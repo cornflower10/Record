@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.record.activity.RecordDocInfoActivity">
+    <include layout="@layout/toolbar"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.v7.widget.AppCompatEditText
+        style="@style/editText"
+        android:id="@+id/ed_name"
+        android:hint="姓名"
+       />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:id="@+id/ed_ttt"
+                android:hint="性别"
+                style="@style/editText"/>
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:id="@+id/ed_yyy"
+                android:hint="年龄"
+                style="@style/editText"/>
+        </LinearLayout>
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_idCard1"
+        android:hint="身份证（驾驶证）号码"
+        style="@style/editText" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_6R6R6R"
+        android:hint="号牌种类"
+        style="@style/editText" />
+
+    <android.support.v7.widget.AppCompatEditText
+       
+        android:id="@+id/ed_transportationType1"
+        android:hint="号牌号码"
+        style="@style/editText" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_2d2d2d"
+            android:hint="酒精含量测试数值"
+            style="@style/editText"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_9M9M9M"
+            android:hint="测试时间"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_7N7N7N"
+            android:hint="测试地点"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_0a0a0a"
+            android:hint="对上述测试内容有无异议"
+            style="@style/editText" />
+    <android.support.v7.widget.AppCompatButton
+        android:textSize="@dimen/text_16_sp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorAccent"
+       android:layout_margin="@dimen/margin_16"
+        android:id="@+id/bt"
+        android:text="确 定"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

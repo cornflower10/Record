@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.record.activity.RecordDocInfoActivity">
+    <include layout="@layout/toolbar"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.v7.widget.AppCompatEditText
+        style="@style/editText"
+        android:id="@+id/ed_thing_"
+        android:hint="交通事故时间"
+       />
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_thing_11"
+        android:hint="交通事故地点"
+        style="@style/editText"/>
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_institution_police_a"
+        android:hint="交通警察"
+        style="@style/editText"/>
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_OOOOOO"
+        android:hint="调解内容"
+        style="@style/editText" />
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:text="当事人1:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_name1"
+            android:hint="姓名"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_ttt1"
+            android:hint="性别"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_yyy1"
+            android:hint="年龄"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_uuu1"
+            android:hint="住址或单位"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:inputType="number"
+            android:id="@+id/ed_III1"
+            android:hint="交通方式、车牌号"
+            style="@style/editText" />
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:text="当事人2:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_name2"
+            android:hint="姓名"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_ttt2"
+            android:hint="性别"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:inputType="number"
+            android:id="@+id/ed_yyy2"
+            android:hint="年龄"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_uuu2"
+            android:hint="住址或单位"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_III2"
+            android:hint="交通方式、车牌号"
+            style="@style/editText" />
+
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:text="当事人3:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_name3"
+            android:hint="姓名"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_ttt3"
+            android:hint="性别"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:inputType="number"
+            android:id="@+id/ed_yyy3"
+            android:hint="年龄"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_uuu3"
+            android:hint="住址或单位"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_III3"
+            android:hint="交通方式、车牌号"
+            style="@style/editText" />
+    <android.support.v7.widget.AppCompatButton
+        android:textSize="@dimen/text_16_sp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorAccent"
+       android:layout_margin="@dimen/margin_16"
+        android:id="@+id/bt"
+        android:text="确 定"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>
