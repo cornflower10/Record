@@ -1,8 +1,8 @@
 package com.record.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -23,39 +23,37 @@ public class WeiTuoShuActivity extends BaseActivity implements ErrorView {
 
     @BindView(R.id.tv_right)
     TextView tv_right;
-    @BindView(R.id.ed_name)
-    AppCompatEditText edName;
-    @BindView(R.id.ed_ttt)
-    AppCompatEditText edTtt;
-    @BindView(R.id.ed_yyy)
-    AppCompatEditText edYyy;
-    @BindView(R.id.ed_idCard1)
-    AppCompatEditText edIdCard1;
-    @BindView(R.id.ed_6R6R6R)
-    AppCompatEditText ed6R6R6R;
-    @BindView(R.id.ed_transportationType1)
-    AppCompatEditText edTransportationType1;
-    @BindView(R.id.ed_2d2d2d)
-    AppCompatEditText ed2d2d2d;
-    @BindView(R.id.ed_9M9M9M)
-    AppCompatEditText ed9M9M9M;
-    @BindView(R.id.ed_7N7N7N)
-    AppCompatEditText ed7N7N7N;
-    @BindView(R.id.ed_0a0a0a)
-    AppCompatEditText ed0a0a0a;
+    @BindView(R.id.ed_name_9527)
+    AppCompatEditText edName9527;
+    @BindView(R.id.ed_Q1)
+    AppCompatEditText edQ1;
+    @BindView(R.id.ed_W1)
+    AppCompatEditText edW1;
+    @BindView(R.id.ed_R1)
+    AppCompatEditText edR1;
+    @BindView(R.id.ed_name_9528)
+    AppCompatEditText edName9528;
+    @BindView(R.id.ed_Q2)
+    AppCompatEditText edQ2;
+    @BindView(R.id.ed_W2)
+    AppCompatEditText edW2;
+    @BindView(R.id.ed_R2)
+    AppCompatEditText edR2;
 
 
     private DocType docType;
 
-    private String _name, _ttt, _yyy, _idCard1, _6R6R6R,
-            _transportationType1, _2d2d2d, _9M9M9M, _7N7N7N,_0a0a0a;
+    private String _name_9527, _Q1, _W1, _R1,
+            _name_9528,
+            _Q2, _W2, _R2;
+
 
     private LawCaseMoulde lawCaseMoulde;
-    private static final int RES = 110;
+//    private static final int RES = 110;
 
     @Override
     public int setContentView() {
-        return R.layout.activity_jiujingbilu;
+        return R.layout.activity_weituoshu;
     }
 
     @Override
@@ -75,40 +73,42 @@ public class WeiTuoShuActivity extends BaseActivity implements ErrorView {
         lawCaseMoulde = new LawCaseMoudleImpl(this);
     }
 
-    /**
-     *委托人：（同事故当事人）
-     受委托人：$name-9527$
-     工作单位： QQQQQQ
-     身份证号：WWWWWW
-     住址以及联系方式： RRRRRR
 
-     */
     public void onViewClicked() {
-        _name = edit2String(edName);
-        _ttt = edit2String(edTtt);
-        _yyy = edit2String(edYyy);
+        _name_9527 = edit2String(edName9527);
+        _Q1 = edit2String(edQ1);
+        _W1 = edit2String(edW1);
 
-        _idCard1 = edit2String(edIdCard1);
-        _6R6R6R = edit2String(ed6R6R6R);
-        _transportationType1 = edit2String(edTransportationType1);
+        _R1 = edit2String(edR1);
+        _name_9528 = edit2String(edName9528);
+        _Q2 = edit2String(edQ2);
 
-        _2d2d2d = edit2String(ed2d2d2d);
-        _9M9M9M = edit2String(ed9M9M9M);
-        _7N7N7N= edit2String(ed7N7N7N);
-        _0a0a0a = edit2String(ed0a0a0a);
+        _W2 = edit2String(edW2);
+        _R2 = edit2String(edR2);
+
+        if (TextUtils.isEmpty(_name_9527)
+                && TextUtils.isEmpty(_Q1)
+                && TextUtils.isEmpty(_W1)
+                && TextUtils.isEmpty(_R1)
+                && TextUtils.isEmpty(_name_9528)
+                && TextUtils.isEmpty(_Q2)
+                && TextUtils.isEmpty(_W2)
+                && TextUtils.isEmpty(_R2)
+                ) {
+            showToast("请输入相关内容！");
+            return;
+        }
+
 
         Map<String, String> map = new HashMap<String, String>();
-        map.put("$name$", _name);
-        map.put("$ttt$", _ttt);
-        map.put("$yyy$", _yyy);
-        map.put("$idCard1$", _idCard1);
-        map.put("$6R6R6R$", _6R6R6R);
-        map.put("$transportationType1$", _transportationType1);
-        map.put("$2d2d2d$", _2d2d2d);
-
-        map.put("$9M9M9M$", _9M9M9M);
-        map.put("$7N7N7N$", _7N7N7N);
-        map.put("$0a0a0a$", _0a0a0a);
+        map.put("$name-9527$", _name_9527);
+        map.put("$Q1$", _Q1);
+        map.put("$W1$", _W1);
+        map.put("$R1$", _R1);
+        map.put("$name-9528$", _name_9528);
+        map.put("$Q2$", _Q2);
+        map.put("$W2$", _W2);
+        map.put("$R2$", _R2);
 
         exportWordAndSave(docType, map, lawCaseMoulde);
     }
@@ -122,10 +122,10 @@ public class WeiTuoShuActivity extends BaseActivity implements ErrorView {
     @OnClick({R.id.tv_right, R.id.bt})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_right:
-                Intent intent = new Intent(mContext, QueryDocListActivity.class);
-                startActivityForResult(intent, RES);
-                break;
+//            case R.id.tv_right:
+//                Intent intent = new Intent(mContext, QueryDocListActivity.class);
+//                startActivityForResult(intent, RES);
+//                break;
             case R.id.bt:
                 onViewClicked();
                 break;

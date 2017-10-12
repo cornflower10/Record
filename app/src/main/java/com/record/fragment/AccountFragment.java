@@ -1,6 +1,7 @@
 package com.record.fragment;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
@@ -12,9 +13,13 @@ import android.widget.TextView;
 import com.record.App;
 import com.record.R;
 import com.record.activity.MainActivity;
+import com.record.activity.UserInfoActivity;
+import com.record.moudle.entity.User;
+import com.record.moudle.moudleDao.ErrorView;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
-import com.record.moudle.moudleDao.ErrorView;
+import com.record.moudle.moudleDao.UserMoulde;
+import com.record.moudle.moudleDao.UserMouldeImpl;
 import com.record.utils.Constants;
 import com.record.utils.FileUtils;
 
@@ -33,11 +38,19 @@ public class AccountFragment extends BaseFragment implements ErrorView {
     TextView titleName;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.tv_name)
+    TextView tvName;
+    @BindView(R.id.tv_no)
+    TextView tvNo;
+    @BindView(R.id.tv_change)
+    TextView tvChange;
 
     private String mParam1;
     private String mParam2;
-    private  AlertDialog.Builder builder;
+    private AlertDialog.Builder builder;
     private LawCaseMoulde lawCase;
+    private UserMoulde userMoulde;
+    private User user;
 
     public AccountFragment() {
     }
@@ -67,6 +80,7 @@ public class AccountFragment extends BaseFragment implements ErrorView {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -80,20 +94,40 @@ public class AccountFragment extends BaseFragment implements ErrorView {
             ((MainActivity) mContext).getSupportActionBar().setTitle("");
             titleName.setText(getString(R.string.account));
         }
-        lawCase  = new LawCaseMoudleImpl(this);
+        userMoulde = new UserMouldeImpl(this);
+        lawCase = new LawCaseMoudleImpl(this);
+
         initDialog();
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        user = userMoulde.seletcUser();
+        if (null != user) {
+            tvName.setText(user.getName());
+            tvNo.setText(user.getUserNo());
+            tvChange.setText("修改");
+        } else {
+            tvName.setText("");
+            tvNo.setText("");
+            tvChange.setText("设置");
+        }
+    }
+
     private void initDialog() {
-         builder = new AlertDialog.Builder(mContext);
+        builder = new AlertDialog.Builder(mContext);
         builder.setTitle("提示");
         builder.setMessage("将清除本地所有数据，是否继续？");
         builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                FileUtils.deleteFile(Constants.pathDir+Constants.dir);
+                FileUtils.deleteFile(Constants.pathDir + Constants.dir);
                 lawCase.deleteAll();
+                tvName.setText("");
+                tvNo.setText("");
+                tvChange.setText("设置");
             }
         });
         builder.setNegativeButton("否", null);
@@ -123,9 +157,9 @@ public class AccountFragment extends BaseFragment implements ErrorView {
             case R.id.rl_update:
                 break;
             case R.id.rl_clear_cache:
-             if(null!= builder ){
-                 builder.show();
-             }
+                if (null != builder) {
+                    builder.show();
+                }
                 break;
             case R.id.rl_about:
                 break;
@@ -137,6 +171,12 @@ public class AccountFragment extends BaseFragment implements ErrorView {
 
     @Override
     public void onError(String msg) {
-        ((MainActivity)mContext).showToast(msg);
+        ((MainActivity) mContext).showToast(msg);
+    }
+
+    @OnClick(R.id.rl_change)
+    public void onViewClicked() {
+        Intent intent = new Intent(mContext, UserInfoActivity.class);
+        startActivity(intent);
     }
 }

@@ -26,14 +26,14 @@ public class TempIncludeItemAdapter extends BaseQuickAdapter<InvolvedPerson,Base
     protected void convert(BaseViewHolder helper, final InvolvedPerson item) {
         switch (item.getType()){
             case Constants.AUTHOR:
-                helper.setText(R.id.tv_name,"涉事人员信息"+item.getInvolved_name());
+                helper.setText(R.id.tv_name,"涉事人员信息-"+item.getInvolved_name());
                 break;
             case Constants.CAR:
-                helper.setText(R.id.tv_name,"车辆信息"+item.getCar_no());
+                helper.setText(R.id.tv_name,"车辆信息-"+item.getCar_no());
                 break;
 
             case Constants.LAWCASE:
-                helper.setText(R.id.tv_name,"案情信息"+item.getThing_());
+                helper.setText(R.id.tv_name,"案情信息-"+item.getThing_());
                 break;
         }
 

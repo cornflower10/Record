@@ -14,37 +14,47 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_name_9527"
+            android:hint="受委托人姓名"
+            style="@style/editText"/>
     <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/ed_name"
-        android:hint="当事人"
+        style="@style/editText"
+        android:id="@+id/ed_Q1"
+        android:hint="工作单位"
+       />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_W1"
+        android:hint="身份证号"
         style="@style/editText"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_R1"
+            android:hint="住址及联系方式"
+            style="@style/editText"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_name_9528"
+            android:hint="姓名"
+            style="@style/editText" />
     <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/ed_anyou"
-        android:hint="案由"
-        style="@style/editText" />
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/ed_time"
-        android:hint="传唤时间"
-        style="@style/editText" />
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/ed_address"
-        android:hint="传唤地点"
+        android:id="@+id/ed_Q2"
+        android:hint="工作单位"
         style="@style/editText" />
 
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/ed_number"
-        android:hint="文书号"
-        style="@style/editText"  />
-
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/ed_company_info"
-        android:hint="执法单位信息"
-        style="@style/editText"  />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_W2"
+            android:hint="身份证号"
+            style="@style/editText" />
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_R2"
+            android:hint="住址及联系方式"
+            style="@style/editText" />
     <android.support.v7.widget.AppCompatButton
         android:textSize="@dimen/text_16_sp"
         android:textColor="@android:color/white"
         android:background="@color/colorAccent"
-        android:layout_margin="@dimen/margin_16"
+       android:layout_margin="@dimen/margin_16"
         android:id="@+id/bt"
         android:text="确 定"
         android:layout_width="match_parent"

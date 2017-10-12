@@ -117,7 +117,7 @@ public class DocTypeActivity extends BaseActivity {
                         intent.setClass(mContext,WuPinFaHuanZhengActivity.class);
                     }
                     else if(title.equals("报告书")){
-                        intent.setClass(mContext,NoTempActivity.class);
+                        intent.setClass(mContext,ErrorActivity.class);
                     }
                     else if(title.equals("案件审核登记表")){
                         intent.setClass(mContext,AnJianShenHeDengJiActivity.class);
@@ -141,7 +141,7 @@ public class DocTypeActivity extends BaseActivity {
                         intent.setClass(mContext,JiaoTongShiGuRenDingActivity.class);
                     }
                     else if(title.equals("道路交通事故认定书")){
-                        intent.setClass(mContext,ErrorActivity.class);
+                        intent.setClass(mContext,JiaoTongShiGuRenDingJYActivity.class);
                     }
                     else if(title.equals("道路交通事故证明")){
                         intent.setClass(mContext,JiaoTongShiGuZhengMingActivity.class);

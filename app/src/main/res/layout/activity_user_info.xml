@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.record.activity.UserInfoActivity">
+    <include layout="@layout/toolbar"/>
+  <android.support.v7.widget.AppCompatEditText
+      android:id="@+id/ed_name"
+      android:hint="警员姓名"
+      style="@style/editText"/>
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_no"
+        android:hint="警员编号"
+        style="@style/editText"/>
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_company"
+        android:hint="执法单位信息"
+        style="@style/editText"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:textSize="@dimen/text_16_sp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorAccent"
+        android:layout_margin="@dimen/margin_16"
+        android:id="@+id/bt"
+        android:text="确 定"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

@@ -6,6 +6,7 @@ import com.facebook.stetho.Stetho;
 import com.record.dao.DaoMaster;
 import com.record.dao.DaoSession;
 import com.record.utils.ForegroundCallbacks;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -36,6 +37,8 @@ public class App extends Application {
         if(BuildConfig.debug){
             Stetho.initializeWithDefaults(this);
         }
+
+        CrashReport.initCrashReport(getApplicationContext(), "acd7a7de92", BuildConfig.debug);
 //        CrashHandler.getInstance().init(this);
     }
 

@@ -1,6 +1,7 @@
 package com.record.moudle.moudleDao;
 
 import com.record.App;
+import com.record.dao.InvolvedPersonDao;
 import com.record.moudle.entity.InvolvedPerson;
 
 import java.util.List;
@@ -58,7 +59,8 @@ public class InvolvedPersonMouldeImpl implements InvolvedPersonMoulde {
 
     @Override
     public List<InvolvedPerson> seletcAll() {
-        List<InvolvedPerson> list =  App.getDaoSession().getInvolvedPersonDao().loadAll();
+        List<InvolvedPerson> list =  App.getDaoSession().getInvolvedPersonDao().
+                queryBuilder().orderDesc(InvolvedPersonDao.Properties.Date).list();
         return list;
     }
 }

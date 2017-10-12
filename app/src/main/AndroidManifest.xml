@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
 
     <application
         android:name=".App"
@@ -40,32 +44,53 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.DocListTypeActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.QueryDocListActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.NoTempActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".activity.JiaoTongDiaoChaBaoGaoActivity"
-            android:screenOrientation="portrait"
-            ></activity>
-        <activity android:name=".activity.XingZhengChuFaBiLuActivity"
-            android:screenOrientation="portrait"
-            ></activity>
-        <activity android:name=".activity.JiuJingBiLuActivity"
-            android:screenOrientation="portrait"
-            ></activity>
-        <activity android:name=".activity.XueYeNiaoJianActivity"
-            android:screenOrientation="portrait"
-            ></activity>
-
-        <activity android:name=".activity.AnJianShenHeDengJiActivity"
-            android:screenOrientation="portrait"
-            ></activity>
-        <activity android:name=".activity.JiaoTongDangShiRenActivity"
-            android:screenOrientation="portrait"
-            ></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.JiaoTongDiaoChaBaoGaoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.XingZhengChuFaBiLuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.JiuJingBiLuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WeiTuoShuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.XueYeNiaoJianActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WuPinFaHuanZhengActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AnJianShenHeDengJiActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.JiaoTongDangShiRenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.QiangJiuFeiZhiFuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.JiaoTongTiaoJieShuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.JiaoTongShiGuRenDingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.JiaoTongShiGuRenDingJYActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ShouAnHuiZhiActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.UserInfoActivity"></activity>
     </application>
 
 </manifest>

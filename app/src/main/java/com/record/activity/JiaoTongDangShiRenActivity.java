@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
 import com.record.App;
@@ -79,6 +81,8 @@ public class JiaoTongDangShiRenActivity extends BaseActivity implements ErrorVie
 
     private InvolvedPerson involvedPerson;
 
+    private InvolvedPerson involvedCar;
+
     @Override
     public int setContentView() {
         return R.layout.activity_jiaotongdangshiren;
@@ -102,7 +106,15 @@ public class JiaoTongDangShiRenActivity extends BaseActivity implements ErrorVie
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
         involvedPersonMoulde = new InvolvedPersonMouldeImpl(this);
-
+        edName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId== EditorInfo.IME_ACTION_NEXT){
+                    showToast(v.getText().toString()+"next");
+                }
+                return false;
+            }
+        });
     }
 
     //    @OnClick(R.id.bt)
@@ -207,12 +219,7 @@ public class JiaoTongDangShiRenActivity extends BaseActivity implements ErrorVie
                     if (TextUtils.isEmpty(involvedPerson.getInvolved_degree())) {
                         involvedPerson.setInvolved_degree(_involved_degree);
                     }
-                }else if(involvedPerson.getType()==Constants.CAR){
-                    if (TextUtils.isEmpty(involvedPerson.getCar_no())) {
-                        involvedPerson.setCar_no(_car_no);
-                    }
                 }
-
                 involvedPerson.setDate(System.currentTimeMillis());
                 involvedPersonMoulde.upDateInvolved(involvedPerson);
             } else {
@@ -243,15 +250,24 @@ public class JiaoTongDangShiRenActivity extends BaseActivity implements ErrorVie
 
                 involvedPerson.setDate(System.currentTimeMillis());
                 involvedPersonMoulde.addInvolved(involvedPerson);
-
-                if(!TextUtils.isEmpty(_car_no)){
-                    InvolvedPerson   involvedPersonC = new InvolvedPerson();
-                    involvedPersonC.setType(Constants.CAR);
-                    involvedPersonC.setCar_no(_car_no);
-                    involvedPersonC.setDate(System.currentTimeMillis());
-                    involvedPersonMoulde.addInvolved(involvedPersonC);
-                }
             }
+
+
+             if(null!=involvedCar){
+                if (TextUtils.isEmpty(involvedCar.getCar_no())) {
+                    involvedCar.setCar_no(_car_no);
+                    involvedCar.setDate(System.currentTimeMillis());
+                    involvedPersonMoulde.upDateInvolved(involvedCar);
+                }
+            }else {
+                 if(!TextUtils.isEmpty(_car_no)){
+                     InvolvedPerson   involvedPersonC = new InvolvedPerson();
+                     involvedPersonC.setType(Constants.CAR);
+                     involvedPersonC.setCar_no(_car_no);
+                     involvedPersonC.setDate(System.currentTimeMillis());
+                     involvedPersonMoulde.addInvolved(involvedPersonC);
+                 }
+             }
 
 
             if (lawCaseMoulde.addLawCase(lawCase)) {
@@ -293,9 +309,15 @@ public class JiaoTongDangShiRenActivity extends BaseActivity implements ErrorVie
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RES) {
             if (resultCode == RESULT_OK) {
-                involvedPerson = data.getParcelableExtra("Receipt");
-                if (null != involvedPerson) {
-                    if(involvedPerson.getType()==Constants.AUTHOR){
+            InvolvedPerson   involved = data.getParcelableExtra("Receipt");
+                if (null != involved) {
+                    if(involved.getType()==Constants.AUTHOR){
+                        involvedPerson = involved;
+                    }else {
+                        involvedCar = involved;
+                    }
+
+                    if(null!=involvedPerson){
                         if(!TextUtils.isEmpty(involvedPerson.getInvolved_name())){
                             edName.setText(involvedPerson.getInvolved_name());
                         }
@@ -323,9 +345,10 @@ public class JiaoTongDangShiRenActivity extends BaseActivity implements ErrorVie
 
                         }
 
-                    }else if (involvedPerson.getType()==Constants.CAR){
-                        if(!TextUtils.isEmpty(involvedPerson.getCar_no())){
-                            edCarNo.setText(involvedPerson.getCar_no());
+                    }
+                    if (null!=involvedCar){
+                        if(!TextUtils.isEmpty(involvedCar.getCar_no())){
+                            edCarNo.setText(involvedCar.getCar_no());
                         }
                     }
 

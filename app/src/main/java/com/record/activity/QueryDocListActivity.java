@@ -44,8 +44,8 @@ public class QueryDocListActivity extends BaseActivity implements ErrorView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        tvRight.setVisibility(View.VISIBLE);
-        tvRight.setText("确定");
+        tvRight.setVisibility(View.GONE);
+//        tvRight.setText("确定");
 
         involvedPersonMoulde = new InvolvedPersonMouldeImpl(this);
         list = involvedPersonMoulde.seletcAll();
