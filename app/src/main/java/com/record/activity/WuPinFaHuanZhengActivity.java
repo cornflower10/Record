@@ -12,11 +12,14 @@ import com.record.R;
 import com.record.moudle.entity.DocType;
 import com.record.moudle.entity.InvolvedPerson;
 import com.record.moudle.entity.LawCase;
+import com.record.moudle.entity.User;
 import com.record.moudle.moudleDao.ErrorView;
 import com.record.moudle.moudleDao.InvolvedPersonMoulde;
 import com.record.moudle.moudleDao.InvolvedPersonMouldeImpl;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
+import com.record.moudle.moudleDao.UserMoulde;
+import com.record.moudle.moudleDao.UserMouldeImpl;
 import com.record.utils.Constants;
 import com.record.utils.TimeUtils;
 import com.record.utils.WordUtil;
@@ -62,6 +65,7 @@ public class WuPinFaHuanZhengActivity extends BaseActivity implements ErrorView 
     private InvolvedPersonMoulde involvedPersonMoulde;
 
     private InvolvedPerson involvedPerson;
+    private UserMoulde userMoulde;
 
     @Override
     public int setContentView() {
@@ -86,7 +90,11 @@ public class WuPinFaHuanZhengActivity extends BaseActivity implements ErrorView 
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
         involvedPersonMoulde = new InvolvedPersonMouldeImpl(this);
-
+        userMoulde  = new UserMouldeImpl(this);
+        User user = userMoulde.seletcUser();
+        if(null!=user){
+            edInstitutionName.setText(user.getInstitutionName());
+        }
     }
 
     /**

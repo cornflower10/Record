@@ -8,9 +8,12 @@ import android.widget.TextView;
 
 import com.record.R;
 import com.record.moudle.entity.DocType;
+import com.record.moudle.entity.User;
 import com.record.moudle.moudleDao.ErrorView;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
+import com.record.moudle.moudleDao.UserMoulde;
+import com.record.moudle.moudleDao.UserMouldeImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +37,7 @@ public class QiangJiuFeiZhiFuActivity extends BaseActivity implements ErrorView 
     @BindView(R.id.ed_institution_police_a)
     AppCompatEditText edInstitutionPoliceA;
 
+    private UserMoulde userMoulde;
 
     private DocType docType;
 
@@ -62,6 +66,12 @@ public class QiangJiuFeiZhiFuActivity extends BaseActivity implements ErrorView 
             docType = getIntent().getParcelableExtra("doc");
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
+
+        userMoulde  =new UserMouldeImpl(this);
+        User user = userMoulde.seletcUser();
+        if(null!=user){
+            edInstitutionPoliceA.setText(user.getName());
+        }
     }
 
     /**

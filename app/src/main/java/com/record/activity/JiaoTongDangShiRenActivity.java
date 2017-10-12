@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
 import com.record.App;
@@ -106,15 +104,7 @@ public class JiaoTongDangShiRenActivity extends BaseActivity implements ErrorVie
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
         involvedPersonMoulde = new InvolvedPersonMouldeImpl(this);
-        edName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId== EditorInfo.IME_ACTION_NEXT){
-                    showToast(v.getText().toString()+"next");
-                }
-                return false;
-            }
-        });
+
     }
 
     //    @OnClick(R.id.bt)

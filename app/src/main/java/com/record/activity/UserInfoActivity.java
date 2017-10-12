@@ -51,8 +51,8 @@ public class UserInfoActivity extends BaseActivity implements ErrorView {
 
     @OnClick(R.id.bt)
     public void onViewClicked() {
-       name = edit2String(edNo);
-       no = edit2String(edName);
+       no = edit2String(edNo);
+       name = edit2String(edName);
        company = edit2String(edCompany);
         if(TextUtils.isEmpty(name)&&TextUtils.isEmpty(no)&&TextUtils.isEmpty(company)){
             showToast("请填写相关信息");

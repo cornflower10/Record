@@ -12,11 +12,14 @@ import com.record.R;
 import com.record.moudle.entity.DocType;
 import com.record.moudle.entity.InvolvedPerson;
 import com.record.moudle.entity.LawCase;
+import com.record.moudle.entity.User;
 import com.record.moudle.moudleDao.ErrorView;
 import com.record.moudle.moudleDao.InvolvedPersonMoulde;
 import com.record.moudle.moudleDao.InvolvedPersonMouldeImpl;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
+import com.record.moudle.moudleDao.UserMoulde;
+import com.record.moudle.moudleDao.UserMouldeImpl;
 import com.record.utils.Constants;
 import com.record.utils.TimeUtils;
 import com.record.utils.WordUtil;
@@ -60,7 +63,7 @@ public class JiaoTongShiGuRenDingActivity extends BaseActivity implements ErrorV
     @BindView(R.id.ed_thing_confirmation)
     AppCompatEditText edThingConfirmation;
 
-
+    private UserMoulde userMoulde;
     private DocType docType;
     private static final String outPath = Constants.docPath;
     private String _pageNum, _institution_name, _institution_time,
@@ -98,6 +101,11 @@ public class JiaoTongShiGuRenDingActivity extends BaseActivity implements ErrorV
 //            Log.i("RecordDocInfoActivity", docType.getPath());
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
+        userMoulde  =new UserMouldeImpl(this);
+       User user = userMoulde.seletcUser();
+        if(null!=user){
+          edInstitutionName.setText(user.getInstitutionName());
+        }
         involvedPersonMoulde = new InvolvedPersonMouldeImpl(this);
 
     }

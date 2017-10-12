@@ -26,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <RelativeLayout
+            android:clickable="true"
             android:id="@+id/rl_change"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/iv"
@@ -38,6 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
           <TextView
+              android:clickable="false"
               android:text="海泽王"
               android:textSize="@dimen/text_13_sp"
               android:textColor="@android:color/white"
@@ -45,6 +47,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content" />
             <View
+                android:clickable="false"
                 android:id="@+id/v"
                 android:layout_marginRight="6dp"
                 android:layout_marginLeft="6dp"
@@ -53,6 +56,7 @@
                 android:layout_width="1dp"
                 android:layout_height="20dp"/>
             <TextView
+                android:clickable="false"
                 android:text="0806"
                 android:layout_toRightOf="@+id/v"
                 android:textSize="@dimen/text_13_sp"
