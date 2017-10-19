@@ -142,3 +142,27 @@ public static java.lang.String TABLENAME;
 #腾讯bugly
 -dontwarn com.tencent.bugly.**
 -keep public class com.tencent.bugly.**{*;}
+
+-dontwarn org.apache.poi.**
+-keep class org.apache.poi.** { *;}
+-keep class org.apache.poi.common.usermodel.** { *;}
+-keep class org.apache.poi.ddf.** { *;}
+-keep class org.apache.poi.dev.** { *;}
+-keep class org.apache.poi.hpsf.** { *;}
+-keep class org.apache.poi.hssf.** { *;}
+-keep class org.apache.poi.ss.** { *;}
+-keep class org.apache.poi.util.** { *;}
+
+-keep class org.apache.poi.hdf.** { *;}
+-keep class org.apache.poi.hdgf.** { *;}
+-keep class org.apache.poi.hmef.** { *;}
+-keep class org.apache.poi.hpbf.** { *;}
+-keep class org.apache.poi.hslf.** { *;}
+-keep class org.apache.poi.hsmf.** { *;}
+
+-keep class org.apache.poi.hwpf.** { *;}
+-keep class org.apache.poi.sl.usermodel.** { *;}
+
+
+
+

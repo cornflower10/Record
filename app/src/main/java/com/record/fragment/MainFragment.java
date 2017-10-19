@@ -86,7 +86,7 @@ public class MainFragment extends BaseFragment {
         if (null != toolbar) {
             ((MainActivity)mContext).setSupportActionBar(toolbar);
             ((MainActivity)mContext).getSupportActionBar().setTitle("");
-            titleName.setText("公安笔录");
+            titleName.setText("智慧交警");
         }
         return view;
     }

@@ -23,4 +23,17 @@ public class TimeUtils {
         Date date= new Date(millSec);
         return sdf.format(date);
     }
+
+
+    /**
+     * 毫秒数转换为指定格式的日期
+     * @param
+     * @param millSec
+     * @return
+     */
+    public static String LongToDate(Long millSec){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date date= new Date(millSec);
+        return sdf.format(date);
+    }
 }
