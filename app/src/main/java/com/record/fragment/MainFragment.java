@@ -120,6 +120,7 @@ public class MainFragment extends BaseFragment {
                 ((MainActivity) mContext).mStartActivity(ErrorActivity.class);
                 break;
             case R.id.ll_ptoto:
+                ((MainActivity) mContext).mStartActivity(ErrorActivity.class);
                 break;
         }
     }

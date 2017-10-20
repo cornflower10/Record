@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.record.App;
 import com.record.R;
 import com.record.activity.MainActivity;
+import com.record.activity.PrintRecordActivity;
 import com.record.activity.UserInfoActivity;
 import com.record.moudle.entity.User;
 import com.record.moudle.moudleDao.ErrorView;
@@ -141,9 +142,13 @@ public class AccountFragment extends BaseFragment implements ErrorView {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.rl_company_info, R.id.rl_traffic_accident_photo, R.id.rl_traffic_accident_law, R.id.rl_talk, R.id.rl_update, R.id.rl_clear_cache, R.id.rl_about, R.id.tv_exit})
+    @OnClick({R.id.rl_print_record,R.id.rl_company_info, R.id.rl_traffic_accident_photo, R.id.rl_traffic_accident_law, R.id.rl_talk, R.id.rl_update, R.id.rl_clear_cache, R.id.rl_about, R.id.tv_exit})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.rl_print_record:
+                Intent intentP = new Intent(mContext, PrintRecordActivity.class);
+                startActivity(intentP);
+                break;
             case R.id.rl_company_info:
                 Intent intent = new Intent(mContext, UserInfoActivity.class);
                 startActivity(intent);

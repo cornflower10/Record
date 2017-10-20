@@ -84,9 +84,45 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content">
 
+          <RelativeLayout
+              android:layout_marginTop="@dimen/margin_16"
+              android:id="@+id/rl_print_record"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              >
+              <ImageView
+                  android:id="@+id/iv0"
+                  android:layout_marginLeft="@dimen/margin_16"
+                  android:layout_centerVertical="true"
+                  android:src="@drawable/home_print_record_blue"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" />
+              <TextView
+                  android:layout_centerVertical="true"
+                  android:layout_toRightOf="@+id/iv0"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="打印记录"
+                  android:textSize="@dimen/text_16_sp"
+                  android:textColor="@color/text_color_3232"
+                  android:layout_marginLeft="@dimen/margin_16"
+                  android:layout_marginTop="12dp"
+                  android:layout_marginBottom="12dp"/>
+              <ImageView
+                  android:layout_centerVertical="true"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@drawable/home_right_arrow"
+                  android:layout_alignParentRight="true"
+                  android:layout_marginRight="@dimen/text_16_sp"
+                  />
+          </RelativeLayout>
+
+          <View
+              style="@style/divider_line_margin_left"/>
 
         <RelativeLayout
-            android:layout_marginTop="@dimen/margin_16"
             android:id="@+id/rl_company_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
