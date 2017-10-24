@@ -123,6 +123,10 @@ public class JiaoTongTiaoJieShuActivity extends BaseActivity implements ErrorVie
         if(null!=user){
             edInstitutionPoliceA.setText(user.getName());
         }
+
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
     }
 
     /**
@@ -152,35 +156,69 @@ public class JiaoTongTiaoJieShuActivity extends BaseActivity implements ErrorVie
      * 住址或单位 $uuu3$
      * 交通方式、车牌号 $III3$
      */
-    public void onViewClicked() {
-        thing = edit2String(edThing);
-        thing11 = edit2String(edThing11);
-        _institution_police_a = edit2String(edInstitutionPoliceA);
+    public void onViewClicked(boolean isClick) {
+        if(!isClick){
+            tv_right.setVisibility(View.GONE);
+        }
+        if(isClick){
+            thing = edit2String(edThing);
+            thing11 = edit2String(edThing11);
+            _institution_police_a = edit2String(edInstitutionPoliceA);
 
-        _OOOOOO = edit2String(edOOOOOO);
-        _name1 = edit2String(edName1);
-        _ttt1 = edit2String(edTtt1);
+            _OOOOOO = edit2String(edOOOOOO);
+            _name1 = edit2String(edName1);
+            _ttt1 = edit2String(edTtt1);
 
-        _yyy1 = edit2String(edYyy1);
-        _uuu1 = edit2String(edUuu1);
+            _yyy1 = edit2String(edYyy1);
+            _uuu1 = edit2String(edUuu1);
 
-        _III1 = edit2String(edIII1);
+            _III1 = edit2String(edIII1);
 
-        _name2 = edit2String(edName2);
-        _ttt2 = edit2String(edTtt2);
+            _name2 = edit2String(edName2);
+            _ttt2 = edit2String(edTtt2);
 
-        _yyy2 = edit2String(edYyy2);
-        _uuu2 = edit2String(edUuu2);
+            _yyy2 = edit2String(edYyy2);
+            _uuu2 = edit2String(edUuu2);
 
-        _III2 = edit2String(edIII2);
+            _III2 = edit2String(edIII2);
 
-        _name3 = edit2String(edName3);
-        _ttt3 = edit2String(edTtt3);
+            _name3 = edit2String(edName3);
+            _ttt3 = edit2String(edTtt3);
 
-        _yyy3 = edit2String(edYyy3);
-        _uuu3 = edit2String(edUuu3);
+            _yyy3 = edit2String(edYyy3);
+            _uuu3 = edit2String(edUuu3);
 
-        _III3 = edit2String(edIII3);
+            _III3 = edit2String(edIII3);
+
+
+            if (TextUtils.isEmpty(thing)
+                    && TextUtils.isEmpty(thing11)
+                    && TextUtils.isEmpty(_institution_police_a)
+                    && TextUtils.isEmpty(_OOOOOO)
+                    && TextUtils.isEmpty(_name1)
+                    && TextUtils.isEmpty(_ttt1)
+                    && TextUtils.isEmpty(_yyy1)
+                    && TextUtils.isEmpty(_uuu1)
+                    && TextUtils.isEmpty(_III1)
+
+                    && TextUtils.isEmpty(_name2)
+                    && TextUtils.isEmpty(_ttt2)
+                    && TextUtils.isEmpty(_yyy2)
+                    && TextUtils.isEmpty(_uuu2)
+                    && TextUtils.isEmpty(_III2)
+
+                    && TextUtils.isEmpty(_name3)
+                    && TextUtils.isEmpty(_ttt3)
+                    && TextUtils.isEmpty(_yyy3)
+                    && TextUtils.isEmpty(_uuu3)
+                    && TextUtils.isEmpty(_III3)
+
+                    ) {
+                showToast("请输入相关内容！");
+                return;
+            }
+        }
+
 
 
         Map<String, String> map = new HashMap<String, String>();
@@ -206,33 +244,6 @@ public class JiaoTongTiaoJieShuActivity extends BaseActivity implements ErrorVie
         map.put("$uuu3$", _uuu3);
         map.put("$III3$", _III3);
 
-
-        if (TextUtils.isEmpty(thing)
-                && TextUtils.isEmpty(thing11)
-                && TextUtils.isEmpty(_institution_police_a)
-                && TextUtils.isEmpty(_OOOOOO)
-                && TextUtils.isEmpty(_name1)
-                && TextUtils.isEmpty(_ttt1)
-                && TextUtils.isEmpty(_yyy1)
-                && TextUtils.isEmpty(_uuu1)
-                && TextUtils.isEmpty(_III1)
-
-                && TextUtils.isEmpty(_name2)
-                && TextUtils.isEmpty(_ttt2)
-                && TextUtils.isEmpty(_yyy2)
-                && TextUtils.isEmpty(_uuu2)
-                && TextUtils.isEmpty(_III2)
-
-                && TextUtils.isEmpty(_name3)
-                && TextUtils.isEmpty(_ttt3)
-                && TextUtils.isEmpty(_yyy3)
-                && TextUtils.isEmpty(_uuu3)
-                && TextUtils.isEmpty(_III3)
-
-                ) {
-            showToast("请输入相关内容！");
-            return;
-        }
         try {
             String outPathName = outPath + "/" + docType.getTitle() + TimeUtils.currentTimeMillis() + ".doc";
             WordUtil.doScan(getAssets().open("doc/" + docType.getType() + "/" + docType.getTitle() + ".doc"), outPathName, map);
@@ -243,32 +254,32 @@ public class JiaoTongTiaoJieShuActivity extends BaseActivity implements ErrorVie
             lawCase.setIsPrint(false);
             lawCase.setDate(TimeUtils.currentTimeMillis());
             lawCase.setDocPath(outPathName);
-
-            if (null != involvedPerson) {
+            if(isClick){
+                if (null != involvedPerson) {
 //                    InvolvedPerson involvedP = new InvolvedPerson();
-                involvedPerson.setType(Constants.LAWCASE);
-                if (TextUtils.isEmpty(involvedPerson.getThing_())) {
-                    involvedPerson.setThing_(thing);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                    involvedPerson.setThing_11(thing11);
-                }
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.upDateInvolved(involvedPerson);
-            } else {
-                involvedPerson = new InvolvedPerson();
-                involvedPerson.setType(Constants.LAWCASE);
-                if (TextUtils.isEmpty(involvedPerson.getThing_())) {
-                    involvedPerson.setThing_(thing);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                    involvedPerson.setThing_11(thing11);
-                }
+                    involvedPerson.setType(Constants.LAWCASE);
+                    if (TextUtils.isEmpty(involvedPerson.getThing_())) {
+                        involvedPerson.setThing_(thing);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
+                        involvedPerson.setThing_11(thing11);
+                    }
+                    involvedPerson.setDate(System.currentTimeMillis());
+                    involvedPersonMoulde.upDateInvolved(involvedPerson);
+                } else {
+                    involvedPerson = new InvolvedPerson();
+                    involvedPerson.setType(Constants.LAWCASE);
+                    if (TextUtils.isEmpty(involvedPerson.getThing_())) {
+                        involvedPerson.setThing_(thing);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
+                        involvedPerson.setThing_11(thing11);
+                    }
 
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.addInvolved(involvedPerson);
+                    involvedPerson.setDate(System.currentTimeMillis());
+                    involvedPersonMoulde.addInvolved(involvedPerson);
+                }
             }
-
 
             if (lawCaseMoulde.addLawCase(lawCase)) {
                 Intent in = new Intent(mContext, DocListActivity.class);
@@ -300,7 +311,7 @@ public class JiaoTongTiaoJieShuActivity extends BaseActivity implements ErrorVie
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

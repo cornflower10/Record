@@ -88,12 +88,13 @@ public class DocTypeActivity extends BaseActivity {
                         showToast("查看模板失败"+e.getMessage());
                         e.printStackTrace();
                     }
-                }else {
+                }
+                else {
                    String title = docTypeList.get(position).getTitle();
                     Intent intent = new Intent();
 
                     if(title.equals("收条")){
-                        intent.setClass(mContext,RecordDocInfoActivity.class);
+                        intent.setClass(mContext,ShouTiaoActivity.class);
 
                     }else if(title.equals("传唤证")){
                         intent.setClass(mContext,NoTempActivity.class);
@@ -117,13 +118,13 @@ public class DocTypeActivity extends BaseActivity {
                         intent.setClass(mContext,WuPinFaHuanZhengActivity.class);
                     }
                     else if(title.equals("报告书")){
-                        intent.setClass(mContext,ErrorActivity.class);
+                        intent.setClass(mContext,EmptyDocActivity.class);
                     }
                     else if(title.equals("案件审核登记表")){
                         intent.setClass(mContext,AnJianShenHeDengJiActivity.class);
                     }
                     else if(title.equals("道路交通事故伤者医疗规定告知书")){
-                        intent.setClass(mContext,ErrorActivity.class);
+                        intent.setClass(mContext,EmptyDocActivity.class);
                     }
                     else if(title.equals("道路交通事故处理调查报告书")){
                         intent.setClass(mContext,JiaoTongDiaoChaBaoGaoActivity.class);
@@ -148,6 +149,10 @@ public class DocTypeActivity extends BaseActivity {
                     }
                     else {
                         intent.setClass(mContext,ErrorActivity.class);
+                    }
+
+                    if(!TextUtils.isEmpty(type)&&type.equals(Constants.DOC_NULL)){
+                        intent.putExtra(Constants.TYPE,Constants.DOC_NULL);
                     }
                     intent.putExtra("doc",docTypeList.get(position));
                     startActivity(intent);

@@ -103,6 +103,9 @@ public class JiaoTongShiGuZhengMingActivity extends BaseActivity implements Erro
             edInstitutionName.setText(user.getInstitutionName());
         }
 
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
     }
 
     /**
@@ -117,36 +120,42 @@ public class JiaoTongShiGuZhengMingActivity extends BaseActivity implements Erro
      * 道路交通事故发生经过 $thing_info$
      * 道路交通事故证据 $thing_prof$
      */
-    public void onViewClicked() {
-        _pageNum = edit2String(edPageNum);
-        _institution_name = edit2String(edInstitutionName);
-        _institution_time = edit2String(edInstitutionTime);
-
-        _thing_11 = edit2String(edThing11);
-        _34R34R = edit2String(ed34R34R);
-        _thing_personnel_involved_basic = edit2String(edThingPersonnelInvolvedBasic);
-
-        _thing_car_basic = edit2String(edThingCarBasic);
-        _thing_road_condition = edit2String(edThingRoadCondition);
-
-        _thing_info = edit2String(edThingInfo);
-
-        _thing_prof = edit2String(edThingProf);
-
-        if (TextUtils.isEmpty(_pageNum)
-                && TextUtils.isEmpty(_institution_name)
-                && TextUtils.isEmpty(_institution_time)
-                && TextUtils.isEmpty(_thing_11)
-                && TextUtils.isEmpty(_34R34R)
-                && TextUtils.isEmpty(_thing_personnel_involved_basic)
-                && TextUtils.isEmpty(_thing_car_basic)
-                && TextUtils.isEmpty(_thing_road_condition)
-                && TextUtils.isEmpty(_thing_info)
-                && TextUtils.isEmpty(_thing_prof)
-                ) {
-            showToast("请输入相关内容！");
-            return;
+    public void onViewClicked(boolean isClick) {
+        if(!isClick){
+            tv_right.setVisibility(View.GONE);
         }
+        if(isClick){
+            _pageNum = edit2String(edPageNum);
+            _institution_name = edit2String(edInstitutionName);
+            _institution_time = edit2String(edInstitutionTime);
+
+            _thing_11 = edit2String(edThing11);
+            _34R34R = edit2String(ed34R34R);
+            _thing_personnel_involved_basic = edit2String(edThingPersonnelInvolvedBasic);
+
+            _thing_car_basic = edit2String(edThingCarBasic);
+            _thing_road_condition = edit2String(edThingRoadCondition);
+
+            _thing_info = edit2String(edThingInfo);
+
+            _thing_prof = edit2String(edThingProf);
+
+            if (TextUtils.isEmpty(_pageNum)
+                    && TextUtils.isEmpty(_institution_name)
+                    && TextUtils.isEmpty(_institution_time)
+                    && TextUtils.isEmpty(_thing_11)
+                    && TextUtils.isEmpty(_34R34R)
+                    && TextUtils.isEmpty(_thing_personnel_involved_basic)
+                    && TextUtils.isEmpty(_thing_car_basic)
+                    && TextUtils.isEmpty(_thing_road_condition)
+                    && TextUtils.isEmpty(_thing_info)
+                    && TextUtils.isEmpty(_thing_prof)
+                    ) {
+                showToast("请输入相关内容！");
+                return;
+            }
+        }
+
         Map<String, String> map = new HashMap<String, String>();
         map.put("$pageNum$", _pageNum);
         map.put("$institution_name$", _institution_name);
@@ -169,56 +178,57 @@ public class JiaoTongShiGuZhengMingActivity extends BaseActivity implements Erro
             lawCase.setIsPrint(false);
             lawCase.setDate(TimeUtils.currentTimeMillis());
             lawCase.setDocPath(outPathName);
+            if(isClick){
+                if (null != involvedPerson) {
+                    involvedPerson.setType(Constants.LAWCASE);
+                    if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
+                        involvedPerson.setThing_11(_thing_11);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_personnel_involved_basic())) {
+                        involvedPerson.setThing_personnel_involved_basic(_thing_personnel_involved_basic);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_car_basic())) {
+                        involvedPerson.setThing_car_basic(_thing_car_basic);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_road_condition())) {
+                        involvedPerson.setThing_road_condition(_thing_road_condition);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
+                        involvedPerson.setThing_info(_thing_info);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_prof())) {
+                        involvedPerson.setThing_prof(_thing_prof);
+                    }
 
-            if (null != involvedPerson) {
-                involvedPerson.setType(Constants.LAWCASE);
-                if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                    involvedPerson.setThing_11(_thing_11);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_personnel_involved_basic())) {
-                    involvedPerson.setThing_personnel_involved_basic(_thing_personnel_involved_basic);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_car_basic())) {
-                    involvedPerson.setThing_car_basic(_thing_car_basic);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_road_condition())) {
-                    involvedPerson.setThing_road_condition(_thing_road_condition);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
-                    involvedPerson.setThing_info(_thing_info);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_prof())) {
-                    involvedPerson.setThing_prof(_thing_prof);
+                    involvedPerson.setDate(System.currentTimeMillis());
+                    involvedPersonMoulde.upDateInvolved(involvedPerson);
+                } else {
+                    involvedPerson = new InvolvedPerson();
+                    involvedPerson.setType(Constants.LAWCASE);
+                    if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
+                        involvedPerson.setThing_11(_thing_11);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_personnel_involved_basic())) {
+                        involvedPerson.setThing_personnel_involved_basic(_thing_personnel_involved_basic);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_car_basic())) {
+                        involvedPerson.setThing_car_basic(_thing_car_basic);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_road_condition())) {
+                        involvedPerson.setThing_road_condition(_thing_road_condition);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
+                        involvedPerson.setThing_info(_thing_info);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_prof())) {
+                        involvedPerson.setThing_prof(_thing_prof);
+                    }
+
+                    involvedPerson.setDate(System.currentTimeMillis());
+                    involvedPersonMoulde.addInvolved(involvedPerson);
                 }
 
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.upDateInvolved(involvedPerson);
-            } else {
-                involvedPerson = new InvolvedPerson();
-                involvedPerson.setType(Constants.LAWCASE);
-                if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                    involvedPerson.setThing_11(_thing_11);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_personnel_involved_basic())) {
-                    involvedPerson.setThing_personnel_involved_basic(_thing_personnel_involved_basic);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_car_basic())) {
-                    involvedPerson.setThing_car_basic(_thing_car_basic);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_road_condition())) {
-                    involvedPerson.setThing_road_condition(_thing_road_condition);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
-                    involvedPerson.setThing_info(_thing_info);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_prof())) {
-                    involvedPerson.setThing_prof(_thing_prof);
-                }
-
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.addInvolved(involvedPerson);
             }
-
 
             if (lawCaseMoulde.addLawCase(lawCase)) {
                 Intent in = new Intent(mContext, DocListActivity.class);
@@ -250,7 +260,7 @@ public class JiaoTongShiGuZhengMingActivity extends BaseActivity implements Erro
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

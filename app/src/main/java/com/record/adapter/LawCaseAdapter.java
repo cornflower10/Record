@@ -12,7 +12,7 @@ import com.record.utils.TimeUtils;
 import java.util.List;
 
 /**
- * Created by xiejingbao on 2017/8/14.
+ * Created by 灌云县公安局 李秉键 on 2017/8/14.
  */
 
 public class LawCaseAdapter extends BaseQuickAdapter<LawCase,BaseViewHolder> {

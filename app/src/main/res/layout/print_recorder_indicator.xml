@@ -26,5 +26,5 @@
         android:layout_height="wrap_content"
         android:textColor="@drawable/home_bottom_textcolor"
         android:textSize="@dimen/text_12_sp"
-        android:text="@string/printRecord" />
+        android:text="办公区" />
 </LinearLayout>

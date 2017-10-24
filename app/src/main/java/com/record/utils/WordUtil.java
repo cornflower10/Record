@@ -30,7 +30,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 /**
- * Created by xiejingbao on 2017/8/30.
+ * Created by 灌云县公安局 李秉键 on 2017/8/30.
  */
 
 public class WordUtil {
@@ -111,7 +111,7 @@ public class WordUtil {
             // 替换文本内容
             for(Map.Entry<String, String> entry : map.entrySet())
             {
-                range.replaceText(entry.getKey(), entry.getValue());
+                range.replaceText(entry.getKey(), null==entry.getValue()?"":entry.getValue());
             }
             ByteArrayOutputStream ostream = new ByteArrayOutputStream();
             FileOutputStream out = new FileOutputStream(newFile, true);

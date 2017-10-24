@@ -33,7 +33,7 @@
             android:name=".activity.DocTypeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.RecordDocInfoActivity"
+            android:name=".activity.ShouTiaoActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.DocListActivity"
@@ -86,8 +86,10 @@
         <activity
             android:name=".activity.ShouAnHuiZhiActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.UserInfoActivity" />
-        <activity android:name=".activity.PrintRecordActivity" />
+        <activity android:name=".activity.UserInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PrintRecordActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".activity.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -96,6 +98,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.EmptyDocActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.JiaoTongShiGuZhengMingActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

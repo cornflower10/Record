@@ -6,7 +6,7 @@ import com.record.moudle.entity.User;
 import java.util.List;
 
 /**
- * Created by xiejingbao on 2017/10/12.
+ * Created by 灌云县公安局 李秉键 on 2017/10/12.
  */
 
 public class UserMouldeImpl implements UserMoulde {

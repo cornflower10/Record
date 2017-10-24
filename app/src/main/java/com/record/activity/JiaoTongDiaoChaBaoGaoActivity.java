@@ -94,26 +94,34 @@ public class JiaoTongDiaoChaBaoGaoActivity extends BaseActivity implements Error
         lawCaseMoulde = new LawCaseMoudleImpl(this);
         involvedPersonMoulde = new InvolvedPersonMouldeImpl(this);
 
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
+
     }
 
     //    @OnClick(R.id.bt)
-    public void onViewClicked() {
-        thing = edit2String(edThing);
-        thing11 = edit2String(edThing11);
-        _34R34R = edit2String(ed34R34R);
+    public void onViewClicked(boolean isClick) {
+        if(!isClick){
+            tv_right.setVisibility(View.GONE);
+        }
+        if(isClick){
+            thing = edit2String(edThing);
+            thing11 = edit2String(edThing11);
+            _34R34R = edit2String(ed34R34R);
 
-        thingPersonnelInvolvedBasic = edit2String(edThingPersonnelInvolvedBasic);
-        thingCarBasic = edit2String(edThingCarBasic);
-        thingRoadCondition = edit2String(edThingRoadCondition);
+            thingPersonnelInvolvedBasic = edit2String(edThingPersonnelInvolvedBasic);
+            thingCarBasic = edit2String(edThingCarBasic);
+            thingRoadCondition = edit2String(edThingRoadCondition);
 
-        thingInfo = edit2String(edThingInfo);
-        thingProf = edit2String(edThingProf);
+            thingInfo = edit2String(edThingInfo);
+            thingProf = edit2String(edThingProf);
 
-        thingAnalysis = edit2String(edThingAnalysis);
-        thingLaw = edit2String(edThingLaw);
+            thingAnalysis = edit2String(edThingAnalysis);
+            thingLaw = edit2String(edThingLaw);
 
-        thingConfirmation = edit2String(edThingConfirmation);
-
+            thingConfirmation = edit2String(edThingConfirmation);
+        }
         if(TextUtils.isEmpty(thing)
                 &&TextUtils.isEmpty(thing11)
                 &&TextUtils.isEmpty(_34R34R)
@@ -125,6 +133,7 @@ public class JiaoTongDiaoChaBaoGaoActivity extends BaseActivity implements Error
                 &&TextUtils.isEmpty(thingAnalysis)
                 &&TextUtils.isEmpty(thingLaw)
                 &&TextUtils.isEmpty(thingConfirmation)
+                &&isClick
                 ){
             showToast("请输入相关内容！");
             return;
@@ -155,82 +164,82 @@ public class JiaoTongDiaoChaBaoGaoActivity extends BaseActivity implements Error
             lawCase.setIsPrint(false);
             lawCase.setDate(TimeUtils.currentTimeMillis());
             lawCase.setDocPath(outPathName);
-
-                if(null!=involvedPerson){
+              if(isClick){
+                  if(null!=involvedPerson){
 
 //                    InvolvedPerson involvedP = new InvolvedPerson();
-                    involvedPerson.setType(Constants.LAWCASE);
-                    if (TextUtils.isEmpty(involvedPerson.getThing_())) {
-                        involvedPerson.setThing_(thing);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                        involvedPerson.setThing_11(thing11);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_personnel_involved_basic())) {
-                        involvedPerson.setThing_personnel_involved_basic(thingPersonnelInvolvedBasic);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_car_basic())) {
-                        involvedPerson.setThing_car_basic(thingCarBasic);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_road_condition())) {
-                        involvedPerson.setThing_road_condition(thingRoadCondition);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
-                        involvedPerson.setThing_info(thingInfo);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_prof())) {
-                        involvedPerson.setThing_prof(thingProf);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_analysis())) {
-                        involvedPerson.setThing_analysis(thingAnalysis);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_law())) {
-                        involvedPerson.setThing_law(thingLaw);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_confirmation())) {
-                        involvedPerson.setThing_confirmation(thingConfirmation);
-                    }
+                      involvedPerson.setType(Constants.LAWCASE);
+                      if (TextUtils.isEmpty(involvedPerson.getThing_())) {
+                          involvedPerson.setThing_(thing);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
+                          involvedPerson.setThing_11(thing11);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_personnel_involved_basic())) {
+                          involvedPerson.setThing_personnel_involved_basic(thingPersonnelInvolvedBasic);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_car_basic())) {
+                          involvedPerson.setThing_car_basic(thingCarBasic);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_road_condition())) {
+                          involvedPerson.setThing_road_condition(thingRoadCondition);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
+                          involvedPerson.setThing_info(thingInfo);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_prof())) {
+                          involvedPerson.setThing_prof(thingProf);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_analysis())) {
+                          involvedPerson.setThing_analysis(thingAnalysis);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_law())) {
+                          involvedPerson.setThing_law(thingLaw);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_confirmation())) {
+                          involvedPerson.setThing_confirmation(thingConfirmation);
+                      }
 
-                    involvedPerson.setDate(System.currentTimeMillis());
-                    involvedPersonMoulde.upDateInvolved(involvedPerson);
-                }else {
-                    involvedPerson = new InvolvedPerson();
-                    involvedPerson.setType(Constants.LAWCASE);
-                    if (TextUtils.isEmpty(involvedPerson.getThing_())) {
-                        involvedPerson.setThing_(thing);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                        involvedPerson.setThing_11(thing11);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_personnel_involved_basic())) {
-                        involvedPerson.setThing_personnel_involved_basic(thingPersonnelInvolvedBasic);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_car_basic())) {
-                        involvedPerson.setThing_car_basic(thingCarBasic);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_road_condition())) {
-                        involvedPerson.setThing_road_condition(thingRoadCondition);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
-                        involvedPerson.setThing_info(thingInfo);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_prof())) {
-                        involvedPerson.setThing_prof(thingProf);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_analysis())) {
-                        involvedPerson.setThing_analysis(thingAnalysis);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_law())) {
-                        involvedPerson.setThing_law(thingLaw);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_confirmation())) {
-                        involvedPerson.setThing_confirmation(thingConfirmation);
-                    }
+                      involvedPerson.setDate(System.currentTimeMillis());
+                      involvedPersonMoulde.upDateInvolved(involvedPerson);
+                  }else {
+                      involvedPerson = new InvolvedPerson();
+                      involvedPerson.setType(Constants.LAWCASE);
+                      if (TextUtils.isEmpty(involvedPerson.getThing_())) {
+                          involvedPerson.setThing_(thing);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
+                          involvedPerson.setThing_11(thing11);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_personnel_involved_basic())) {
+                          involvedPerson.setThing_personnel_involved_basic(thingPersonnelInvolvedBasic);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_car_basic())) {
+                          involvedPerson.setThing_car_basic(thingCarBasic);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_road_condition())) {
+                          involvedPerson.setThing_road_condition(thingRoadCondition);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
+                          involvedPerson.setThing_info(thingInfo);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_prof())) {
+                          involvedPerson.setThing_prof(thingProf);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_analysis())) {
+                          involvedPerson.setThing_analysis(thingAnalysis);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_law())) {
+                          involvedPerson.setThing_law(thingLaw);
+                      }
+                      if (TextUtils.isEmpty(involvedPerson.getThing_confirmation())) {
+                          involvedPerson.setThing_confirmation(thingConfirmation);
+                      }
 
-                    involvedPerson.setDate(System.currentTimeMillis());
-                    involvedPersonMoulde.addInvolved(involvedPerson);
-                }
-
+                      involvedPerson.setDate(System.currentTimeMillis());
+                      involvedPersonMoulde.addInvolved(involvedPerson);
+                  }
+              }
 
 
             if (lawCaseMoulde.addLawCase(lawCase)) {
@@ -263,7 +272,7 @@ public class JiaoTongDiaoChaBaoGaoActivity extends BaseActivity implements Error
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

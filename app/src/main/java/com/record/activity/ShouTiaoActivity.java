@@ -30,7 +30,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
+public class ShouTiaoActivity extends BaseActivity implements ErrorView {
 
     @BindView(R.id.ed_name)
     AppCompatEditText edName;
@@ -78,25 +78,40 @@ public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
         involvedPersonMoulde  = new InvolvedPersonMouldeImpl(this);
-
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
     }
 
     //    @OnClick(R.id.bt)
-    public void onViewClicked() {
-        name = edName.getText().toString().trim();
-        money = edMoney.getText().toString().trim();
-        cardNo = edCardNumber.getText().toString().trim();
-        if (TextUtils.isEmpty(name) && TextUtils.isEmpty(money) && TextUtils.isEmpty(cardNo)) {
-            showToast("请输入相关信息");
-            return;
+    public void onViewClicked(boolean isClick) {
+        if(!isClick){
+            tv_right.setVisibility(View.VISIBLE);
         }
-        BigDecimal numberOfMoney = new BigDecimal(money);
+        if(isClick){
+            name = edName.getText().toString().trim();
+            money = edMoney.getText().toString().trim();
+            cardNo = edCardNumber.getText().toString().trim();
+            if (TextUtils.isEmpty(name) && TextUtils.isEmpty(money) && TextUtils.isEmpty(cardNo)) {
+                showToast("请输入相关信息");
+                return;
+            }
+        }
+
+
+
         Map<String, String> map = new HashMap<String, String>();
         map.put("$involved_name$", name);
-        map.put("$moneyUp$", Number2CN.number2CNMontrayUnit(numberOfMoney));
-        map.put("$money$", M + money);
-        map.put("$car_no$", cardNo);
+        if(!TextUtils.isEmpty(money)){
+            BigDecimal numberOfMoney = new BigDecimal(money);
+            map.put("$moneyUp$", Number2CN.number2CNMontrayUnit(numberOfMoney));
+            map.put("$money$", M + money);
+        }else {
+            map.put("$moneyUp$", "");
+            map.put("$money$", M + "");
+        }
 
+        map.put("$car_no$", cardNo);
         try {
             String outPathName = outPath + "/" + docType.getTitle() + TimeUtils.currentTimeMillis() + ".doc";
             WordUtil.doScan(getAssets().open("doc/" + docType.getType() + "/" + docType.getTitle() + ".doc"), outPathName, map);
@@ -111,44 +126,46 @@ public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
             lawCase.setIsPrint(false);
             lawCase.setDate(TimeUtils.currentTimeMillis());
             lawCase.setDocPath(outPathName);
+            if(isClick){
+                if(!TextUtils.isEmpty(name)){
 
-            if(!TextUtils.isEmpty(name)){
-
-                if(null==involvedPerson){
-                    involvedPerson = new InvolvedPerson();
-                    if(TextUtils.isEmpty(involvedPerson.getInvolved_name())){
-                        involvedPerson.setType(Constants.AUTHOR);
-                        involvedPerson.setInvolved_name(name);
-                        involvedPerson.setDate(System.currentTimeMillis());
-                        involvedPersonMoulde.addInvolved(involvedPerson);
-                    }
-                }else {
-                    if(involvedPerson.getType()==Constants.AUTHOR){
+                    if(null==involvedPerson){
+                        involvedPerson = new InvolvedPerson();
                         if(TextUtils.isEmpty(involvedPerson.getInvolved_name())){
+                            involvedPerson.setType(Constants.AUTHOR);
                             involvedPerson.setInvolved_name(name);
                             involvedPerson.setDate(System.currentTimeMillis());
-                            involvedPersonMoulde.upDateInvolved(involvedPerson);
+                            involvedPersonMoulde.addInvolved(involvedPerson);
                         }
+                    }else {
+                        if(involvedPerson.getType()==Constants.AUTHOR){
+                            if(TextUtils.isEmpty(involvedPerson.getInvolved_name())){
+                                involvedPerson.setInvolved_name(name);
+                                involvedPerson.setDate(System.currentTimeMillis());
+                                involvedPersonMoulde.upDateInvolved(involvedPerson);
+                            }
+                        }
+
                     }
+
 
                 }
 
-
-            }
-
-            if(!TextUtils.isEmpty(cardNo)){
-                if(null==involvedCar){
-                    InvolvedPerson involvedCar = new InvolvedPerson();
-                    involvedCar.setType(Constants.CAR);
+                if(!TextUtils.isEmpty(cardNo)){
+                    if(null==involvedCar){
+                        InvolvedPerson involvedCar = new InvolvedPerson();
+                        involvedCar.setType(Constants.CAR);
                         involvedCar.setCar_no(cardNo);
                         involvedCar.setDate(System.currentTimeMillis());
                         involvedPersonMoulde.addInvolved(involvedCar);
-                }else {
-                    involvedCar.setCar_no(cardNo);
-                    involvedCar.setDate(System.currentTimeMillis());
-                    involvedPersonMoulde.upDateInvolved(involvedCar);
+                    }else {
+                        involvedCar.setCar_no(cardNo);
+                        involvedCar.setDate(System.currentTimeMillis());
+                        involvedPersonMoulde.upDateInvolved(involvedCar);
+                    }
                 }
             }
+
             if (lawCaseMoulde.addLawCase(lawCase)) {
                 Intent in = new Intent(mContext, DocListActivity.class);
                 startActivity(in);
@@ -180,7 +197,7 @@ public class RecordDocInfoActivity extends BaseActivity implements ErrorView {
                 startActivityForResult(intent,RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

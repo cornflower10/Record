@@ -5,7 +5,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="index">首页</string>
+    <string name="index">办案区</string>
     <string name="printRecord">打印记录</string>
     <string name="account">我的账户</string>
     <string name="extrernal_storage">存储信息权限</string>

@@ -5,31 +5,33 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white"
    >
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <TextView
+        android:layout_gravity="center_vertical"
         android:textColor="@color/text_color_3232"
         android:textSize="@dimen/text_14_sp"
         android:layout_marginLeft="@dimen/margin_16"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
-        android:gravity="center"
+        android:gravity="left"
         android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="3"
         android:layout_height="wrap_content" />
     <TextView
-
+        android:layout_gravity="center_vertical"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/tv_name"
         android:textColor="@color/text_color_gray_a9"
         android:textSize="@dimen/text_12_sp"
         android:gravity="right"
         android:layout_marginRight="@dimen/margin_16"
-        android:layout_alignParentRight="true"
         android:id="@+id/tv_date"
-        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content" />
-    </RelativeLayout>
+    </LinearLayout>
 <View style="@style/divider_line_margin_left" />
 </LinearLayout>

@@ -86,7 +86,7 @@ public class MainFragment extends BaseFragment {
         if (null != toolbar) {
             ((MainActivity)mContext).setSupportActionBar(toolbar);
             ((MainActivity)mContext).getSupportActionBar().setTitle("");
-            titleName.setText("智慧交警");
+            titleName.setText("智慧交警移动办公平台");
         }
         return view;
     }
@@ -111,7 +111,10 @@ public class MainFragment extends BaseFragment {
                 startActivity(intent);
                 break;
             case R.id.ll_null_doc:
-                ((MainActivity) mContext).mStartActivity(DocListTypeActivity.class);
+                Intent intent_doc = new Intent(mContext,DocListTypeActivity.class);
+                intent_doc.putExtra(Constants.TYPE,Constants.DOC_NULL);
+                startActivity(intent_doc);
+
                 break;
             case R.id.ll_cacul:
                 ((MainActivity) mContext).mStartActivity(ErrorActivity.class);

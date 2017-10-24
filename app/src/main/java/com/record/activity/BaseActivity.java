@@ -25,9 +25,7 @@ import java.util.Map;
 
 import butterknife.ButterKnife;
 
-/**
- * Created by caomingyu on 2016/5/28.
- */
+
 public abstract class  BaseActivity extends AppCompatActivity {
     private Toast toast = null;
     public Context mContext;
@@ -46,6 +44,13 @@ public abstract class  BaseActivity extends AppCompatActivity {
     }
 
     private static final String outPath = Constants.docPath;
+
+    public String getTypeNull() {
+        return typeNull;
+    }
+
+    private String typeNull;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +60,15 @@ public abstract class  BaseActivity extends AppCompatActivity {
         mContext=this;
 
         initToolar();
+        initTypeNull();
     }
+
+    private void initTypeNull() {
+        if(null!=getIntent()){
+            typeNull = getIntent().getStringExtra(Constants.TYPE);
+        }
+    }
+
 
     private void initToolar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

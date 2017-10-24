@@ -3,6 +3,7 @@ package com.record.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import com.record.moudle.entity.DocType;
 import com.record.moudle.moudleDao.ErrorView;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
+import com.record.utils.Constants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,8 +49,8 @@ public class JiuJingBiLuActivity extends BaseActivity implements ErrorView {
 
     private DocType docType;
 
-    private String _name, _ttt, _yyy, _idCard1, _6R6R6R,
-            _transportationType1, _2d2d2d, _9M9M9M, _7N7N7N,_0a0a0a;
+    private String _name="", _ttt="", _yyy="", _idCard1="", _6R6R6R="",
+            _transportationType1="", _2d2d2d="", _9M9M9M="", _7N7N7N="",_0a0a0a="";
 
     private LawCaseMoulde lawCaseMoulde;
     private static final int RES = 110;
@@ -73,6 +75,11 @@ public class JiuJingBiLuActivity extends BaseActivity implements ErrorView {
             docType = getIntent().getParcelableExtra("doc");
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
+
+
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
     }
 
     /**
@@ -87,19 +94,22 @@ public class JiuJingBiLuActivity extends BaseActivity implements ErrorView {
      * 测试地点  $7N7N7N$
      * 对上述测试内容有无异议  $0a0a0a$
      */
-    public void onViewClicked() {
-        _name = edit2String(edName);
-        _ttt = edit2String(edTtt);
-        _yyy = edit2String(edYyy);
+    public void onViewClicked(boolean isClick) {
+        if(isClick){
+            _name = edit2String(edName);
+            _ttt = edit2String(edTtt);
+            _yyy = edit2String(edYyy);
 
-        _idCard1 = edit2String(edIdCard1);
-        _6R6R6R = edit2String(ed6R6R6R);
-        _transportationType1 = edit2String(edTransportationType1);
+            _idCard1 = edit2String(edIdCard1);
+            _6R6R6R = edit2String(ed6R6R6R);
+            _transportationType1 = edit2String(edTransportationType1);
 
-        _2d2d2d = edit2String(ed2d2d2d);
-        _9M9M9M = edit2String(ed9M9M9M);
-        _7N7N7N= edit2String(ed7N7N7N);
-        _0a0a0a = edit2String(ed0a0a0a);
+            _2d2d2d = edit2String(ed2d2d2d);
+            _9M9M9M = edit2String(ed9M9M9M);
+            _7N7N7N= edit2String(ed7N7N7N);
+            _0a0a0a = edit2String(ed0a0a0a);
+        }
+
 
         Map<String, String> map = new HashMap<String, String>();
         map.put("$name$", _name);
@@ -131,7 +141,7 @@ public class JiuJingBiLuActivity extends BaseActivity implements ErrorView {
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

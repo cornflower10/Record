@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by xiejingbao on 2017/9/3.
+ * Created by 灌云县公安局 李秉键 on 2017/9/3.
  */
 
 public class TimeUtils {

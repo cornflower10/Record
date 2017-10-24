@@ -17,9 +17,7 @@ import java.text.DecimalFormat;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * Created by fuweiwei on 2015/11/28.
- */
+
 public class WordHtmlActivity extends BaseActivity {
     @BindView(R.id.tv_right)
     TextView tvRight;

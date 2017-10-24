@@ -3,6 +3,7 @@ package com.record.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
 import com.record.moudle.moudleDao.UserMoulde;
 import com.record.moudle.moudleDao.UserMouldeImpl;
+import com.record.utils.Constants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +43,7 @@ public class QiangJiuFeiZhiFuActivity extends BaseActivity implements ErrorView 
 
     private DocType docType;
 
-    private String _121212, _name, _III, _787878, _institution_police_a;
+    private String _121212 = "", _name="", _III="", _787878="", _institution_police_a="";
 
     private LawCaseMoulde lawCaseMoulde;
     private static final int RES = 110;
@@ -72,6 +74,10 @@ public class QiangJiuFeiZhiFuActivity extends BaseActivity implements ErrorView 
         if(null!=user){
             edInstitutionPoliceA.setText(user.getName());
         }
+
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
     }
 
     /**
@@ -81,14 +87,15 @@ public class QiangJiuFeiZhiFuActivity extends BaseActivity implements ErrorView 
      * 保险凭证号   $787878$
      * 交通警察：$institution_police_a$
      */
-    public void onViewClicked() {
-        _121212 = edit2String(ed121212);
-        _name = edit2String(edName);
-        _III = edit2String(edIII);
+    public void onViewClicked(boolean isClick) {
+        if(isClick){
+            _121212 = edit2String(ed121212);
+            _name = edit2String(edName);
+            _III = edit2String(edIII);
 
-        _787878 = edit2String(ed787878);
-        _institution_police_a = edit2String(edInstitutionPoliceA);
-
+            _787878 = edit2String(ed787878);
+            _institution_police_a = edit2String(edInstitutionPoliceA);
+        }
         Map<String, String> map = new HashMap<String, String>();
         map.put("$121212$", _121212);
         map.put("$name$", _name);
@@ -113,7 +120,7 @@ public class QiangJiuFeiZhiFuActivity extends BaseActivity implements ErrorView 
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

@@ -4,12 +4,6 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
-/**
- * 获取屏幕宽高
- *
- * @author liyujiang[QQ :1032694760]
- * @version 2015 /11/26          Created by Intellij IDEA 14.1
- */
 public class ScreenHelper {
 
     /**

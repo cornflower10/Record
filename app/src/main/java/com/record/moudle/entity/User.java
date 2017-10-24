@@ -8,7 +8,7 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
- * Created by xiejingbao on 2017/9/2.
+ * Created by 灌云县公安局 李秉键 on 2017/9/2.
  */
 @Entity
 public class User implements Parcelable {

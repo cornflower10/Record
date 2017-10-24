@@ -3,6 +3,7 @@ package com.record.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -46,7 +47,7 @@ public class NoTempActivity extends BaseActivity implements ErrorView {
 
     private static final String outPath = Constants.docPath;
 
-    private String name,anyou,time,address,number,companyInfo;
+    private String name="",anyou="",time="",address="",number="",companyInfo="";
 
     private LawCaseMoulde lawCaseMoulde;
     private static final int RES = 110;
@@ -72,16 +73,24 @@ public class NoTempActivity extends BaseActivity implements ErrorView {
             docType = getIntent().getParcelableExtra("doc");
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
+
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
     }
 
-    public void onViewClicked() {
-        name = edit2String(edName);
-        anyou = edit2String(edAnyou);
-        time = edit2String(edTime);
+    public void onViewClicked(boolean isClick) {
 
-        address = edit2String(edAddress);
-        number = edit2String(edNumber);
-        companyInfo = edit2String(edCompanyInfo);
+        if(isClick){
+            name = edit2String(edName);
+            anyou = edit2String(edAnyou);
+            time = edit2String(edTime);
+
+            address = edit2String(edAddress);
+            number = edit2String(edNumber);
+            companyInfo = edit2String(edCompanyInfo);
+        }
+
 
         Map<String, String> map = new HashMap<String, String>();
         map.put("$name$", name);
@@ -130,7 +139,7 @@ public class NoTempActivity extends BaseActivity implements ErrorView {
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

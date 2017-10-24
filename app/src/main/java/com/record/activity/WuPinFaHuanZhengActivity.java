@@ -95,6 +95,10 @@ public class WuPinFaHuanZhengActivity extends BaseActivity implements ErrorView 
         if(null!=user){
             edInstitutionName.setText(user.getInstitutionName());
         }
+
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
     }
 
     /**
@@ -106,29 +110,35 @@ public class WuPinFaHuanZhengActivity extends BaseActivity implements ErrorView 
      * 扣留日期 $73W73W$
      * 发还日期  $05K05K$
      */
-    public void onViewClicked() {
-        _institution_name = edit2String(edInstitutionName);
-        _name = edit2String(edName);
-        _6YH6YH = edit2String(ed6YH6YH);
-
-        _car_no = edit2String(edCarNo);
-        _19D19D = edit2String(ed19D19D);
-        _73W73W = edit2String(ed73W73W);
-
-        _05K05K = edit2String(ed05K05K);
-
-        if (TextUtils.isEmpty(_name)
-                && TextUtils.isEmpty(_institution_name)
-                && TextUtils.isEmpty(_name)
-                && TextUtils.isEmpty(_6YH6YH)
-                && TextUtils.isEmpty(_car_no)
-                && TextUtils.isEmpty(_19D19D)
-                && TextUtils.isEmpty(_73W73W)
-                && TextUtils.isEmpty(_05K05K)
-                ) {
-            showToast("请输入相关内容！");
-            return;
+    public void onViewClicked(boolean isClick) {
+        if(!isClick){
+            tv_right.setVisibility(View.GONE);
         }
+        if(isClick){
+            _institution_name = edit2String(edInstitutionName);
+            _name = edit2String(edName);
+            _6YH6YH = edit2String(ed6YH6YH);
+
+            _car_no = edit2String(edCarNo);
+            _19D19D = edit2String(ed19D19D);
+            _73W73W = edit2String(ed73W73W);
+
+            _05K05K = edit2String(ed05K05K);
+
+            if (TextUtils.isEmpty(_name)
+                    && TextUtils.isEmpty(_institution_name)
+                    && TextUtils.isEmpty(_name)
+                    && TextUtils.isEmpty(_6YH6YH)
+                    && TextUtils.isEmpty(_car_no)
+                    && TextUtils.isEmpty(_19D19D)
+                    && TextUtils.isEmpty(_73W73W)
+                    && TextUtils.isEmpty(_05K05K)
+                    ) {
+                showToast("请输入相关内容！");
+                return;
+            }
+        }
+
 
         Map<String, String> map = new HashMap<String, String>();
         map.put("$institution_name$", _institution_name);
@@ -149,25 +159,25 @@ public class WuPinFaHuanZhengActivity extends BaseActivity implements ErrorView 
             lawCase.setIsPrint(false);
             lawCase.setDate(TimeUtils.currentTimeMillis());
             lawCase.setDocPath(outPathName);
+            if(isClick){
+                if (null != involvedPerson) {
+                    involvedPerson.setType(Constants.CAR);
+                    if (TextUtils.isEmpty(involvedPerson.getCar_no())) {
+                        involvedPerson.setCar_no(_car_no);
+                    }
 
-            if (null != involvedPerson) {
-                involvedPerson.setType(Constants.CAR);
-                if (TextUtils.isEmpty(involvedPerson.getCar_no())) {
-                    involvedPerson.setCar_no(_car_no);
+                    involvedPerson.setDate(System.currentTimeMillis());
+                    involvedPersonMoulde.upDateInvolved(involvedPerson);
+                } else {
+                    involvedPerson = new InvolvedPerson();
+                    involvedPerson.setType(Constants.CAR);
+                    if (TextUtils.isEmpty(involvedPerson.getCar_no())) {
+                        involvedPerson.setCar_no(_car_no);
+                    }
+                    involvedPerson.setDate(System.currentTimeMillis());
+                    involvedPersonMoulde.addInvolved(involvedPerson);
                 }
-
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.upDateInvolved(involvedPerson);
-            } else {
-                involvedPerson = new InvolvedPerson();
-                involvedPerson.setType(Constants.CAR);
-                if (TextUtils.isEmpty(involvedPerson.getCar_no())) {
-                    involvedPerson.setCar_no(_car_no);
-                }
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.addInvolved(involvedPerson);
             }
-
 
             if (lawCaseMoulde.addLawCase(lawCase)) {
                 Intent in = new Intent(mContext, DocListActivity.class);
@@ -199,7 +209,7 @@ public class WuPinFaHuanZhengActivity extends BaseActivity implements ErrorView 
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

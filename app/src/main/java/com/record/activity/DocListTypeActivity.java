@@ -79,6 +79,9 @@ public class DocListTypeActivity extends BaseActivity {
                 if(!TextUtils.isEmpty(type)&&type.equals(Constants.DOC_SETTING)){
                     in.putExtra(Constants.TYPE,type);
                 }
+                if(!TextUtils.isEmpty(type)&&type.equals(Constants.DOC_NULL)){
+                    in.putExtra(Constants.TYPE,type);
+                }
                     in.putExtra("doc",docTypeList.get(position));
                 startActivity(in);
 

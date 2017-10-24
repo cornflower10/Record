@@ -105,54 +105,64 @@ public class JiaoTongDangShiRenActivity extends BaseActivity implements ErrorVie
         lawCaseMoulde = new LawCaseMoudleImpl(this);
         involvedPersonMoulde = new InvolvedPersonMouldeImpl(this);
 
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
+
     }
 
     //    @OnClick(R.id.bt)
-    public void onViewClicked() {
-        _name = edit2String(edName);
-        _involved_sex = edit2String(edInvolvedSex);
-        _involved_nationality = edit2String(edInvolvedNationality);
-
-        _involved_birth_date = edit2String(edInvolvedBirthDate);
-        _involved_idcard = edit2String(edInvolvedIdcard);
-        _involved_native_place = edit2String(edInvolvedNativePlace);
-
-        _involved_degree = edit2String(edInvolvedDegree);
-        _A = edit2String(edA);
-
-        _car_no = edit2String(edCarNo);
-        _B = edit2String(edB);
-
-        _C = edit2String(edC);
-
-        _D = edit2String(edD);
-
-        _E = edit2String(edE);
-        _F = edit2String(edF);
-
-        _G = edit2String(edG);
-
-
-        if (TextUtils.isEmpty(_name)
-                && TextUtils.isEmpty(_involved_sex)
-                && TextUtils.isEmpty(_involved_nationality)
-                && TextUtils.isEmpty(_involved_nationality)
-                && TextUtils.isEmpty(_involved_birth_date)
-                && TextUtils.isEmpty(_involved_idcard)
-                && TextUtils.isEmpty(_involved_native_place)
-                && TextUtils.isEmpty(_involved_degree)
-                && TextUtils.isEmpty(_A)
-                && TextUtils.isEmpty(_car_no)
-                && TextUtils.isEmpty(_B)
-                && TextUtils.isEmpty(_C)
-                && TextUtils.isEmpty(_D)
-                && TextUtils.isEmpty(_E)
-                && TextUtils.isEmpty(_F)
-                && TextUtils.isEmpty(_G)
-                ) {
-            showToast("请输入相关内容！");
-            return;
+    public void onViewClicked(boolean isClick) {
+        if(!isClick){
+            tv_right.setVisibility(View.GONE);
         }
+        if(isClick){
+            _name = edit2String(edName);
+            _involved_sex = edit2String(edInvolvedSex);
+            _involved_nationality = edit2String(edInvolvedNationality);
+
+            _involved_birth_date = edit2String(edInvolvedBirthDate);
+            _involved_idcard = edit2String(edInvolvedIdcard);
+            _involved_native_place = edit2String(edInvolvedNativePlace);
+
+            _involved_degree = edit2String(edInvolvedDegree);
+            _A = edit2String(edA);
+
+            _car_no = edit2String(edCarNo);
+            _B = edit2String(edB);
+
+            _C = edit2String(edC);
+
+            _D = edit2String(edD);
+
+            _E = edit2String(edE);
+            _F = edit2String(edF);
+
+            _G = edit2String(edG);
+
+
+            if (TextUtils.isEmpty(_name)
+                    && TextUtils.isEmpty(_involved_sex)
+                    && TextUtils.isEmpty(_involved_nationality)
+                    && TextUtils.isEmpty(_involved_nationality)
+                    && TextUtils.isEmpty(_involved_birth_date)
+                    && TextUtils.isEmpty(_involved_idcard)
+                    && TextUtils.isEmpty(_involved_native_place)
+                    && TextUtils.isEmpty(_involved_degree)
+                    && TextUtils.isEmpty(_A)
+                    && TextUtils.isEmpty(_car_no)
+                    && TextUtils.isEmpty(_B)
+                    && TextUtils.isEmpty(_C)
+                    && TextUtils.isEmpty(_D)
+                    && TextUtils.isEmpty(_E)
+                    && TextUtils.isEmpty(_F)
+                    && TextUtils.isEmpty(_G)
+                    ) {
+                showToast("请输入相关内容！");
+                return;
+            }
+        }
+
 
         Map<String, String> map = new HashMap<String, String>();
         map.put("$name$", _name);
@@ -185,80 +195,81 @@ public class JiaoTongDangShiRenActivity extends BaseActivity implements ErrorVie
             lawCase.setIsPrint(false);
             lawCase.setDate(TimeUtils.currentTimeMillis());
             lawCase.setDocPath(outPathName);
+           if(isClick){
+               if (null != involvedPerson) {
+                   if(involvedPerson.getType()==Constants.AUTHOR){
+                       if (TextUtils.isEmpty(involvedPerson.getInvolved_name())) {
+                           involvedPerson.setInvolved_name(_name);
+                       }
+                       if (TextUtils.isEmpty(involvedPerson.getInvolved_sex())) {
+                           involvedPerson.setInvolved_sex(_involved_sex);
+                       }
+                       if (TextUtils.isEmpty(involvedPerson.getInvolved_nationality())) {
+                           involvedPerson.setInvolved_nationality(_involved_nationality);
+                       }
+                       if (TextUtils.isEmpty(involvedPerson.getInvolved_birth_date())) {
+                           involvedPerson.setInvolved_birth_date(_involved_birth_date);
+                       }
+                       if (TextUtils.isEmpty(involvedPerson.getInvolved_idcard())) {
+                           involvedPerson.setInvolved_idcard(_involved_idcard);
+                       }
+                       if (TextUtils.isEmpty(involvedPerson.getInvolved_native_place())) {
+                           involvedPerson.setInvolved_native_place(_involved_native_place);
+                       }
+                       if (TextUtils.isEmpty(involvedPerson.getInvolved_degree())) {
+                           involvedPerson.setInvolved_degree(_involved_degree);
+                       }
+                   }
+                   involvedPerson.setDate(System.currentTimeMillis());
+                   involvedPersonMoulde.upDateInvolved(involvedPerson);
+               } else {
+                   involvedPerson = new InvolvedPerson();
+                   involvedPerson.setType(Constants.AUTHOR);
 
-            if (null != involvedPerson) {
-                if(involvedPerson.getType()==Constants.AUTHOR){
-                    if (TextUtils.isEmpty(involvedPerson.getInvolved_name())) {
-                        involvedPerson.setInvolved_name(_name);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getInvolved_sex())) {
-                        involvedPerson.setInvolved_sex(_involved_sex);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getInvolved_nationality())) {
-                        involvedPerson.setInvolved_nationality(_involved_nationality);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getInvolved_birth_date())) {
-                        involvedPerson.setInvolved_birth_date(_involved_birth_date);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getInvolved_idcard())) {
-                        involvedPerson.setInvolved_idcard(_involved_idcard);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getInvolved_native_place())) {
-                        involvedPerson.setInvolved_native_place(_involved_native_place);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getInvolved_degree())) {
-                        involvedPerson.setInvolved_degree(_involved_degree);
-                    }
-                }
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.upDateInvolved(involvedPerson);
-            } else {
-                involvedPerson = new InvolvedPerson();
-                involvedPerson.setType(Constants.AUTHOR);
+                   if (TextUtils.isEmpty(involvedPerson.getInvolved_name())) {
+                       involvedPerson.setInvolved_name(_name);
+                   }
+                   if (TextUtils.isEmpty(involvedPerson.getInvolved_sex())) {
+                       involvedPerson.setInvolved_sex(_involved_sex);
+                   }
+                   if (TextUtils.isEmpty(involvedPerson.getInvolved_nationality())) {
+                       involvedPerson.setInvolved_nationality(_involved_nationality);
+                   }
+                   if (TextUtils.isEmpty(involvedPerson.getInvolved_birth_date())) {
+                       involvedPerson.setInvolved_birth_date(_involved_birth_date);
+                   }
+                   if (TextUtils.isEmpty(involvedPerson.getInvolved_idcard())) {
+                       involvedPerson.setInvolved_idcard(_involved_idcard);
+                   }
+                   if (TextUtils.isEmpty(involvedPerson.getInvolved_native_place())) {
+                       involvedPerson.setInvolved_native_place(_involved_native_place);
+                   }
+                   if (TextUtils.isEmpty(involvedPerson.getInvolved_degree())) {
+                       involvedPerson.setInvolved_degree(_involved_degree);
+                   }
 
-                if (TextUtils.isEmpty(involvedPerson.getInvolved_name())) {
-                    involvedPerson.setInvolved_name(_name);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getInvolved_sex())) {
-                    involvedPerson.setInvolved_sex(_involved_sex);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getInvolved_nationality())) {
-                    involvedPerson.setInvolved_nationality(_involved_nationality);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getInvolved_birth_date())) {
-                    involvedPerson.setInvolved_birth_date(_involved_birth_date);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getInvolved_idcard())) {
-                    involvedPerson.setInvolved_idcard(_involved_idcard);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getInvolved_native_place())) {
-                    involvedPerson.setInvolved_native_place(_involved_native_place);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getInvolved_degree())) {
-                    involvedPerson.setInvolved_degree(_involved_degree);
-                }
-
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.addInvolved(involvedPerson);
-            }
+                   involvedPerson.setDate(System.currentTimeMillis());
+                   involvedPersonMoulde.addInvolved(involvedPerson);
+               }
 
 
-             if(null!=involvedCar){
-                if (TextUtils.isEmpty(involvedCar.getCar_no())) {
-                    involvedCar.setCar_no(_car_no);
-                    involvedCar.setDate(System.currentTimeMillis());
-                    involvedPersonMoulde.upDateInvolved(involvedCar);
-                }
-            }else {
-                 if(!TextUtils.isEmpty(_car_no)){
-                     InvolvedPerson   involvedPersonC = new InvolvedPerson();
-                     involvedPersonC.setType(Constants.CAR);
-                     involvedPersonC.setCar_no(_car_no);
-                     involvedPersonC.setDate(System.currentTimeMillis());
-                     involvedPersonMoulde.addInvolved(involvedPersonC);
-                 }
-             }
+               if(null!=involvedCar){
+                   if (TextUtils.isEmpty(involvedCar.getCar_no())) {
+                       involvedCar.setCar_no(_car_no);
+                       involvedCar.setDate(System.currentTimeMillis());
+                       involvedPersonMoulde.upDateInvolved(involvedCar);
+                   }
+               }else {
+                   if(!TextUtils.isEmpty(_car_no)){
+                       InvolvedPerson   involvedPersonC = new InvolvedPerson();
+                       involvedPersonC.setType(Constants.CAR);
+                       involvedPersonC.setCar_no(_car_no);
+                       involvedPersonC.setDate(System.currentTimeMillis());
+                       involvedPersonMoulde.addInvolved(involvedPersonC);
+                   }
+               }
 
+           }
 
             if (lawCaseMoulde.addLawCase(lawCase)) {
                 Intent in = new Intent(mContext, DocListActivity.class);
@@ -289,7 +300,7 @@ public class JiaoTongDangShiRenActivity extends BaseActivity implements ErrorVie
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

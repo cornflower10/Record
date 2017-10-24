@@ -12,6 +12,7 @@ import com.record.moudle.entity.DocType;
 import com.record.moudle.moudleDao.ErrorView;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
+import com.record.utils.Constants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,7 +39,7 @@ public class AnJianShenHeDengJiActivity extends BaseActivity implements ErrorVie
 
     private DocType docType;
 
-    private String _name7979, _5F5F5F, _6H6H6H, _7J7J7J, _9K9K9K;
+    private String _name7979="", _5F5F5F="", _6H6H6H="", _7J7J7J="", _9K9K9K="";
 
     private LawCaseMoulde lawCaseMoulde;
     private static final int RES = 110;
@@ -58,11 +59,19 @@ public class AnJianShenHeDengJiActivity extends BaseActivity implements ErrorVie
 
         super.onCreate(savedInstanceState);
         tv_right.setVisibility(View.GONE);
-        tv_right.setText("导入模板");
         if (null != getIntent()) {
             docType = getIntent().getParcelableExtra("doc");
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
+        if(getTypeNull().equals(Constants.DOC_NULL)){
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("$456MNB$", _name7979);
+            map.put("$123VCX$", _5F5F5F);
+            map.put("$789POI$", _6H6H6H);
+            map.put("$745DFG$", _7J7J7J);
+            map.put("$965RGN$", _9K9K9K);
+            exportWordAndSave(docType, map, lawCaseMoulde);
+        }
     }
 
     /**

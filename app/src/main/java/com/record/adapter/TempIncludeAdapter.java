@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by xiejingbao on 2017/10/9.
+ * Created by 灌云县公安局 李秉键 on 2017/10/9.
  */
 
 public class TempIncludeAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,BaseViewHolder> {

@@ -12,7 +12,7 @@ import com.record.utils.Constants;
 import java.util.List;
 
 /**
- * Created by xiejingbao on 2017/9/12.
+ * Created by 灌云县公安局 李秉键 on 2017/9/12.
  */
 
 public class DocTypeGroupAdapter extends BaseQuickAdapter<DocType,BaseViewHolder> {

@@ -11,6 +11,7 @@ import com.record.moudle.entity.DocType;
 import com.record.moudle.moudleDao.ErrorView;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
+import com.record.utils.Constants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,9 +44,9 @@ public class WeiTuoShuActivity extends BaseActivity implements ErrorView {
 
     private DocType docType;
 
-    private String _name_9527, _Q1, _W1, _R1,
-            _name_9528,
-            _Q2, _W2, _R2;
+    private String _name_9527="", _Q1="", _W1="", _R1="",
+            _name_9528="",
+            _Q2="", _W2="", _R2="";
 
 
     private LawCaseMoulde lawCaseMoulde;
@@ -71,20 +72,28 @@ public class WeiTuoShuActivity extends BaseActivity implements ErrorView {
             docType = getIntent().getParcelableExtra("doc");
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
+
+
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
     }
 
 
-    public void onViewClicked() {
-        _name_9527 = edit2String(edName9527);
-        _Q1 = edit2String(edQ1);
-        _W1 = edit2String(edW1);
+    public void onViewClicked(boolean isClick) {
+        if(isClick){
 
-        _R1 = edit2String(edR1);
-        _name_9528 = edit2String(edName9528);
-        _Q2 = edit2String(edQ2);
+            _name_9527 = edit2String(edName9527);
+            _Q1 = edit2String(edQ1);
+            _W1 = edit2String(edW1);
 
-        _W2 = edit2String(edW2);
-        _R2 = edit2String(edR2);
+            _R1 = edit2String(edR1);
+            _name_9528 = edit2String(edName9528);
+            _Q2 = edit2String(edQ2);
+
+            _W2 = edit2String(edW2);
+            _R2 = edit2String(edR2);
+        }
 
         if (TextUtils.isEmpty(_name_9527)
                 && TextUtils.isEmpty(_Q1)
@@ -94,6 +103,7 @@ public class WeiTuoShuActivity extends BaseActivity implements ErrorView {
                 && TextUtils.isEmpty(_Q2)
                 && TextUtils.isEmpty(_W2)
                 && TextUtils.isEmpty(_R2)
+                && isClick
                 ) {
             showToast("请输入相关内容！");
             return;
@@ -127,7 +137,7 @@ public class WeiTuoShuActivity extends BaseActivity implements ErrorView {
 //                startActivityForResult(intent, RES);
 //                break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(false);
                 break;
         }
     }

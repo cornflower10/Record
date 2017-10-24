@@ -143,80 +143,90 @@ public class JiaoTongShiGuRenDingJYActivity extends BaseActivity implements Erro
             edInstitutionName.setText(user.getInstitutionName());
         }
 
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
+
     }
 
-    public void onViewClicked() {
-        _pageNum = edit2String(edPageNum);
-        _institution_name = edit2String(edInstitutionName);
-        _thing_ = edit2String(edThing);
-
-        _thing_11 = edit2String(edThing11);
-        _34R34R = edit2String(ed34R34R);
-        _factAndResponsibility = edit2String(edFactAndResponsibility);
-
-        _compensateAndResult = edit2String(edCompensateAndResult);
-        _date = edit2String(edDate);
-
-        _name1 = edit2String(edName1);
-        _idCard1 = edit2String(edIdCard1);
-        _mobile1 = edit2String(edMobile1);
-        _transportation1 = edit2String(edTransportation1);
-        _transportationType1 = edit2String(edTransportationType1);
-
-        _name2 = edit2String(edName2);
-        _idCard2 = edit2String(edIdCard2);
-        _mobile2 = edit2String(edMobile2);
-        _transportation2 = edit2String(edTransportation2);
-        _transportationType2 = edit2String(edTransportationType2);
-
-        _name3 = edit2String(edName3);
-        _idCard3 = edit2String(edIdCard3);
-        _mobile3 = edit2String(edMobile3);
-        _transportation3 = edit2String(edTransportation3);
-        _transportationType3 = edit2String(edTransportationType3);
-
-        _name4 = edit2String(edName4);
-        _idCard4 = edit2String(edIdCard4);
-        _mobile4 = edit2String(edMobile4);
-        _transportation4 = edit2String(edTransportation4);
-        _transportationType4 = edit2String(edTransportationType4);
-
-        if (TextUtils.isEmpty(_pageNum)
-                && TextUtils.isEmpty(_institution_name)
-                && TextUtils.isEmpty(_thing_)
-                && TextUtils.isEmpty(_thing_11)
-                && TextUtils.isEmpty(_34R34R)
-                && TextUtils.isEmpty(_factAndResponsibility)
-                && TextUtils.isEmpty(_compensateAndResult)
-                && TextUtils.isEmpty(_date)
-
-                && TextUtils.isEmpty(_name1)
-                && TextUtils.isEmpty(_idCard1)
-                && TextUtils.isEmpty(_mobile1)
-                && TextUtils.isEmpty(_transportation1)
-                && TextUtils.isEmpty(_transportationType1)
-
-                && TextUtils.isEmpty(_name2)
-                && TextUtils.isEmpty(_idCard2)
-                && TextUtils.isEmpty(_mobile2)
-                && TextUtils.isEmpty(_transportation2)
-                && TextUtils.isEmpty(_transportationType2)
-
-                && TextUtils.isEmpty(_name3)
-                && TextUtils.isEmpty(_idCard3)
-                && TextUtils.isEmpty(_mobile3)
-                && TextUtils.isEmpty(_transportation3)
-                && TextUtils.isEmpty(_transportationType3)
-
-                && TextUtils.isEmpty(_name4)
-                && TextUtils.isEmpty(_idCard4)
-                && TextUtils.isEmpty(_mobile4)
-                && TextUtils.isEmpty(_transportation4)
-                && TextUtils.isEmpty(_transportationType4)
-                ) {
-            showToast("请输入相关内容！");
-            return;
+    public void onViewClicked(boolean isClick) {
+        if(!isClick){
+            tv_right.setVisibility(View.GONE);
         }
+        if(isClick){
+            _pageNum = edit2String(edPageNum);
+            _institution_name = edit2String(edInstitutionName);
+            _thing_ = edit2String(edThing);
+
+            _thing_11 = edit2String(edThing11);
+            _34R34R = edit2String(ed34R34R);
+            _factAndResponsibility = edit2String(edFactAndResponsibility);
+
+            _compensateAndResult = edit2String(edCompensateAndResult);
+            _date = edit2String(edDate);
+
+            _name1 = edit2String(edName1);
+            _idCard1 = edit2String(edIdCard1);
+            _mobile1 = edit2String(edMobile1);
+            _transportation1 = edit2String(edTransportation1);
+            _transportationType1 = edit2String(edTransportationType1);
+
+            _name2 = edit2String(edName2);
+            _idCard2 = edit2String(edIdCard2);
+            _mobile2 = edit2String(edMobile2);
+            _transportation2 = edit2String(edTransportation2);
+            _transportationType2 = edit2String(edTransportationType2);
+
+            _name3 = edit2String(edName3);
+            _idCard3 = edit2String(edIdCard3);
+            _mobile3 = edit2String(edMobile3);
+            _transportation3 = edit2String(edTransportation3);
+            _transportationType3 = edit2String(edTransportationType3);
+
+            _name4 = edit2String(edName4);
+            _idCard4 = edit2String(edIdCard4);
+            _mobile4 = edit2String(edMobile4);
+            _transportation4 = edit2String(edTransportation4);
+            _transportationType4 = edit2String(edTransportationType4);
+
+            if (TextUtils.isEmpty(_pageNum)
+                    && TextUtils.isEmpty(_institution_name)
+                    && TextUtils.isEmpty(_thing_)
+                    && TextUtils.isEmpty(_thing_11)
+                    && TextUtils.isEmpty(_34R34R)
+                    && TextUtils.isEmpty(_factAndResponsibility)
+                    && TextUtils.isEmpty(_compensateAndResult)
+                    && TextUtils.isEmpty(_date)
+
+                    && TextUtils.isEmpty(_name1)
+                    && TextUtils.isEmpty(_idCard1)
+                    && TextUtils.isEmpty(_mobile1)
+                    && TextUtils.isEmpty(_transportation1)
+                    && TextUtils.isEmpty(_transportationType1)
+
+                    && TextUtils.isEmpty(_name2)
+                    && TextUtils.isEmpty(_idCard2)
+                    && TextUtils.isEmpty(_mobile2)
+                    && TextUtils.isEmpty(_transportation2)
+                    && TextUtils.isEmpty(_transportationType2)
+
+                    && TextUtils.isEmpty(_name3)
+                    && TextUtils.isEmpty(_idCard3)
+                    && TextUtils.isEmpty(_mobile3)
+                    && TextUtils.isEmpty(_transportation3)
+                    && TextUtils.isEmpty(_transportationType3)
+
+                    && TextUtils.isEmpty(_name4)
+                    && TextUtils.isEmpty(_idCard4)
+                    && TextUtils.isEmpty(_mobile4)
+                    && TextUtils.isEmpty(_transportation4)
+                    && TextUtils.isEmpty(_transportationType4)
+                    ) {
+                showToast("请输入相关内容！");
+                return;
+            }
+        }
+
         Map<String, String> map = new HashMap<String, String>();
         map.put("$institution_name$", _institution_name);
         map.put("$pageNum$", _pageNum);
@@ -261,32 +271,34 @@ public class JiaoTongShiGuRenDingJYActivity extends BaseActivity implements Erro
             lawCase.setIsPrint(false);
             lawCase.setDate(TimeUtils.currentTimeMillis());
             lawCase.setDocPath(outPathName);
+           if(isClick){
+               if (null != involvedPerson) {
+                   involvedPerson.setType(Constants.LAWCASE);
 
-            if (null != involvedPerson) {
-                involvedPerson.setType(Constants.LAWCASE);
+                   if (TextUtils.isEmpty(involvedPerson.getThing_())) {
+                       involvedPerson.setThing_(_thing_);
+                   }
+                   if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
+                       involvedPerson.setThing_11(_thing_11);
+                   }
 
-                if (TextUtils.isEmpty(involvedPerson.getThing_())) {
-                    involvedPerson.setThing_(_thing_);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                    involvedPerson.setThing_11(_thing_11);
-                }
+                   involvedPerson.setDate(System.currentTimeMillis());
+                   involvedPersonMoulde.upDateInvolved(involvedPerson);
+               } else {
+                   involvedPerson = new InvolvedPerson();
+                   involvedPerson.setType(Constants.LAWCASE);
 
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.upDateInvolved(involvedPerson);
-            } else {
-                involvedPerson = new InvolvedPerson();
-                involvedPerson.setType(Constants.LAWCASE);
+                   if (TextUtils.isEmpty(involvedPerson.getThing_())) {
+                       involvedPerson.setThing_(_thing_);
+                   }
+                   if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
+                       involvedPerson.setThing_11(_thing_11);
+                   }
+                   involvedPerson.setDate(System.currentTimeMillis());
+                   involvedPersonMoulde.addInvolved(involvedPerson);
+               }
+           }
 
-                if (TextUtils.isEmpty(involvedPerson.getThing_())) {
-                    involvedPerson.setThing_(_thing_);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                    involvedPerson.setThing_11(_thing_11);
-                }
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.addInvolved(involvedPerson);
-            }
 
 
             if (lawCaseMoulde.addLawCase(lawCase)) {
@@ -319,7 +331,7 @@ public class JiaoTongShiGuRenDingJYActivity extends BaseActivity implements Erro
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

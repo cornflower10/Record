@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by xiejingbao on 2017/7/13.
+ * Created by 灌云县公安局 李秉键 on 2017/7/13.
  */
 
 public class CustomBottomSheet extends BottomSheetDialog {

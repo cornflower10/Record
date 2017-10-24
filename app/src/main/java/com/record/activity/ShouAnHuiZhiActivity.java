@@ -3,6 +3,7 @@ package com.record.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import com.record.moudle.entity.DocType;
 import com.record.moudle.moudleDao.ErrorView;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
+import com.record.utils.Constants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +41,7 @@ public class ShouAnHuiZhiActivity extends BaseActivity implements ErrorView {
 
     private DocType docType;
 
-    private String _Name7979, _5F5F5F, _6H6H6H, _7J7J7J, _9K9K9K, _1B1B1B;
+    private String _Name7979="", _5F5F5F="", _6H6H6H="", _7J7J7J="", _9K9K9K="", _1B1B1B="";
 
     private LawCaseMoulde lawCaseMoulde;
     private static final int RES = 110;
@@ -64,6 +66,11 @@ public class ShouAnHuiZhiActivity extends BaseActivity implements ErrorView {
             docType = getIntent().getParcelableExtra("doc");
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
+
+
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
     }
 
     /**
@@ -74,13 +81,16 @@ public class ShouAnHuiZhiActivity extends BaseActivity implements ErrorView {
      公安联系人及方式   $9K9K9K$
      发文时间   $1B1B1B$
      */
-    public void onViewClicked() {
-        _Name7979 = edit2String(edName7979);
-        _5F5F5F = edit2String(ed5F5F5F);
-        _6H6H6H = edit2String(ed6H6H6H);
+    public void onViewClicked(boolean isClick) {
+        if(isClick){
+            _Name7979 = edit2String(edName7979);
+            _5F5F5F = edit2String(ed5F5F5F);
+            _6H6H6H = edit2String(ed6H6H6H);
 
-        _7J7J7J = edit2String(ed7J7J7J);
-        _9K9K9K = edit2String(ed9K9K9K);
+            _7J7J7J = edit2String(ed7J7J7J);
+            _9K9K9K = edit2String(ed9K9K9K);
+        }
+
         _1B1B1B = edit2String(ed1B1B1B);
 
         Map<String, String> map = new HashMap<String, String>();
@@ -107,7 +117,7 @@ public class ShouAnHuiZhiActivity extends BaseActivity implements ErrorView {
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

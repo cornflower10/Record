@@ -3,6 +3,7 @@ package com.record.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import com.record.moudle.entity.DocType;
 import com.record.moudle.moudleDao.ErrorView;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
+import com.record.utils.Constants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,6 +72,10 @@ public class XingZhengChuFaBiLuActivity extends BaseActivity implements ErrorVie
             docType = getIntent().getParcelableExtra("doc");
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
+
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
     }
 
     /**
@@ -83,18 +89,20 @@ public class XingZhengChuFaBiLuActivity extends BaseActivity implements ErrorVie
      * 拟作出处罚   $357357$
      * 听证单位     $159159$
      */
-    public void onViewClicked() {
-        _789789 = edit2String(ed789789);
-        _987987 = edit2String(ed987987);
-        _456456 = edit2String(ed456456);
+    public void onViewClicked(boolean isClick) {
+        if(isClick){
+            _789789 = edit2String(ed789789);
+            _987987 = edit2String(ed987987);
+            _456456 = edit2String(ed456456);
 
-        _654654 = edit2String(ed654654);
-        _321321 = edit2String(ed321321);
-        _753753 = edit2String(ed753753);
+            _654654 = edit2String(ed654654);
+            _321321 = edit2String(ed321321);
+            _753753 = edit2String(ed753753);
 
-        _123QWE = edit2String(ed123QWE);
-        _357357 = edit2String(ed357357);
-        _159159 = edit2String(ed159159);
+            _123QWE = edit2String(ed123QWE);
+            _357357 = edit2String(ed357357);
+            _159159 = edit2String(ed159159);
+        }
 
         Map<String, String> map = new HashMap<String, String>();
         map.put("$789789$", _789789);
@@ -125,7 +133,7 @@ public class XingZhengChuFaBiLuActivity extends BaseActivity implements ErrorVie
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

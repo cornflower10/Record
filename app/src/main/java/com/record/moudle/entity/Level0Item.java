@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.record.adapter.TempIncludeAdapter;
 
 /**
- * Created by xiejingbao on 2017/10/9.
+ * Created by 灌云县公安局 李秉键 on 2017/10/9.
  */
 
 public class Level0Item extends AbstractExpandableItem<TempInclude> implements MultiItemEntity {

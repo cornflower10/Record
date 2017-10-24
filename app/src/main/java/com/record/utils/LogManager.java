@@ -4,9 +4,7 @@ import android.util.Log;
 
 import com.record.BuildConfig;
 
-/**
- * Created by caomingyu on 15/10/29.
- */
+
 public class LogManager {
     private static final String TAG = "TEST";
     public static final boolean DEBUG = BuildConfig.DEBUG;

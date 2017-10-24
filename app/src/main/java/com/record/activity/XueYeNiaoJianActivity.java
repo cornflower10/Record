@@ -95,6 +95,11 @@ public class XueYeNiaoJianActivity extends BaseActivity implements ErrorView {
         lawCaseMoulde = new LawCaseMoudleImpl(this);
         involvedPersonMoulde = new InvolvedPersonMouldeImpl(this);
 
+
+        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+            onViewClicked(false);
+        }
+
     }
 
     /**
@@ -110,38 +115,44 @@ public class XueYeNiaoJianActivity extends BaseActivity implements ErrorView {
      * 密封方法    $7Q7Q7Q$
      * 样本量      $8W8W8W$
      */
-    public void onViewClicked() {
-        _name = edit2String(edName);
-        _ttt = edit2String(edTtt);
-        _yyy = edit2String(edYyy);
-
-        _thing_ = edit2String(edThing);
-        _thing_11 = edit2String(edThing11);
-        _thing_info = edit2String(edThingInfo);
-
-        _464646 = edit2String(ed464646);
-        _535353 = edit2String(ed535353);
-
-        _353535 = edit2String(ed353535);
-        _7Q7Q7Q = edit2String(ed7Q7Q7Q);
-
-        _8W8W8W = edit2String(ed8W8W8W);
-
-        if (TextUtils.isEmpty(_name)
-                && TextUtils.isEmpty(_ttt)
-                && TextUtils.isEmpty(_yyy)
-                && TextUtils.isEmpty(_thing_)
-                && TextUtils.isEmpty(_thing_11)
-                && TextUtils.isEmpty(_thing_info)
-                && TextUtils.isEmpty(_464646)
-                && TextUtils.isEmpty(_535353)
-                && TextUtils.isEmpty(_353535)
-                && TextUtils.isEmpty(_7Q7Q7Q)
-                && TextUtils.isEmpty(_8W8W8W)
-                ) {
-            showToast("请输入相关内容！");
-            return;
+    public void onViewClicked(boolean isClick) {
+        if(!isClick){
+            tv_right.setVisibility(View.GONE);
         }
+        if(isClick){
+            _name = edit2String(edName);
+            _ttt = edit2String(edTtt);
+            _yyy = edit2String(edYyy);
+
+            _thing_ = edit2String(edThing);
+            _thing_11 = edit2String(edThing11);
+            _thing_info = edit2String(edThingInfo);
+
+            _464646 = edit2String(ed464646);
+            _535353 = edit2String(ed535353);
+
+            _353535 = edit2String(ed353535);
+            _7Q7Q7Q = edit2String(ed7Q7Q7Q);
+
+            _8W8W8W = edit2String(ed8W8W8W);
+
+            if (TextUtils.isEmpty(_name)
+                    && TextUtils.isEmpty(_ttt)
+                    && TextUtils.isEmpty(_yyy)
+                    && TextUtils.isEmpty(_thing_)
+                    && TextUtils.isEmpty(_thing_11)
+                    && TextUtils.isEmpty(_thing_info)
+                    && TextUtils.isEmpty(_464646)
+                    && TextUtils.isEmpty(_535353)
+                    && TextUtils.isEmpty(_353535)
+                    && TextUtils.isEmpty(_7Q7Q7Q)
+                    && TextUtils.isEmpty(_8W8W8W)
+                    ) {
+                showToast("请输入相关内容！");
+                return;
+            }
+        }
+
 
         Map<String, String> map = new HashMap<String, String>();
         map.put("$name$", _name);
@@ -167,36 +178,36 @@ public class XueYeNiaoJianActivity extends BaseActivity implements ErrorView {
             lawCase.setIsPrint(false);
             lawCase.setDate(TimeUtils.currentTimeMillis());
             lawCase.setDocPath(outPathName);
-
-            if (null != involvedPerson) {
-                involvedPerson.setType(Constants.LAWCASE);
-                if (TextUtils.isEmpty(involvedPerson.getThing_())) {
-                    involvedPerson.setThing_(_thing_);
+            if(isClick){
+                if (null != involvedPerson) {
+                    involvedPerson.setType(Constants.LAWCASE);
+                    if (TextUtils.isEmpty(involvedPerson.getThing_())) {
+                        involvedPerson.setThing_(_thing_);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
+                        involvedPerson.setThing_11(_thing_11);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
+                        involvedPerson.setThing_info(_thing_info);
+                    }
+                    involvedPerson.setDate(System.currentTimeMillis());
+                    involvedPersonMoulde.upDateInvolved(involvedPerson);
+                } else {
+                    involvedPerson = new InvolvedPerson();
+                    involvedPerson.setType(Constants.LAWCASE);
+                    if (TextUtils.isEmpty(involvedPerson.getThing_())) {
+                        involvedPerson.setThing_(_thing_);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
+                        involvedPerson.setThing_11(_thing_11);
+                    }
+                    if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
+                        involvedPerson.setThing_info(_thing_info);
+                    }
+                    involvedPerson.setDate(System.currentTimeMillis());
+                    involvedPersonMoulde.addInvolved(involvedPerson);
                 }
-                if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                    involvedPerson.setThing_11(_thing_11);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
-                    involvedPerson.setThing_info(_thing_info);
-                }
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.upDateInvolved(involvedPerson);
-            } else {
-                involvedPerson = new InvolvedPerson();
-                involvedPerson.setType(Constants.LAWCASE);
-                if (TextUtils.isEmpty(involvedPerson.getThing_())) {
-                    involvedPerson.setThing_(_thing_);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                    involvedPerson.setThing_11(_thing_11);
-                }
-                if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
-                    involvedPerson.setThing_info(_thing_info);
-                }
-                involvedPerson.setDate(System.currentTimeMillis());
-                involvedPersonMoulde.addInvolved(involvedPerson);
             }
-
 
             if (lawCaseMoulde.addLawCase(lawCase)) {
                 Intent in = new Intent(mContext, DocListActivity.class);
@@ -228,7 +239,7 @@ public class XueYeNiaoJianActivity extends BaseActivity implements ErrorView {
                 startActivityForResult(intent, RES);
                 break;
             case R.id.bt:
-                onViewClicked();
+                onViewClicked(true);
                 break;
         }
     }

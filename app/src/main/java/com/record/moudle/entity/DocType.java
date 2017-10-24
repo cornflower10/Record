@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by xiejingbao on 2017/9/1.
+ * Created by 灌云县公安局 李秉键 on 2017/9/1.
  */
 
 public class DocType implements Parcelable {

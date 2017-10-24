@@ -4,7 +4,7 @@ import android.os.Environment;
 import android.util.SparseArray;
 
 /**
- * Created by xiejingbao on 2017/9/3.
+ * Created by 灌云县公安局 李秉键 on 2017/9/3.
  */
 
 public class Constants {
@@ -17,6 +17,7 @@ public class Constants {
 
     public static final String TYPE = "type";
     public static final String DOC_SETTING = "always_doc_setting";
+    public static final String DOC_NULL = "always_doc_null";
 
     public static final int TYPE_ACCI = 1;//交通事故
     public static final int TYPE_CRIMINAL = 2;//刑事案件
