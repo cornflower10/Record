@@ -136,6 +136,8 @@ public class AccountFragment extends BaseFragment implements ErrorView {
     }
 
 
+
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
