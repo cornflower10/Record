@@ -5,6 +5,7 @@ import android.app.Application;
 import com.facebook.stetho.Stetho;
 import com.record.dao.DaoMaster;
 import com.record.dao.DaoSession;
+import com.record.utils.CrashHandler;
 import com.record.utils.ForegroundCallbacks;
 import com.tencent.bugly.crashreport.CrashReport;
 
@@ -39,6 +40,12 @@ public class App extends Application {
         }
 
         CrashReport.initCrashReport(getApplicationContext(), "acd7a7de92", BuildConfig.debug);
+        /**
+         * 全局异常捕获
+         */
+        if(!BuildConfig.debug){
+            CrashHandler.getInstance().init(this);
+        }
 //        CrashHandler.getInstance().init(this);
     }
 

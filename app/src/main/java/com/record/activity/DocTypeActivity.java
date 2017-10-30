@@ -27,6 +27,7 @@ public class DocTypeActivity extends BaseActivity {
     private List<DocType> docTypeList = new ArrayList<>();
     private String type;
     private DocType docType;
+    private static final String YI_LIAO = "道路交通事故伤者医疗规定告知书";
 
     @Override
     public int setContentView() {
@@ -62,10 +63,14 @@ public class DocTypeActivity extends BaseActivity {
         }
 
         for (int i = 0; i < strings.length; i++) {
+            String name = strings[i].substring(0, strings[i].indexOf("."));
+            if(TextUtils.isEmpty(type)
+                    && name.equals(YI_LIAO)){
+              continue;
+            }
             DocType doc = new DocType();
-            String name = strings[i];
             doc.setType(docType.getType());
-            doc.setTitle(name.substring(0, name.indexOf(".")));
+            doc.setTitle(name);
             docTypeList.add(doc);
         }
 
@@ -118,12 +123,12 @@ public class DocTypeActivity extends BaseActivity {
                         intent.setClass(mContext,WuPinFaHuanZhengActivity.class);
                     }
                     else if(title.equals("报告书")){
-                        intent.setClass(mContext,EmptyDocActivity.class);
+                        intent.setClass(mContext,BaoGaoShuActivity.class);
                     }
                     else if(title.equals("案件审核登记表")){
                         intent.setClass(mContext,AnJianShenHeDengJiActivity.class);
                     }
-                    else if(title.equals("道路交通事故伤者医疗规定告知书")){
+                    else if(title.equals(YI_LIAO)){
                         intent.setClass(mContext,EmptyDocActivity.class);
                     }
                     else if(title.equals("道路交通事故处理调查报告书")){

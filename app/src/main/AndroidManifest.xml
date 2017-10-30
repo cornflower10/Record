@@ -102,7 +102,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.JiaoTongShiGuZhengMingActivity"
             android:screenOrientation="portrait"/>
-
+        <activity android:name=".activity.BaoGaoShuActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

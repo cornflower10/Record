@@ -63,7 +63,7 @@ public class AnJianShenHeDengJiActivity extends BaseActivity implements ErrorVie
             docType = getIntent().getParcelableExtra("doc");
         }
         lawCaseMoulde = new LawCaseMoudleImpl(this);
-        if(getTypeNull().equals(Constants.DOC_NULL)){
+        if(!TextUtils.isEmpty(getTypeNull())&&getTypeNull().equals(Constants.DOC_NULL)){
             Map<String, String> map = new HashMap<String, String>();
             map.put("$456MNB$", _name7979);
             map.put("$123VCX$", _5F5F5F);
