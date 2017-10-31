@@ -152,6 +152,21 @@ public class DocTypeActivity extends BaseActivity {
                     else if(title.equals("道路交通事故证明")){
                         intent.setClass(mContext,JiaoTongShiGuZhengMingActivity.class);
                     }
+
+                    else if(title.equals("前科劣迹调查情况")){
+                        intent.setClass(mContext,QianKeLieJiActivity.class);
+                    }
+                    else if(title.equals("现场检查记录")){
+                        intent.setClass(mContext,XianChangJianChaActivity.class);
+                    }
+                    else if(title.equals("发破案经过")){
+                        intent.setClass(mContext,FaPoAnJingGuoActivity.class);
+                    }
+
+                    else if(title.equals("会议公文")||title.equals("交通处罚一般程序")){
+                        intent.setClass(mContext,EmptyDocActivity.class);
+                        intent.putExtra(Constants.TYPE,Constants.DOC_NULL);
+                    }
                     else {
                         intent.setClass(mContext,ErrorActivity.class);
                     }

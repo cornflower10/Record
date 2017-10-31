@@ -28,41 +28,20 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class XingShiAnJianWenShuActivity extends BaseActivity implements ErrorView {
+public class FaPoAnJingGuoActivity extends BaseActivity implements ErrorView {
 
 
     @BindView(R.id.tv_right)
     TextView tv_right;
-    @BindView(R.id.ed_name)
-    AppCompatEditText edName;
-    @BindView(R.id.ed_ttt)
-    AppCompatEditText edTtt;
-    @BindView(R.id.ed_yyy)
-    AppCompatEditText edYyy;
-    @BindView(R.id.ed_thing_)
-    AppCompatEditText edThing;
-    @BindView(R.id.ed_thing_11)
-    AppCompatEditText edThing11;
-    @BindView(R.id.ed_thing_info)
-    AppCompatEditText edThingInfo;
-    @BindView(R.id.ed_464646)
-    AppCompatEditText ed464646;
-    @BindView(R.id.ed_535353)
-    AppCompatEditText ed535353;
-    @BindView(R.id.ed_353535)
-    AppCompatEditText ed353535;
-    @BindView(R.id.ed_7Q7Q7Q)
-    AppCompatEditText ed7Q7Q7Q;
-    @BindView(R.id.ed_8W8W8W)
-    AppCompatEditText ed8W8W8W;
+    @BindView(R.id.ed_involved_name)
+    AppCompatEditText edInvolvedName;
+    @BindView(R.id.ed_7337RM)
+    AppCompatEditText ed7337RM;
 
 
     private DocType docType;
     private static final String outPath = Constants.docPath;
-    private String _name, _ttt, _yyy,
-            _thing_,
-            _thing_11, _thing_info,
-            _464646, _535353, _353535, _7Q7Q7Q, _8W8W8W;
+    private String _involved_name, _7337RM;
 
     private LawCaseMoulde lawCaseMoulde;
     private static final int RES = 110;
@@ -73,7 +52,7 @@ public class XingShiAnJianWenShuActivity extends BaseActivity implements ErrorVi
 
     @Override
     public int setContentView() {
-        return R.layout.activity_xueyejiaojian;
+        return R.layout.activity_po_an;
     }
 
     @Override
@@ -96,57 +75,23 @@ public class XingShiAnJianWenShuActivity extends BaseActivity implements ErrorVi
         involvedPersonMoulde = new InvolvedPersonMouldeImpl(this);
 
 
-        if((!TextUtils.isEmpty(getTypeNull()))&&getTypeNull().equals(Constants.DOC_NULL)){
+        if ((!TextUtils.isEmpty(getTypeNull())) && getTypeNull().equals(Constants.DOC_NULL)) {
             onViewClicked(false);
         }
 
     }
 
-    /**
-     * 当事人姓名  $name$
-     * 性  别      $ttt$
-     * 年  龄     $yyy$
-     * 交通事故时间 $thing_$
-     * 交通事故地点 $thing_11$
-     * 简要案情   $thing_info$
-     * 提取时间   $464646$
-     * 提取地点  $535353$
-     * 消毒液名称    $353535$
-     * 密封方法    $7Q7Q7Q$
-     * 样本量      $8W8W8W$
-     */
+
     public void onViewClicked(boolean isClick) {
-        if(!isClick){
+        if (!isClick) {
             tv_right.setVisibility(View.GONE);
         }
-        if(isClick){
-            _name = edit2String(edName);
-            _ttt = edit2String(edTtt);
-            _yyy = edit2String(edYyy);
+        if (isClick) {
+            _involved_name = edit2String(edInvolvedName);
+            _7337RM = edit2String(ed7337RM);
 
-            _thing_ = edit2String(edThing);
-            _thing_11 = edit2String(edThing11);
-            _thing_info = edit2String(edThingInfo);
-
-            _464646 = edit2String(ed464646);
-            _535353 = edit2String(ed535353);
-
-            _353535 = edit2String(ed353535);
-            _7Q7Q7Q = edit2String(ed7Q7Q7Q);
-
-            _8W8W8W = edit2String(ed8W8W8W);
-
-            if (TextUtils.isEmpty(_name)
-                    && TextUtils.isEmpty(_ttt)
-                    && TextUtils.isEmpty(_yyy)
-                    && TextUtils.isEmpty(_thing_)
-                    && TextUtils.isEmpty(_thing_11)
-                    && TextUtils.isEmpty(_thing_info)
-                    && TextUtils.isEmpty(_464646)
-                    && TextUtils.isEmpty(_535353)
-                    && TextUtils.isEmpty(_353535)
-                    && TextUtils.isEmpty(_7Q7Q7Q)
-                    && TextUtils.isEmpty(_8W8W8W)
+            if (TextUtils.isEmpty(_involved_name)
+                    && TextUtils.isEmpty(_7337RM)
                     ) {
                 showToast("请输入相关内容！");
                 return;
@@ -155,18 +100,8 @@ public class XingShiAnJianWenShuActivity extends BaseActivity implements ErrorVi
 
 
         Map<String, String> map = new HashMap<String, String>();
-        map.put("$name$", _name);
-        map.put("$ttt$", _ttt);
-        map.put("$yyy$", _yyy);
-        map.put("$thing_$", _thing_);
-        map.put("$thing_11$", _thing_11);
-        map.put("$thing_info$", _thing_info);
-        map.put("$464646$", _464646);
-        map.put("$535353$", _535353);
-        map.put("$353535$", _353535);
-
-        map.put("$7Q7Q7Q$", _7Q7Q7Q);
-        map.put("$8W8W8W$", _8W8W8W);
+        map.put("$6565QV$", _involved_name);
+        map.put("$7337RM$", _7337RM);
 
         try {
             String outPathName = outPath + "/" + docType.getTitle() + TimeUtils.currentTimeMillis() + ".doc";
@@ -178,31 +113,19 @@ public class XingShiAnJianWenShuActivity extends BaseActivity implements ErrorVi
             lawCase.setIsPrint(false);
             lawCase.setDate(TimeUtils.currentTimeMillis());
             lawCase.setDocPath(outPathName);
-            if(isClick){
+            if (isClick) {
                 if (null != involvedPerson) {
-                    involvedPerson.setType(Constants.LAWCASE);
-                    if (TextUtils.isEmpty(involvedPerson.getThing_())) {
-                        involvedPerson.setThing_(_thing_);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                        involvedPerson.setThing_11(_thing_11);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
-                        involvedPerson.setThing_info(_thing_info);
+                    involvedPerson.setType(Constants.AUTHOR);
+                    if (TextUtils.isEmpty(involvedPerson.getInvolved_name())) {
+                        involvedPerson.setInvolved_name(_involved_name);
                     }
                     involvedPerson.setDate(System.currentTimeMillis());
                     involvedPersonMoulde.upDateInvolved(involvedPerson);
                 } else {
                     involvedPerson = new InvolvedPerson();
-                    involvedPerson.setType(Constants.LAWCASE);
-                    if (TextUtils.isEmpty(involvedPerson.getThing_())) {
-                        involvedPerson.setThing_(_thing_);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_11())) {
-                        involvedPerson.setThing_11(_thing_11);
-                    }
-                    if (TextUtils.isEmpty(involvedPerson.getThing_info())) {
-                        involvedPerson.setThing_info(_thing_info);
+                    involvedPerson.setType(Constants.AUTHOR);
+                    if (TextUtils.isEmpty(involvedPerson.getInvolved_name())) {
+                        involvedPerson.setInvolved_name(_involved_name);
                     }
                     involvedPerson.setDate(System.currentTimeMillis());
                     involvedPersonMoulde.addInvolved(involvedPerson);
@@ -251,10 +174,7 @@ public class XingShiAnJianWenShuActivity extends BaseActivity implements ErrorVi
             if (resultCode == RESULT_OK) {
                 involvedPerson = data.getParcelableExtra("Receipt");
                 if (null != involvedPerson) {
-                    edThing.setText(involvedPerson.getThing_());
-                    edThing11.setText(involvedPerson.getThing_11());
-                    edThingInfo.setText(involvedPerson.getThing_info());
-
+                    edInvolvedName.setText(involvedPerson.getInvolved_name());
                 }
             }
 

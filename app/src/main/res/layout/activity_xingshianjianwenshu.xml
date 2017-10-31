@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+   >
+    <include layout="@layout/toolbar"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.v7.widget.AppCompatEditText
+        style="@style/editText"
+        android:id="@+id/ed_involved_name"
+        android:hint="嫌疑人名称"
+       />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_98765Q"
+        android:hint="平台名称"
+        style="@style/editText" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_12345W"
+            android:hint="查询情况"
+            style="@style/editText" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/ed_65432H"
+        android:hint="案发时间"
+        style="@style/editText" />
+
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_756942D"
+            android:hint="嫌疑人基本信息"
+            style="@style/editText"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/ed_745896J"
+            android:hint="查询单位"
+            style="@style/editText" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:textSize="@dimen/text_16_sp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorAccent"
+       android:layout_margin="@dimen/margin_16"
+        android:id="@+id/bt"
+        android:text="确 定"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>
