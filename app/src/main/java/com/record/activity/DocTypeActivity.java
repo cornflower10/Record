@@ -64,9 +64,11 @@ public class DocTypeActivity extends BaseActivity {
 
         for (int i = 0; i < strings.length; i++) {
             String name = strings[i].substring(0, strings[i].indexOf("."));
-            if(TextUtils.isEmpty(type)
-                    && name.equals(YI_LIAO)){
-              continue;
+            if(TextUtils.isEmpty(type)){
+                if(name.equals(YI_LIAO)||name.equals("交通处罚一般程序")){
+                    continue;
+
+                }
             }
             DocType doc = new DocType();
             doc.setType(docType.getType());
