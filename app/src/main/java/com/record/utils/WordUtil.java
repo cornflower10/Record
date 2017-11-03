@@ -87,7 +87,7 @@ public class WordUtil {
             context.startActivity(intent);
         } catch(ActivityNotFoundException e) {
             //检测到系统尚未安装OliveOffice的apk程序
-            Toast.makeText(context, "未找到软件", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "未找到软件,请先下载", Toast.LENGTH_LONG).show();
             //请先到www.olivephone.com/e.apk下载并安装
         }
     }
@@ -192,5 +192,46 @@ public class WordUtil {
                 ie.printStackTrace();
             }
         }
+    }
+
+
+
+    /**
+     * 将html文件保存到sd卡
+     * */
+    public static String copyFile(InputStream is , String path) {
+        FileOutputStream fos = null;
+        BufferedWriter bw = null;
+        try {
+            File file = new File(path);
+            if(!file.exists()){
+                FileUtils.makeDirs(Constants.DOC_TEMP);
+                FileUtils.makeDirs(Constants.LAW_PATH);
+                FileUtils.makeDirs(path);
+                file = new File(path);
+                fos = new FileOutputStream(file);
+                int byteCount;
+                byte[] buffer = new byte[1024];
+                while ((byteCount = is.read(buffer)) != -1) {
+                    fos.write(buffer, 0, byteCount);
+                }
+                fos.flush();
+            }
+            return path;
+        } catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } finally {
+            try {
+                if (bw != null)
+                    bw.close();
+                if (fos != null)
+                    fos.close();
+            } catch (IOException ie) {
+                ie.printStackTrace();
+            }
+        }
+        return "";
     }
 }

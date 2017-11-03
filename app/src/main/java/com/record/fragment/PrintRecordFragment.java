@@ -1,6 +1,7 @@
 package com.record.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,8 @@ public class PrintRecordFragment extends BaseFragment implements ErrorView {
     TextView titleName;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.rv)
+    RecyclerView rv;
 
     private String mParam1;
     private String mParam2;

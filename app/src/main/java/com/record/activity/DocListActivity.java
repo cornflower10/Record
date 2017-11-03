@@ -1,6 +1,5 @@
 package com.record.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,10 +9,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.record.R;
 import com.record.adapter.LawCaseAdapter;
 import com.record.moudle.entity.LawCase;
+import com.record.moudle.moudleDao.ErrorView;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
-import com.record.moudle.moudleDao.ErrorView;
-import com.record.utils.Constants;
 import com.record.utils.WordUtil;
 
 import java.util.ArrayList;
@@ -48,19 +46,21 @@ public class DocListActivity extends BaseActivity implements ErrorView {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             LawCase lawCase = lawCaseMoulde.seletcById(list.get(position).getId());
-                try {
-                    WordUtil.convert2Html(lawCase.getDocPath(),
-                            Constants.htmlPath+"/"+
-                                    lawCase.getLawCaseTitle()+".html");
+//                try {
+//                    WordUtil.convert2Html(lawCase.getDocPath(),
+//                            Constants.htmlPath+"/"+
+//                                    lawCase.getLawCaseTitle()+".html");
+//
+//                    Intent intent = new Intent(mContext,WordHtmlActivity.class);
+//                    intent.putExtra("path",lawCase.getDocPath());
+//                    startActivity(intent);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                    showToast(e.getMessage());
+//                }
 
-                    Intent intent = new Intent(mContext,WordHtmlActivity.class);
-                    intent.putExtra("path",lawCase.getDocPath());
-                    startActivity(intent);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    showToast(e.getMessage());
-                }
 
+                WordUtil.doOpenWord(mContext,lawCase.getDocPath());
 
             }
         });

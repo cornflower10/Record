@@ -14,7 +14,8 @@ public class Constants {
     public static final String pathDir = Environment.getExternalStorageDirectory().getPath();
     public static final String docPath =pathDir+dir+doc;
     public static final String htmlPath =pathDir+dir+html;
-
+    public static final String LAW_PATH =pathDir+dir+"/law";
+    public static final String DOC_TEMP =pathDir+dir+"/temp";
     public static final String TYPE = "type";
     public static final String DOC_SETTING = "always_doc_setting";
     public static final String DOC_NULL = "always_doc_null";

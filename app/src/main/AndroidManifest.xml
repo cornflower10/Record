@@ -20,9 +20,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.MainActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.WordHtmlActivity"
             android:screenOrientation="portrait" />
@@ -86,11 +84,14 @@
         <activity
             android:name=".activity.ShouAnHuiZhiActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.UserInfoActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.PrintRecordActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.LoginActivity"
+        <activity
+            android:name=".activity.UserInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PrintRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -98,19 +99,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.EmptyDocActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.JiaoTongShiGuZhengMingActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.BaoGaoShuActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.FaPoAnJingGuoActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.XianChangJianChaActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.EmptyDocActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.JiaoTongShiGuZhengMingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BaoGaoShuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FaPoAnJingGuoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.XianChangJianChaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.QianKeLieJiActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.TrafficAccidentDiagramActivity" />
+        <activity android:name=".activity.TrafficLawsActivity"></activity>
 
-        <activity android:name=".activity.QianKeLieJiActivity"
-            android:screenOrientation="portrait"/>
+
+        <provider
+            android:name="com.record.utils.LocalFileContentProvider"
+            android:authorities="com.record.utils.LocalFileContentProvider"/>
     </application>
 
 </manifest>

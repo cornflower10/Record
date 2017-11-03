@@ -35,4 +35,11 @@
       android:layout_height="wrap_content" />
 
   </RelativeLayout>
+  <TextView
+      android:textSize="@dimen/text_16_sp"
+      android:layout_marginTop="@dimen/dp_40"
+      android:gravity="center_horizontal"
+      android:text="作者版权所有：灌云县公安局民警李秉键"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
 </LinearLayout>

@@ -14,6 +14,8 @@ import com.record.App;
 import com.record.R;
 import com.record.activity.MainActivity;
 import com.record.activity.PrintRecordActivity;
+import com.record.activity.TrafficAccidentDiagramActivity;
+import com.record.activity.TrafficLawsActivity;
 import com.record.activity.UserInfoActivity;
 import com.record.moudle.entity.User;
 import com.record.moudle.moudleDao.ErrorView;
@@ -156,8 +158,12 @@ public class AccountFragment extends BaseFragment implements ErrorView {
                 startActivity(intent);
                 break;
             case R.id.rl_traffic_accident_photo:
+                Intent inten = new Intent(mContext, TrafficAccidentDiagramActivity.class);
+                startActivity(inten);
                 break;
             case R.id.rl_traffic_accident_law:
+                Intent tra = new Intent(mContext, TrafficLawsActivity.class);
+                startActivity(tra);
                 break;
             case R.id.rl_talk:
                 break;

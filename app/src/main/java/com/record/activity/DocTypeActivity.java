@@ -1,5 +1,6 @@
 package com.record.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,6 +29,8 @@ public class DocTypeActivity extends BaseActivity {
     private String type;
     private DocType docType;
     private static final String YI_LIAO = "道路交通事故伤者医疗规定告知书";
+    private ProgressDialog progress;
+    private String path;
 
     @Override
     public int setContentView() {
@@ -81,20 +84,45 @@ public class DocTypeActivity extends BaseActivity {
         rv.setLayoutManager(new LinearLayoutManager(mContext));
         docTypeAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+            public void onItemClick(BaseQuickAdapter adapter, View view, final int position) {
                 if(!TextUtils.isEmpty(type)&&type.equals(Constants.DOC_SETTING)){
-                    String path = Constants.htmlPath+"/"+docTypeList.get(position).getTitle()+".html";
-                    try {
-                        WordUtil.convert2HtmlWithStream(
-                                getAssets().open("doc/"+docType.getType()+"/"+docTypeList.get(position).getTitle()+".doc"),
-                               path );
-                        Intent in = new Intent(mContext,WordHtmlActivity.class);
-                        in.putExtra("path",path);
-                        startActivity(in);
-                    } catch (Exception e) {
-                        showToast("查看模板失败"+e.getMessage());
-                        e.printStackTrace();
-                    }
+//                    String path = Constants.htmlPath+"/"+docTypeList.get(position).getTitle()+".html";
+//                    try {
+//                        WordUtil.convert2HtmlWithStream(
+//                                getAssets().open("doc/"+docType.getType()+"/"+docTypeList.get(position).getTitle()+".doc"),
+//                               path );
+//                        Intent in = new Intent(mContext,WordHtmlActivity.class);
+//                        in.putExtra("path",path);
+//                        startActivity(in);
+//                    } catch (Exception e) {
+//                        showToast("查看模板失败"+e.getMessage());
+//                        e.printStackTrace();
+//                    }
+                    progress = ProgressDialog.show(mContext,"","加载中...");
+                    progress.setCancelable(false);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                path =  WordUtil.copyFile(getAssets().open("doc/"+docType.getType()+"/"+docTypeList.get(position).getTitle()+".doc"),
+                                        Constants.DOC_TEMP+"/"+docTypeList.get(position).getTitle()+".doc");
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                showToast("查看失败");
+                            }
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progress.dismiss();
+                                    if(!TextUtils.isEmpty(path)){
+                                        WordUtil.doOpenWord(mContext,path);
+                                    }
+                                }
+                            });
+                        }
+                    }).start();
+
                 }
                 else {
                    String title = docTypeList.get(position).getTitle();

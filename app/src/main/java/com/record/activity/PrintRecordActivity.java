@@ -1,8 +1,6 @@
 package com.record.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,7 +15,6 @@ import com.record.moudle.entity.LawCase;
 import com.record.moudle.moudleDao.ErrorView;
 import com.record.moudle.moudleDao.LawCaseMoudleImpl;
 import com.record.moudle.moudleDao.LawCaseMoulde;
-import com.record.utils.TimeUtils;
 import com.record.utils.WordUtil;
 
 import java.util.List;
@@ -59,20 +56,20 @@ public class PrintRecordActivity extends BaseActivity implements ErrorView {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 LawCase lawCase = lawCaseMoulde.seletcById(list.get(position).getId());
-                try {
-                    WordUtil.convert2Html(lawCase.getDocPath(),
-                            Environment.getExternalStorageDirectory().getPath() + "/" +
-                                    lawCase.getLawCaseTitle() + TimeUtils.currentTimeMillis() + ".html");
-
-                    Intent intent = new Intent(mContext, WordHtmlActivity.class);
-                    intent.putExtra("path", lawCase.getDocPath());
-                    intent.putExtra("printRecordFragment", true);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    ((MainActivity) mContext).showToast(e.getMessage());
-                }
-
+//                try {
+//                    WordUtil.convert2Html(lawCase.getDocPath(),
+//                            Environment.getExternalStorageDirectory().getPath() + "/" +
+//                                    lawCase.getLawCaseTitle() + TimeUtils.currentTimeMillis() + ".html");
+//
+//                    Intent intent = new Intent(mContext, WordHtmlActivity.class);
+//                    intent.putExtra("path", lawCase.getDocPath());
+//                    intent.putExtra("printRecordFragment", true);
+//                    startActivity(intent);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                    ((MainActivity) mContext).showToast(e.getMessage());
+//                }
+                WordUtil.doOpenWord(mContext,lawCase.getDocPath());
 
             }
         });

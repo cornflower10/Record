@@ -6,12 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.record.fragment.MainFragment">
     <include layout="@layout/toolbar"/>
-    <ImageView
-        android:layout_marginRight="@dimen/margin_16"
-        android:layout_marginLeft="@dimen/margin_16"
-        android:src="@drawable/construction"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <android.support.v7.widget.RecyclerView
+        android:background="@android:color/white"
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
