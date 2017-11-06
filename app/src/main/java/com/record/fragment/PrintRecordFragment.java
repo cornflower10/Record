@@ -1,6 +1,8 @@
 package com.record.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -8,9 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.record.R;
+import com.record.activity.ErrorActivity;
 import com.record.activity.MainActivity;
+import com.record.adapter.OfficeItemAdapter;
+import com.record.moudle.entity.OfficeItem;
 import com.record.moudle.moudleDao.ErrorView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +39,7 @@ public class PrintRecordFragment extends BaseFragment implements ErrorView {
 
     private String mParam1;
     private String mParam2;
+    private List<OfficeItem> list;
 
     public PrintRecordFragment() {
     }
@@ -72,8 +82,55 @@ public class PrintRecordFragment extends BaseFragment implements ErrorView {
             ((MainActivity) mContext).getSupportActionBar().setTitle("");
             titleName.setText("办公区");
         }
+        initData();
         return view;
 
+    }
+
+    private void initData() {
+        list = new ArrayList<>();
+       String [] names = getResources().getStringArray(R.array.name);
+        for (int i = 0; i <names.length ; i++) {
+            OfficeItem off = new OfficeItem(names[i]);
+            switch (i){
+                case 0:
+                    off.setResource(R.mipmap.task_blue);
+                    break;
+
+                case 1:
+                    off.setResource(R.mipmap.apply_orange);
+                    break;
+                case 2:
+                    off.setResource(R.mipmap.approval_red);
+                    break;
+                case 3:
+                    off.setResource(R.mipmap.clock_blue);
+                    break;
+                case 4:
+                    off.setResource(R.mipmap.record_orange);
+                    break;
+                case 5:
+                    off.setResource(R.mipmap.report_red);
+                    break;
+                default:
+                    break;
+
+            }
+            list.add(off);
+
+        }
+        OfficeItemAdapter adapter = new OfficeItemAdapter(R.layout.office_item,list);
+        GridLayoutManager gridLay = new GridLayoutManager(mContext,3);
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent in  =new Intent(mContext, ErrorActivity.class);
+                startActivity(in);
+
+            }
+        });
+        rv.setAdapter(adapter);
+        rv.setLayoutManager(gridLay);
     }
 
     @Override

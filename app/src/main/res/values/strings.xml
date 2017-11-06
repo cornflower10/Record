@@ -9,4 +9,14 @@
     <string name="printRecord">打印记录</string>
     <string name="account">我的账户</string>
     <string name="extrernal_storage">存储信息权限</string>
+
+
+    <string-array name="name">
+        <item>任务</item>
+        <item>申请 </item>
+        <item>审批</item>
+        <item>外出打卡</item>
+        <item>考勤记录</item>
+        <item>工作汇报</item>
+    </string-array>
 </resources>
