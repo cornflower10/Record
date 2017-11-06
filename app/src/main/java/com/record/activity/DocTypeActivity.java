@@ -68,7 +68,11 @@ public class DocTypeActivity extends BaseActivity {
         for (int i = 0; i < strings.length; i++) {
             String name = strings[i].substring(0, strings[i].indexOf("."));
             if(TextUtils.isEmpty(type)){
-                if(name.equals(YI_LIAO)||name.equals("交通处罚一般程序")){
+                if(name.equals(YI_LIAO)||
+                        name.equals("交通处罚一般程序")||
+                        name.equals(Constants.WPS_NAME)||
+                        name.equals(Constants.NULL_HUI_YI_GONG_WEN)||
+                        name.equals(Constants.NULL_JIAOTONG)){
                     continue;
 
                 }
@@ -193,7 +197,11 @@ public class DocTypeActivity extends BaseActivity {
                         intent.setClass(mContext,FaPoAnJingGuoActivity.class);
                     }
 
-                    else if(title.equals("会议公文")||title.equals("交通处罚一般程序")){
+                    else if(title.equals("会议公文")||
+                            title.equals("交通处罚一般程序")||
+                            title.equals(Constants.WPS_NAME)||
+                            title.equals(Constants.NULL_HUI_YI_GONG_WEN)||
+                            title.equals(Constants.NULL_JIAOTONG)){
                         intent.setClass(mContext,EmptyDocActivity.class);
                         intent.putExtra(Constants.TYPE,Constants.DOC_NULL);
                     }

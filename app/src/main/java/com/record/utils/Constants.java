@@ -55,5 +55,8 @@ public class Constants {
     public static final String INVOLVED_ ="involved_";
     public static final String THING_ ="thing_";
     public static final String CAR_ ="car_";
+    public static  final String WPS_NAME = "空白文书-交通违法一般程序";
+    public static  final String NULL_JIAOTONG = "空白文书-道路交通事故案卷文书 2";
+    public static  final String NULL_HUI_YI_GONG_WEN = "空白文书-会议公文";
 
 }

@@ -125,7 +125,11 @@ public abstract class  BaseActivity extends AppCompatActivity {
                                   Map map, LawCaseMoulde lawCaseMoulde){
         String outPathName = outPath + "/" + docType.getTitle() + TimeUtils.currentTimeMillis() + ".doc";
         try {
-            WordUtil.doScan(getAssets().open("doc/" + docType.getType() + "/" + docType.getTitle() + ".doc"),
+            String title = docType.getTitle();
+            WordUtil.doScan(getAssets().open("doc/" +
+                            docType.getType() + "/" +
+                            title +
+                            (title.equals(Constants.WPS_NAME)?".wps":".doc")),
                     outPathName, map);
 
             LawCase lawCase = new LawCase();
