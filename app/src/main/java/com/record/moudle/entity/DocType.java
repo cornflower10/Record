@@ -12,6 +12,15 @@ public class DocType implements Parcelable {
     private String title;
     private int type;
     private String path;
+    private String absoluteTitle;
+
+    public String getAbsoluteTitle() {
+        return absoluteTitle;
+    }
+
+    public void setAbsoluteTitle(String absoluteTitle) {
+        this.absoluteTitle = absoluteTitle;
+    }
 
     public String getPath() {
         return path;

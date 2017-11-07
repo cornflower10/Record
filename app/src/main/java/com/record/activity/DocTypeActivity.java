@@ -80,6 +80,7 @@ public class DocTypeActivity extends BaseActivity {
             DocType doc = new DocType();
             doc.setType(docType.getType());
             doc.setTitle(name);
+            doc.setAbsoluteTitle(strings[i]);
             docTypeList.add(doc);
         }
 
@@ -108,8 +109,8 @@ public class DocTypeActivity extends BaseActivity {
                         @Override
                         public void run() {
                             try {
-                                path =  WordUtil.copyFile(getAssets().open("doc/"+docType.getType()+"/"+docTypeList.get(position).getTitle()+".doc"),
-                                        Constants.DOC_TEMP+"/"+docTypeList.get(position).getTitle()+".doc");
+                                path =  WordUtil.copyFile(getAssets().open("doc/"+docType.getType()+"/"+docTypeList.get(position).getAbsoluteTitle()),
+                                        Constants.DOC_TEMP+"/"+docTypeList.get(position).getAbsoluteTitle());
                             } catch (IOException e) {
                                 e.printStackTrace();
                                 showToast("查看失败");

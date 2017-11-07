@@ -1,6 +1,8 @@
 package com.record;
 
 import android.app.Application;
+import android.os.Build;
+import android.os.StrictMode;
 
 import com.facebook.stetho.Stetho;
 import com.record.dao.DaoMaster;
@@ -47,6 +49,10 @@ public class App extends Application {
             CrashHandler.getInstance().init(this);
         }
 //        CrashHandler.getInstance().init(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+        }
     }
 
     public boolean isLogin() {

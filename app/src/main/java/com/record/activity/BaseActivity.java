@@ -123,34 +123,53 @@ public abstract class  BaseActivity extends AppCompatActivity {
 
     public void exportWordAndSave(DocType docType,
                                   Map map, LawCaseMoulde lawCaseMoulde){
-        String outPathName = outPath + "/" + docType.getTitle() + TimeUtils.currentTimeMillis() + ".doc";
+        String title = docType.getTitle();
+        String outPathName = outPath + "/" + docType.getTitle() + TimeUtils.currentTimeMillis() +  (title.equals(Constants.WPS_NAME)?".wps":".doc");
         try {
-            String title = docType.getTitle();
             WordUtil.doScan(getAssets().open("doc/" +
                             docType.getType() + "/" +
                             title +
                             (title.equals(Constants.WPS_NAME)?".wps":".doc")),
                     outPathName, map);
+            save2DB(docType,lawCaseMoulde,outPathName);
 
-            LawCase lawCase = new LawCase();
-            lawCase.setType(docType.getType());
-            lawCase.setLawCaseTitle(docType.getTitle());
-            lawCase.setIsPrint(false);
-            lawCase.setDate(TimeUtils.currentTimeMillis());
-            lawCase.setDocPath(outPathName);
-            if (lawCaseMoulde.addLawCase(lawCase)) {
-                Intent in = new Intent(mContext, DocListActivity.class);
-                startActivity(in);
-                showToast("生成成功");
-                App.getInstance().getForegroundCallbacks()
-                        .finishActivity(DocTypeActivity.class);
-                App.getInstance().getForegroundCallbacks()
-                        .finishActivity(DocListTypeActivity.class);
-                finish();
-            }
         } catch (IOException e) {
             e.printStackTrace();
-            showToast("生成失败" + e.getMessage());
+            if(e.getMessage().contains("Unable to read entire header; 6 bytes read; expected 512 bytes")){
+                try {
+                    WordUtil.copyFile(getAssets().open("doc/" +
+                            docType.getType() + "/" +
+                            title +
+                            (title.equals(Constants.WPS_NAME)?".wps":".doc")),outPathName);
+                    save2DB(docType,lawCaseMoulde,outPathName);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+            } else {
+                showToast("生成失败" + e.getMessage());
+            }
+
+
+        }
+    }
+
+    private void save2DB(DocType docType,LawCaseMoulde lawCaseMoulde,String outPathName){
+        LawCase lawCase = new LawCase();
+        lawCase.setType(docType.getType());
+        lawCase.setLawCaseTitle(docType.getTitle());
+        lawCase.setIsPrint(false);
+        lawCase.setDate(TimeUtils.currentTimeMillis());
+        lawCase.setDocPath(outPathName);
+        if (lawCaseMoulde.addLawCase(lawCase)) {
+            Intent in = new Intent(mContext, DocListActivity.class);
+            startActivity(in);
+            showToast("生成成功");
+            App.getInstance().getForegroundCallbacks()
+                    .finishActivity(DocTypeActivity.class);
+            App.getInstance().getForegroundCallbacks()
+                    .finishActivity(DocListTypeActivity.class);
+            finish();
         }
     }
 

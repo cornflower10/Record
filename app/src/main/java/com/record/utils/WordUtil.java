@@ -74,6 +74,7 @@ public class WordUtil {
 //        //查看
 //        doOpenWord();
     }
+
     /**
      * 调用手机中安装的可打开word的软件
      */
@@ -197,7 +198,7 @@ public class WordUtil {
 
 
     /**
-     * 将html文件保存到sd卡
+     *
      * */
     public static String copyFile(InputStream is , String path) {
         FileOutputStream fos = null;
@@ -206,6 +207,7 @@ public class WordUtil {
             File file = new File(path);
             if(!file.exists()){
                 FileUtils.makeDirs(Constants.DOC_TEMP);
+                FileUtils.makeDirs(Constants.doc);
                 FileUtils.makeDirs(Constants.LAW_PATH);
                 FileUtils.makeDirs(path);
                 file = new File(path);
@@ -234,4 +236,6 @@ public class WordUtil {
         }
         return "";
     }
+
+
 }
